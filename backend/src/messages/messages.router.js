@@ -1,4 +1,5 @@
 const express = require("express");
+const Item = require("../models/item");
 const {
   getAdminMessage,
   getProtectedMessage,
@@ -11,6 +12,22 @@ const {
 const { AdminMessagesPermissions } = require("./messages-permissions");
 
 const messagesRouter = express.Router();
+
+messagesRouter.route("/create", validateAccessToken).post((req, res) => {
+  const item = req.body.item;
+  const capacity = req.body.capacity;
+  const bulkQuantity = req.body.bulkQuantity;
+  const quantityNow = req.body.quantityNow;
+  const unit = req.body.unit;
+  const newItem = new Item({
+    item,
+    capacity,
+    bulkQuantity,
+    quantityNow,
+    unit,
+  });
+  newItem.save();
+});
 
 messagesRouter.get("/public", (req, res) => {
   const message = getPublicMessage();

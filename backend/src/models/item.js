@@ -2,15 +2,14 @@ const mongoose = require("mongoose");
 
 const itemSchema = new mongoose.Schema(
   {
-    userId: { type: mongoose.Schema.Types.ObjectId, required: true },
-    userName: { type: String, required: true },
-    productName: { type: String, required: true },
-    capacity: { type: String, required: true },
-    bulkQuantity: { type: Number, required: true },
-    quantityNow: { type: Number, required: true },
-    unit: { type: String, required: true },
+    userName: { type: String },
+    item: { type: String },
+    capacity: { type: String },
+    bulkQuantity: { type: Number },
+    quantityNow: { type: Number },
+    unit: { type: String },
   },
   { timestamps: true }
 );
-
-module.exports = mongoose.model("Item", itemSchema);
+const Item = mongoose.model("Item", itemSchema);
+module.exports = Item;

@@ -1,13 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const AddProductModal = ({ setShowLoginModal }) => {
   const [input, setInput] = useState({
-    name: "",
+    userName: "",
+    item: "",
     capacity: "",
     bulkQuantity: "",
     quantityNow: "",
     unit: "",
   });
+  const { user } = useAuth0();
+
+  if (!user) {
+    return null;
+  }
   const handleOnChange = (event) => {
     const { name, value } = event.target;
     setInput((prevInput) => {
@@ -21,7 +29,18 @@ export const AddProductModal = ({ setShowLoginModal }) => {
   const handleClick = (event) => {
     event.preventDefault();
     console.log(input);
+    const newItem = {
+      userName: user.name,
+      item: input.item,
+      capacity: input.capacity,
+      bulkQuantity: input.bulkQuantity,
+      quantityNow: input.quantityNow,
+      unit: input.unit,
+    };
+    axios.post("http://localhost:6060/api/messages/create", newItem);
+    setShowLoginModal(false);
   };
+
   return (
     <div className="wrapper">
       <div className="productModal">
@@ -39,8 +58,8 @@ export const AddProductModal = ({ setShowLoginModal }) => {
               <th>
                 <input
                   onChange={handleOnChange}
-                  name="name"
-                  value={input.name}
+                  name="item"
+                  value={input.item}
                   type="text"
                 />
               </th>
