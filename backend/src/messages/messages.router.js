@@ -14,12 +14,14 @@ const { AdminMessagesPermissions } = require("./messages-permissions");
 const messagesRouter = express.Router();
 
 messagesRouter.route("/create", validateAccessToken).post((req, res) => {
+  const userName = req.body.userName;
   const item = req.body.item;
   const capacity = req.body.capacity;
   const bulkQuantity = req.body.bulkQuantity;
   const quantityNow = req.body.quantityNow;
   const unit = req.body.unit;
   const newItem = new Item({
+    userName,
     item,
     capacity,
     bulkQuantity,
