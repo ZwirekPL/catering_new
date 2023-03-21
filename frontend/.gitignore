@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/node,macos,windows,visualstudiocode,jetbrains+all
-# Edit at https://www.toptal.com/developers/gitignore?templates=node,macos,windows,visualstudiocode,jetbrains+all
+# Created by https://www.toptal.com/developers/gitignore/api/macos,windows,jetbrains+all,visualstudiocode,node
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,jetbrains+all,visualstudiocode,node
 
 ### JetBrains+all ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
@@ -247,6 +247,12 @@ dist
 # Serverless Webpack directories
 .webpack/
 
+# Optional stylelint cache
+.stylelintcache
+
+# SvelteKit build / generate output
+.svelte-kit
+
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json
@@ -262,6 +268,9 @@ dist
 # Ignore all local history of files
 .history
 .ionide
+
+# Support for Project snippet scope
+!.vscode/*.code-snippets
 
 ### Windows ###
 # Windows thumbnail cache files
@@ -289,4 +298,23 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/node,macos,windows,visualstudiocode,jetbrains+all
+# End of https://www.toptal.com/developers/gitignore/api/macos,windows,jetbrains+all,visualstudiocode,node
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
