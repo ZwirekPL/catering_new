@@ -1,0 +1,42 @@
+.table-body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 0.8rem;
+  margin-top: 3.2rem;
+  overflow: hidden;
+  background-color: #444;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #222;
+}
+tr:hover {
+  background-color: #666;
+}
+input {
+  background-color: #222;
+  border: solid white 1px;
+  color: white;
+}
+input::placeholder {
+  color: white;
+  font-size: 1.2rem;
+  text-align: center;
+}
+input:focus {
+  outline: 2px solid var(--mandarine);
+  border: none;
+}
