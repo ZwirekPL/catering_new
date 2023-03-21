@@ -1,21 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export const AddProductModal = ({ setShowLoginModal }) => {
+  const { user } = useAuth0();
   const [input, setInput] = useState({
-    userName: "",
+    userName: user.name,
     item: "",
     capacity: "",
     bulkQuantity: "",
     quantityNow: "",
     unit: "",
   });
-  const { user } = useAuth0();
 
-  if (!user) {
-    return null;
-  }
   const handleOnChange = (event) => {
     const { name, value } = event.target;
     setInput((prevInput) => {
