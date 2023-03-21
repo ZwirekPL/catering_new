@@ -1,6 +1,6 @@
 const getPublicMessage = () => {
   return {
-    text: "This is a public message.",
+    text: "This is a publiccc message.",
   };
 };
 

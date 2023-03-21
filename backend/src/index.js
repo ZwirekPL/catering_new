@@ -1,6 +1,7 @@
 const cors = require("cors");
 const dotenv = require("dotenv");
 const express = require("express");
+const mongoose = require("mongoose");
 const helmet = require("helmet");
 const nocache = require("nocache");
 const { messagesRouter } = require("./messages/messages.router");
@@ -18,6 +19,9 @@ if (!(process.env.PORT && process.env.CLIENT_ORIGIN_URL)) {
 const PORT = parseInt(process.env.PORT, 10);
 const CLIENT_ORIGIN_URL = process.env.CLIENT_ORIGIN_URL;
 
+mongoose.connect(process.env.MONGO_CONNECTION_STRING).then(() => {
+  console.log("Mongoose connected");
+});
 const app = express();
 const apiRouter = express.Router();
 

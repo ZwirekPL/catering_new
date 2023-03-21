@@ -6,7 +6,6 @@ import { getProtectedResource } from "../services/message.service";
 
 export const ProtectedPage = () => {
   const [message, setMessage] = useState("");
-
   const { getAccessTokenSilently } = useAuth0();
 
   useEffect(() => {

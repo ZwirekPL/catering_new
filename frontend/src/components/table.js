@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { AddProductModal } from "../components/addProductModal";
 
 export const Table = ({ title, code = "" }) => {
+  const [showLoginModal, setShowLoginModal] = useState(false);
   const inventory = [
     {
       name: "Pomidor",
@@ -236,30 +238,40 @@ export const Table = ({ title, code = "" }) => {
       </tr>
     );
   };
+
+  const handleShowLoginModal = () => setShowLoginModal(true);
   return (
-    <div className="table-body">
-      <table>
-        <tr>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th>
-            <button className="button button--primary">
-              Dodaj nowy produkt
-            </button>
-          </th>
-        </tr>
-        <tr>
-          <th>Nazwa</th>
-          <th>Pojemność</th>
-          <th>Opakowanie zbiorcze</th>
-          <th>Nowa ilość na stanie</th>
-          <th>Jednostka</th>
-        </tr>
-        {inventory.map(renderInventory)}
-      </table>
-    </div>
+    <>
+      {showLoginModal && (
+        <AddProductModal setShowLoginModal={setShowLoginModal} />
+      )}
+      <div className="table-body">
+        <table>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>
+              <button
+                className="button button--primary"
+                onClick={handleShowLoginModal}
+              >
+                Dodaj nowy produkt
+              </button>
+            </th>
+          </tr>
+          <tr>
+            <th>Nazwa</th>
+            <th>Pojemność</th>
+            <th>Opakowanie zbiorcze</th>
+            <th>Nowa ilość na stanie</th>
+            <th>Jednostka</th>
+          </tr>
+          {inventory.map(renderInventory)}
+        </table>
+      </div>
+    </>
     //   <div className="table">
     //     <span className="table__title">{title}</span>
     //     <div className="table__container">
