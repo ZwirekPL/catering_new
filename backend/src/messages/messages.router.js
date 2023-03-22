@@ -37,10 +37,16 @@ messagesRouter.get("/public", (req, res) => {
   res.status(200).json(message);
 });
 
-messagesRouter.get("/protected", validateAccessToken, (req, res) => {
-  const message = getProtectedMessage();
+// messagesRouter.get("/protected", validateAccessToken, (req, res) => {
+//   const message = getProtectedMessage();
 
-  res.status(200).json(message);
+//   res.status(200).json(message);
+// });
+
+messagesRouter.get("/protected", validateAccessToken, (req, res) => {
+  const inventory = getProtectedMessage();
+
+  res.status(200).json(inventory);
 });
 
 messagesRouter.get(
