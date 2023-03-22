@@ -268,7 +268,12 @@ export const Table = () => {
         <td>
           <input type="number" placeholder="Wpisz nową wartość" />
         </td>
-        <td>{message.unit}</td>
+        <td>
+          <div className="parent-trash">
+            <div>{message.unit}</div>
+            <div className="trash">&#10006;</div>
+          </div>
+        </td>
       </tr>
     );
   };

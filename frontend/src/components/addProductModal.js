@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -43,10 +43,9 @@ export const AddProductModal = ({ setShowLoginModal }) => {
       <div className="productModal">
         <div className="productModal-top">
           <p className="productModal-title">Dodaj nowy produkt</p>
-          <div
-            className="productModal-xbtn"
-            onClick={handleCloseLoginModal}
-          ></div>
+          <div className="productModal-xbtn" onClick={handleCloseLoginModal}>
+            &#10006;
+          </div>
         </div>
         <div className="productModal-form">
           <form>

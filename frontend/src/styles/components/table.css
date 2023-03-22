@@ -40,3 +40,16 @@ input:focus {
   outline: 2px solid var(--mandarine);
   border: none;
 }
+.parent-trash {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.trash {
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.trash:hover {
+  color: var(--mandarine);
+}

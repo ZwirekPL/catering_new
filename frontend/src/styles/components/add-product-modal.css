@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  position: absolute;
+  position: fixed;
 }
 .productModal {
   width: 60%;
@@ -32,12 +32,13 @@
   font-size: 2rem;
   margin: 0;
 }
-.productModal-xbtn:after {
-  display: inline-block;
-  content: "\00d7";
-  font-size: 4rem;
+.productModal-xbtn {
+  font-size: 3rem;
   cursor: pointer;
   font-family: var(--font-secondary);
+}
+.productModal-xbtn:hover {
+  color: var(--mandarine);
 }
 form {
   width: 80%;
@@ -58,4 +59,7 @@ th {
 .width-100 {
   margin: 2rem 5%;
   width: 90%;
+}
+.width-100:hover {
+  background: rgba(62, 55, 255, 0.85);
 }
