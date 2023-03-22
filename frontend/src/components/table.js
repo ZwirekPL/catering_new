@@ -257,7 +257,7 @@ export const Table = () => {
     return () => {
       isMounted = false;
     };
-  }, [getAccessTokenSilently]);
+  }, [getAccessTokenSilently, showLoginModal]);
 
   const renderInventory = (message, index) => {
     return (
