@@ -7,7 +7,7 @@ const getPublicMessage = () => {
 };
 const getProtectedMessage = () => {
   const dataFind = Item.find({
-    userName: "randomuser",
+    userName: "dietyojca@gmail.com",
   }).exec();
   // console.log(`messages`, dataFind);
   return dataFind;

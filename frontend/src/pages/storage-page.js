@@ -5,7 +5,7 @@ import { PageLayout } from "../components/page-layout";
 import { getProtectedResource } from "../services/message.service";
 
 export const StoragePage = () => {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState();
   const { getAccessTokenSilently } = useAuth0();
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export const StoragePage = () => {
               inwentaryzacje.
             </span>
           </p>
-          <Table title="Protected Message" code={message} />
+          <Table />
         </div>
       </div>
     </PageLayout>

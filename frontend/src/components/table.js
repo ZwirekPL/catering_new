@@ -3,233 +3,233 @@ import React, { useEffect, useState } from "react";
 import { AddProductModal } from "../components/addProductModal";
 import { getProtectedResource } from "../services/message.service";
 
-export const Table = ({ title, code = "" }) => {
+export const Table = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
-  const [message, setMessage] = useState("");
-  const inventory = [
-    {
-      name: "Pomidor",
-      producer: "Pan Warzywko",
-      category: "Warzywa",
-      buyBy: "Kierowcy",
-      whereBuy: "sergross",
-      quantity: "34",
-      unit: "szt.",
-      bulkQuantity: "23",
-      capacity: "ND",
-    },
-    {
-      name: "Ogórek",
-      producer: "Sellgross",
-      category: "Warzywa",
-      buyBy: "Kierowcy",
-      whereBuy: "sergross",
-      quantity: "0",
-      unit: "szt.",
-      bulkQuantity: "16",
-      capacity: "ND",
-    },
-    {
-      name: "Płatki Owsiane",
-      producer: "Melvit",
-      category: "Sypkie",
-      buyBy: "Transgourmet",
-      whereBuy: "Transgourmet",
-      quantity: "12",
-      unit: "szt.",
-      bulkQuantity: "6",
-      capacity: "1kg",
-    },
-    {
-      name: "Dżem",
-      producer: "Łowicz",
-      category: "Słoiki",
-      buyBy: "Transgourmet",
-      whereBuy: "Transgourmet",
-      quantity: "1",
-      unit: "szt.",
-      bulkQuantity: "6",
-      capacity: "400g",
-    },
-    {
-      name: "Masło",
-      producer: "Pilos",
-      category: "Przetwory Mleczne",
-      buyBy: "Kierowcy",
-      whereBuy: "Lidl",
-      quantity: "12",
-      unit: "szt.",
-      bulkQuantity: "40",
-      capacity: "250g",
-    },
-    {
-      name: "Bułeczki Maślane",
-      producer: "Pano",
-      category: "Pieczywo",
-      buyBy: "Kierowcy",
-      whereBuy: "Biedronka",
-      quantity: "10",
-      unit: "szt.",
-      bulkQuantity: "8",
-      capacity: "10szt.",
-    },
-    {
-      name: "Olej",
-      producer: "TopSeller",
-      category: "Oleje",
-      buyBy: "Transgourmet",
-      whereBuy: "Transgourmet",
-      quantity: "2",
-      unit: "szt.",
-      bulkQuantity: "4",
-      capacity: "5L",
-    },
-    {
-      name: "Kasza Bulgur",
-      producer: "TopSeller",
-      category: "Sypkie",
-      buyBy: "Transgourmet",
-      whereBuy: "Transgourmet",
-      quantity: "1",
-      unit: "szt.",
-      bulkQuantity: "1",
-      capacity: "5kg",
-    },
-    {
-      name: "Szpinak",
-      producer: "Mrożone",
-      category: "Mrożone",
-      buyBy: "Kierowcy",
-      whereBuy: "Biedronka",
-      quantity: "0",
-      unit: "szt.",
-      bulkQuantity: "1",
-      capacity: "xxxg",
-    },
-    {
-      name: "Domestos",
-      producer: "Domestos",
-      category: "Chemia",
-      buyBy: "Kierowcy",
-      whereBuy: "sergross",
-      quantity: "0",
-      unit: "szt.",
-      bulkQuantity: "6",
-      capacity: "1L",
-    },
-    {
-      name: "Płyn do zmywarki",
-      producer: "Stalgast",
-      category: "Chemia",
-      buyBy: "Kamila",
-      whereBuy: "Sklepie",
-      quantity: "6",
-      unit: "szt.",
-      bulkQuantity: "1",
-      capacity: "10L",
-    },
-    {
-      name: "Żółty Ser",
-      producer: "Pilos",
-      category: "Przetwory Mleczne",
-      buyBy: "Kierowcy",
-      whereBuy: "Lidl",
-      quantity: "12",
-      unit: "szt.",
-      bulkQuantity: "35",
-      capacity: "500g",
-    },
-    {
-      name: "Ser na tosty",
-      producer: "Pilos",
-      category: "Przetwory Mleczne",
-      buyBy: "Kierowcy",
-      whereBuy: "Lidl",
-      quantity: "12",
-      unit: "szt.",
-      bulkQuantity: "23",
-      capacity: "200g",
-    },
-    {
-      name: "Chleb Tostowy",
-      producer: "Pano",
-      category: "Pieczywo",
-      buyBy: "Kierowcy",
-      whereBuy: "Biedronka",
-      quantity: "0",
-      unit: "szt.",
-      bulkQuantity: "8",
-      capacity: "500g",
-    },
-    {
-      name: "Sałata",
-      producer: "Sellgross",
-      category: "Warzywa",
-      buyBy: "Kierowcy",
-      whereBuy: "sergross",
-      quantity: "34",
-      unit: "szt.",
-      bulkQuantity: "23",
-      capacity: "ND",
-    },
-    {
-      name: "Końcówka do mopa płaska",
-      producer: "Vileda",
-      category: "Chemia",
-      buyBy: "Kierowcy",
-      whereBuy: "sergross",
-      quantity: "34",
-      unit: "szt.",
-      bulkQuantity: "23",
-      capacity: "ND",
-    },
-    {
-      name: "Folia aluminiowa",
-      producer: "Lidl",
-      category: "Chemia",
-      buyBy: "Kierowcy",
-      whereBuy: "Lidl",
-      quantity: "34",
-      unit: "szt.",
-      bulkQuantity: "23",
-      capacity: "ND",
-    },
-    {
-      name: "Makaron Spaghetti",
-      producer: "Lidl",
-      category: "Sypkie",
-      buyBy: "Kierowcy",
-      whereBuy: "Lidl",
-      quantity: "34",
-      unit: "szt.",
-      bulkQuantity: "23",
-      capacity: "500g",
-    },
-    {
-      name: "Makaron Penne",
-      producer: "Lidl",
-      category: "Sypkie",
-      buyBy: "Kierowcy",
-      whereBuy: "Lidl",
-      quantity: "34",
-      unit: "szt.",
-      bulkQuantity: "23",
-      capacity: "500g",
-    },
-    {
-      name: "Twaróg z rzodkiewką",
-      producer: "President",
-      category: "Przetwory Mleczne",
-      buyBy: "Kierowcy",
-      whereBuy: "Biedronka",
-      quantity: "34",
-      unit: "szt.",
-      bulkQuantity: "23",
-      capacity: "250g",
-    },
-  ];
+  const [message, setMessage] = useState([]);
+  // const inventory = [
+  //   {
+  //     name: "Pomidor",
+  //     producer: "Pan Warzywko",
+  //     category: "Warzywa",
+  //     buyBy: "Kierowcy",
+  //     whereBuy: "sergross",
+  //     quantity: "34",
+  //     unit: "szt.",
+  //     bulkQuantity: "23",
+  //     capacity: "ND",
+  //   },
+  //   {
+  //     name: "Ogórek",
+  //     producer: "Sellgross",
+  //     category: "Warzywa",
+  //     buyBy: "Kierowcy",
+  //     whereBuy: "sergross",
+  //     quantity: "0",
+  //     unit: "szt.",
+  //     bulkQuantity: "16",
+  //     capacity: "ND",
+  //   },
+  //   {
+  //     name: "Płatki Owsiane",
+  //     producer: "Melvit",
+  //     category: "Sypkie",
+  //     buyBy: "Transgourmet",
+  //     whereBuy: "Transgourmet",
+  //     quantity: "12",
+  //     unit: "szt.",
+  //     bulkQuantity: "6",
+  //     capacity: "1kg",
+  //   },
+  //   {
+  //     name: "Dżem",
+  //     producer: "Łowicz",
+  //     category: "Słoiki",
+  //     buyBy: "Transgourmet",
+  //     whereBuy: "Transgourmet",
+  //     quantity: "1",
+  //     unit: "szt.",
+  //     bulkQuantity: "6",
+  //     capacity: "400g",
+  //   },
+  //   {
+  //     name: "Masło",
+  //     producer: "Pilos",
+  //     category: "Przetwory Mleczne",
+  //     buyBy: "Kierowcy",
+  //     whereBuy: "Lidl",
+  //     quantity: "12",
+  //     unit: "szt.",
+  //     bulkQuantity: "40",
+  //     capacity: "250g",
+  //   },
+  //   {
+  //     name: "Bułeczki Maślane",
+  //     producer: "Pano",
+  //     category: "Pieczywo",
+  //     buyBy: "Kierowcy",
+  //     whereBuy: "Biedronka",
+  //     quantity: "10",
+  //     unit: "szt.",
+  //     bulkQuantity: "8",
+  //     capacity: "10szt.",
+  //   },
+  //   {
+  //     name: "Olej",
+  //     producer: "TopSeller",
+  //     category: "Oleje",
+  //     buyBy: "Transgourmet",
+  //     whereBuy: "Transgourmet",
+  //     quantity: "2",
+  //     unit: "szt.",
+  //     bulkQuantity: "4",
+  //     capacity: "5L",
+  //   },
+  //   {
+  //     name: "Kasza Bulgur",
+  //     producer: "TopSeller",
+  //     category: "Sypkie",
+  //     buyBy: "Transgourmet",
+  //     whereBuy: "Transgourmet",
+  //     quantity: "1",
+  //     unit: "szt.",
+  //     bulkQuantity: "1",
+  //     capacity: "5kg",
+  //   },
+  //   {
+  //     name: "Szpinak",
+  //     producer: "Mrożone",
+  //     category: "Mrożone",
+  //     buyBy: "Kierowcy",
+  //     whereBuy: "Biedronka",
+  //     quantity: "0",
+  //     unit: "szt.",
+  //     bulkQuantity: "1",
+  //     capacity: "xxxg",
+  //   },
+  //   {
+  //     name: "Domestos",
+  //     producer: "Domestos",
+  //     category: "Chemia",
+  //     buyBy: "Kierowcy",
+  //     whereBuy: "sergross",
+  //     quantity: "0",
+  //     unit: "szt.",
+  //     bulkQuantity: "6",
+  //     capacity: "1L",
+  //   },
+  //   {
+  //     name: "Płyn do zmywarki",
+  //     producer: "Stalgast",
+  //     category: "Chemia",
+  //     buyBy: "Kamila",
+  //     whereBuy: "Sklepie",
+  //     quantity: "6",
+  //     unit: "szt.",
+  //     bulkQuantity: "1",
+  //     capacity: "10L",
+  //   },
+  //   {
+  //     name: "Żółty Ser",
+  //     producer: "Pilos",
+  //     category: "Przetwory Mleczne",
+  //     buyBy: "Kierowcy",
+  //     whereBuy: "Lidl",
+  //     quantity: "12",
+  //     unit: "szt.",
+  //     bulkQuantity: "35",
+  //     capacity: "500g",
+  //   },
+  //   {
+  //     name: "Ser na tosty",
+  //     producer: "Pilos",
+  //     category: "Przetwory Mleczne",
+  //     buyBy: "Kierowcy",
+  //     whereBuy: "Lidl",
+  //     quantity: "12",
+  //     unit: "szt.",
+  //     bulkQuantity: "23",
+  //     capacity: "200g",
+  //   },
+  //   {
+  //     name: "Chleb Tostowy",
+  //     producer: "Pano",
+  //     category: "Pieczywo",
+  //     buyBy: "Kierowcy",
+  //     whereBuy: "Biedronka",
+  //     quantity: "0",
+  //     unit: "szt.",
+  //     bulkQuantity: "8",
+  //     capacity: "500g",
+  //   },
+  //   {
+  //     name: "Sałata",
+  //     producer: "Sellgross",
+  //     category: "Warzywa",
+  //     buyBy: "Kierowcy",
+  //     whereBuy: "sergross",
+  //     quantity: "34",
+  //     unit: "szt.",
+  //     bulkQuantity: "23",
+  //     capacity: "ND",
+  //   },
+  //   {
+  //     name: "Końcówka do mopa płaska",
+  //     producer: "Vileda",
+  //     category: "Chemia",
+  //     buyBy: "Kierowcy",
+  //     whereBuy: "sergross",
+  //     quantity: "34",
+  //     unit: "szt.",
+  //     bulkQuantity: "23",
+  //     capacity: "ND",
+  //   },
+  //   {
+  //     name: "Folia aluminiowa",
+  //     producer: "Lidl",
+  //     category: "Chemia",
+  //     buyBy: "Kierowcy",
+  //     whereBuy: "Lidl",
+  //     quantity: "34",
+  //     unit: "szt.",
+  //     bulkQuantity: "23",
+  //     capacity: "ND",
+  //   },
+  //   {
+  //     name: "Makaron Spaghetti",
+  //     producer: "Lidl",
+  //     category: "Sypkie",
+  //     buyBy: "Kierowcy",
+  //     whereBuy: "Lidl",
+  //     quantity: "34",
+  //     unit: "szt.",
+  //     bulkQuantity: "23",
+  //     capacity: "500g",
+  //   },
+  //   {
+  //     name: "Makaron Penne",
+  //     producer: "Lidl",
+  //     category: "Sypkie",
+  //     buyBy: "Kierowcy",
+  //     whereBuy: "Lidl",
+  //     quantity: "34",
+  //     unit: "szt.",
+  //     bulkQuantity: "23",
+  //     capacity: "500g",
+  //   },
+  //   {
+  //     name: "Twaróg z rzodkiewką",
+  //     producer: "President",
+  //     category: "Przetwory Mleczne",
+  //     buyBy: "Kierowcy",
+  //     whereBuy: "Biedronka",
+  //     quantity: "34",
+  //     unit: "szt.",
+  //     bulkQuantity: "23",
+  //     capacity: "250g",
+  //   },
+  // ];
 
-  const { getAccessTokenSilently, user } = useAuth0();
+  const { getAccessTokenSilently } = useAuth0();
 
   useEffect(() => {
     let isMounted = true;
@@ -244,11 +244,11 @@ export const Table = ({ title, code = "" }) => {
       }
 
       if (data) {
-        setMessage(JSON.stringify(data, null, 2));
+        setMessage(data);
       }
 
       if (error) {
-        setMessage(JSON.stringify(error, null, 2));
+        setMessage(error);
       }
     };
 
@@ -259,16 +259,16 @@ export const Table = ({ title, code = "" }) => {
     };
   }, [getAccessTokenSilently]);
 
-  const renderInventory = (inventory, index) => {
+  const renderInventory = (message, index) => {
     return (
       <tr key={index}>
-        <td>{inventory.name}</td>
-        <td>{inventory.capacity}</td>
-        <td>{inventory.quantity}</td>
+        <td>{message.item}</td>
+        <td>{message.capacity}</td>
+        <td>{message.quantityNow}</td>
         <td>
           <input type="number" placeholder="Wpisz nową wartość" />
         </td>
-        <td>{inventory.unit}</td>
+        <td>{message.unit}</td>
       </tr>
     );
   };
@@ -302,7 +302,7 @@ export const Table = ({ title, code = "" }) => {
             <th>Nowa ilość na stanie</th>
             <th>Jednostka</th>
           </tr>
-          {inventory.map(renderInventory)}
+          {message.map(renderInventory)}
         </table>
       </div>
     </>
