@@ -19,7 +19,24 @@ export const getPublicResource = async () => {
   };
 };
 
-export const getProtectedResource = async (accessToken) => {
+// export const getProtectedResource = async (accessToken) => {
+//   const config = {
+//     url: `${apiServerUrl}/api/messages/protected`,
+//     method: "GET",
+//     headers: {
+//       "content-type": "application/json",
+//       Authorization: `Bearer ${accessToken}`,
+//     },
+//   };
+
+//   const { data, error } = await callExternalApi({ config });
+
+//   return {
+//     data: data || null,
+//     error,
+//   };
+// };
+export const getProtectedResource = async (accessToken, userName) => {
   const config = {
     url: `${apiServerUrl}/api/messages/protected`,
     method: "GET",
@@ -28,9 +45,7 @@ export const getProtectedResource = async (accessToken) => {
       Authorization: `Bearer ${accessToken}`,
     },
   };
-
   const { data, error } = await callExternalApi({ config });
-
   return {
     data: data || null,
     error,

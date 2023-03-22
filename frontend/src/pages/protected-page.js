@@ -6,7 +6,7 @@ import { getProtectedResource } from "../services/message.service";
 
 export const ProtectedPage = () => {
   const [message, setMessage] = useState("");
-
+  const { user } = useAuth0();
   const { getAccessTokenSilently } = useAuth0();
 
   useEffect(() => {
@@ -15,6 +15,7 @@ export const ProtectedPage = () => {
     const getMessage = async () => {
       const accessToken = await getAccessTokenSilently();
       const { data, error } = await getProtectedResource(accessToken);
+      console.log(data);
 
       if (!isMounted) {
         return;

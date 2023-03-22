@@ -44,9 +44,10 @@ messagesRouter.get("/public", (req, res) => {
 // });
 
 messagesRouter.get("/protected", validateAccessToken, (req, res) => {
-  const inventory = getProtectedMessage();
-
-  res.status(200).json(inventory);
+  const message = getProtectedMessage().then((data) => {
+    // console.log(`router`, data);
+    res.status(200).json(data);
+  });
 });
 
 messagesRouter.get(

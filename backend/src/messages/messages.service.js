@@ -1,21 +1,22 @@
+const Item = require("../models/item");
+
 const getPublicMessage = () => {
   return {
     text: "This is a publiccc message.",
   };
 };
-
+const getProtectedMessage = () => {
+  const dataFind = Item.find({
+    userName: "randomuser",
+  }).exec();
+  // console.log(`messages`, dataFind);
+  return dataFind;
+};
 // const getProtectedMessage = () => {
 //   return {
 //     text: "This is a protected message.",
 //   };
 // };
-const getProtectedMessage = async () => {
-  const data = await ItemModel.find({
-    userName: authenticatedUserId,
-  }).exec();
-  res.status(200).json(data);
-  return {};
-};
 
 const getAdminMessage = () => {
   return {

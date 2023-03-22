@@ -4,7 +4,7 @@ import { Table } from "../components/table";
 import { PageLayout } from "../components/page-layout";
 import { getProtectedResource } from "../services/message.service";
 
-export const ProtectedPage = () => {
+export const StoragePage = () => {
   const [message, setMessage] = useState("");
   const { getAccessTokenSilently } = useAuth0();
 

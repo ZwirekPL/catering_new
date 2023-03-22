@@ -1,8 +1,11 @@
+import { useAuth0 } from "@auth0/auth0-react";
 import React, { useEffect, useState } from "react";
 import { AddProductModal } from "../components/addProductModal";
+import { getProtectedResource } from "../services/message.service";
 
 export const Table = ({ title, code = "" }) => {
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [message, setMessage] = useState("");
   const inventory = [
     {
       name: "Pomidor",
@@ -225,6 +228,37 @@ export const Table = ({ title, code = "" }) => {
       capacity: "250g",
     },
   ];
+
+  const { getAccessTokenSilently, user } = useAuth0();
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const getMessage = async () => {
+      const accessToken = await getAccessTokenSilently();
+      const { data, error } = await getProtectedResource(accessToken);
+      console.log(data);
+
+      if (!isMounted) {
+        return;
+      }
+
+      if (data) {
+        setMessage(JSON.stringify(data, null, 2));
+      }
+
+      if (error) {
+        setMessage(JSON.stringify(error, null, 2));
+      }
+    };
+
+    getMessage();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [getAccessTokenSilently]);
+
   const renderInventory = (inventory, index) => {
     return (
       <tr key={index}>
@@ -238,7 +272,7 @@ export const Table = ({ title, code = "" }) => {
       </tr>
     );
   };
-
+  console.log(message);
   const handleShowLoginModal = () => setShowLoginModal(true);
   return (
     <>
