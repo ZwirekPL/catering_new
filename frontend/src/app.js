@@ -43,3 +43,6 @@ export const App = () => {
     </Routes>
   );
 };
+// Animacje do modali,
+// Sprawdzenie czy sprawdza autoryzację podczas dodawnaia do bazy danych.
+// Sprawdzić jak wyglada wylogowywanie i wylogowywać po opuszczeniu strony,
