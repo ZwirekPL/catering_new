@@ -5,7 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 export const UpdateProductModal = ({
   setShowUpdateModal,
   idUpdateItem,
-  nameUpdateItem,
+  itemToUpdate,
 }) => {
   const { user } = useAuth0();
   //   console.log(idUpdateItem);
@@ -13,11 +13,11 @@ export const UpdateProductModal = ({
   const [errorMessage, setErrorMessage] = useState("");
   const [input, setInput] = useState({
     userName: user.name,
-    item: "",
-    capacity: "",
-    bulkQuantity: "",
-    quantityNow: "",
-    unit: "",
+    item: itemToUpdate.item,
+    capacity: itemToUpdate.capacity,
+    bulkQuantity: itemToUpdate.bulkQuantity,
+    quantityNow: itemToUpdate.quantityNow,
+    unit: itemToUpdate.unit,
   });
 
   const handleOnChange = (event) => {
@@ -98,7 +98,7 @@ export const UpdateProductModal = ({
       <div className="productModal">
         <div className="productModal-top">
           <p className="productModal-title">
-            Edytujesz: <strong>{nameUpdateItem}</strong>
+            Edytujesz: <strong>{itemToUpdate.item}</strong>
           </p>
           <div className="productModal-xbtn" onClick={handleCloseUpdateModal}>
             &#10006;

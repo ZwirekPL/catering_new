@@ -9,7 +9,7 @@ export const Table = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [idUpdateItem, setidUpdateItem] = useState();
-  const [nameUpdateItem, setNameUpdateItem] = useState();
+  const [itemToUpdate, setitemToUpdate] = useState();
   const [message, setMessage] = useState([]);
   // const inventory = [
   //   {
@@ -302,9 +302,9 @@ export const Table = () => {
   const handleShowLoginModal = () => setShowLoginModal(true);
   const handleShowUpdateModal = (index) => {
     const idRemoveItem = message[index]._id;
-    const nameUpdateItem = message[index].item;
+    const itemToUpdate = message[index];
     setidUpdateItem(idRemoveItem);
-    setNameUpdateItem(nameUpdateItem);
+    setitemToUpdate(itemToUpdate);
     // console.log(idUpdateItem);
     setShowUpdateModal(true);
   };
@@ -317,7 +317,7 @@ export const Table = () => {
         <UpdateProductModal
           setShowUpdateModal={setShowUpdateModal}
           idUpdateItem={idUpdateItem}
-          nameUpdateItem={nameUpdateItem}
+          itemToUpdate={itemToUpdate}
         />
       )}
       <div className="table-body">
