@@ -336,6 +336,7 @@ export const Table = () => {
                   Dodaj nowy produkt
                 </button>
               </th>
+              <th></th>
             </tr>
             <tr>
               <th>Nazwa</th>
