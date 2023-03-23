@@ -40,15 +40,67 @@ input:focus {
   outline: 2px solid var(--mandarine);
   border: none;
 }
-.parent-unit-trash {
+.parent-plus-trash {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
+.plus {
+  font-size: 3rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 4rem;
+  position: relative;
+  display: inline-block;
+}
+.plus .plus-tooltiptext {
+  visibility: hidden;
+  width: 50px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  font-size: 1rem;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  right: 105%;
+}
+.plus:hover .plus-tooltiptext {
+  visibility: visible;
+}
+.plus:hover {
+  color: var(--yellow);
+}
+
 .trash {
   font-size: 2rem;
   font-weight: bold;
   cursor: pointer;
+  position: relative;
+  display: inline-block;
+}
+.trash .trash-tooltiptext {
+  visibility: hidden;
+  width: 40px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  top: -5px;
+  right: 105%;
+  font-size: 1rem;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+.trash:hover .trash-tooltiptext {
+  visibility: visible;
 }
 .trash:hover {
   color: var(--mandarine);

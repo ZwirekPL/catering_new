@@ -36,10 +36,34 @@ messagesRouter
   .delete((req, res) => {
     const idRemoveItem = req.params.idRemoveItem;
     // console.log(idRemoveItem);
-    Item.findById(`${idRemoveItem}`).then((doc) => {
+    Item.findById(idRemoveItem).then((doc) => {
       doc.deleteOne();
     });
   });
+
+messagesRouter
+  .route("/update/:idUpdateItem", validateAccessToken)
+  .post(async (req, res) => {
+    const idUpdateItem = req.params.idUpdateItem;
+    const newUserName = req.body.userName;
+    const newItem = req.body.item;
+    const newCapacity = req.body.capacity;
+    const newBulkQuantity = req.body.bulkQuantity;
+    const newQuantityNow = req.body.quantityNow;
+    const newUnit = req.body.unit;
+    // console.log(newItem);
+    const updateItem = await Item.findById(idUpdateItem).exec();
+    updateItem.userName = newUserName;
+    updateItem.item = newItem;
+    updateItem.capacity = newCapacity;
+    updateItem.bulkQuantity = newBulkQuantity;
+    updateItem.quantityNow = newQuantityNow;
+    updateItem.unit = newUnit;
+    const updatedItem = await updateItem.save();
+    // console.log(updatedItem);
+    res.status(200);
+  });
+
 messagesRouter.get("/public", (req, res) => {
   const message = getPublicMessage();
 

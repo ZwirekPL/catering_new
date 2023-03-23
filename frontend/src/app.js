@@ -51,6 +51,6 @@ export const App = () => {
 // Animacje do modali,
 // Sprawdzenie czy sprawdza autoryzację podczas dodawnaia do bazy danych.
 // Sprawdzić jak wyglada wylogowywanie i wylogowywać po opuszczeniu strony,
-// dodać funkcję usuwania danego elementu.
+// Dodać wybieranie która placówka ma się wyświetlać.
 // obsłużyć input aby poprawiało wartość.
 // dodać tooltipa do inputa z tym co ma zrobic.

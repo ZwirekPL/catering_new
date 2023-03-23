@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 
-export const AddProductModal = ({ setShowLoginModal }) => {
+export const UpdateProductModal = ({
+  setShowUpdateModal,
+  idUpdateItem,
+  nameUpdateItem,
+}) => {
   const { user } = useAuth0();
+  //   console.log(idUpdateItem);
   const [errorIsVisible, setErrorIsVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [input, setInput] = useState({
@@ -50,11 +55,11 @@ export const AddProductModal = ({ setShowLoginModal }) => {
     setErrorMessage("Pole Jednostka jest wymagane. Proszę je uzupełnić.");
   };
   //.
-  const handleCloseLoginModal = () => setShowLoginModal(false);
+  const handleCloseUpdateModal = () => setShowUpdateModal(false);
   const handleClick = (event) => {
     event.preventDefault();
-    console.log(input);
-    const newItem = {
+    // console.log(input);
+    const updateItem = {
       userName: user.name,
       item: input.item,
       capacity: input.capacity,
@@ -80,8 +85,11 @@ export const AddProductModal = ({ setShowLoginModal }) => {
     if (!input.unit) {
       return unitNull();
     }
-    axios.post("http://localhost:6060/api/messages/create", newItem);
-    setShowLoginModal(false);
+    axios.post(
+      "http://localhost:6060/api/messages/update/" + idUpdateItem,
+      updateItem
+    );
+    setShowUpdateModal(false);
     window.location.reload();
   };
 
@@ -89,8 +97,10 @@ export const AddProductModal = ({ setShowLoginModal }) => {
     <div className="wrapper">
       <div className="productModal">
         <div className="productModal-top">
-          <p className="productModal-title">Dodaj nowy produkt</p>
-          <div className="productModal-xbtn" onClick={handleCloseLoginModal}>
+          <p className="productModal-title">
+            Edytujesz: <strong>{nameUpdateItem}</strong>
+          </p>
+          <div className="productModal-xbtn" onClick={handleCloseUpdateModal}>
             &#10006;
           </div>
         </div>
@@ -161,7 +171,7 @@ export const AddProductModal = ({ setShowLoginModal }) => {
               className="button button--primary width-100"
               onClick={handleClick}
             >
-              Dodaj
+              Zmień
             </button>
           </form>
         </div>
