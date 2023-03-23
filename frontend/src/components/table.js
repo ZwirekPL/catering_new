@@ -2,10 +2,14 @@ import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { AddProductModal } from "../components/addProductModal";
+import { UpdateProductModal } from "../components/updateProductModal";
 import { getProtectedResource } from "../services/message.service";
 
 export const Table = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
+  const [idUpdateItem, setidUpdateItem] = useState();
+  const [nameUpdateItem, setNameUpdateItem] = useState();
   const [message, setMessage] = useState([]);
   // const inventory = [
   //   {
@@ -260,7 +264,6 @@ export const Table = () => {
     };
   }, [getAccessTokenSilently, showLoginModal]);
 
-  //tu
   const handleRemoveItem = (index) => {
     // console.log(index);
     const idRemoveItem = message[index]._id;
@@ -268,21 +271,27 @@ export const Table = () => {
     axios.delete("http://localhost:6060/api/messages/delete/" + idRemoveItem);
     window.location.reload();
   };
+  // const handleUpdateItem = (index) => {
+  //   const idUpdateItem = message[index]._id;
+  //   axios.post("http://localhost:6060/api/messages/delete/" + idUpdateItem);
+  //   window.location.reload();
+  // };
 
   const renderInventory = (message, index) => {
     return (
       <tr key={index}>
         <td>{message.item}</td>
         <td>{message.capacity}</td>
+        <td>{message.bulkQuantity}</td>
         <td>{message.quantityNow}</td>
+        <td>{message.unit}</td>
         <td>
-          <input type="number" placeholder="Wpisz nową wartość" />
-        </td>
-        <td>
-          <div className="parent-unit-trash">
-            <div>{message.unit}</div>
+          <div className="parent-plus-trash">
+            <div className="plus" onClick={() => handleShowUpdateModal(index)}>
+              &#9998;<span class="plus-tooltiptext">Edytuj</span>
+            </div>
             <div onClick={() => handleRemoveItem(index)} className="trash">
-              &#10006;
+              &#10006;<span class="trash-tooltiptext">Usuń</span>
             </div>
           </div>
         </td>
@@ -291,10 +300,25 @@ export const Table = () => {
   };
   // console.log(message);
   const handleShowLoginModal = () => setShowLoginModal(true);
+  const handleShowUpdateModal = (index) => {
+    const idRemoveItem = message[index]._id;
+    const nameUpdateItem = message[index].item;
+    setidUpdateItem(idRemoveItem);
+    setNameUpdateItem(nameUpdateItem);
+    // console.log(idUpdateItem);
+    setShowUpdateModal(true);
+  };
   return (
     <>
       {showLoginModal && (
         <AddProductModal setShowLoginModal={setShowLoginModal} />
+      )}
+      {showUpdateModal && (
+        <UpdateProductModal
+          setShowUpdateModal={setShowUpdateModal}
+          idUpdateItem={idUpdateItem}
+          nameUpdateItem={nameUpdateItem}
+        />
       )}
       <div className="table-body">
         <table>
@@ -313,17 +337,16 @@ export const Table = () => {
                 </button>
               </th>
             </tr>
-          </thead>
-          <tbody>
             <tr>
               <th>Nazwa</th>
               <th>Pojemność</th>
               <th>Opakowanie zbiorcze</th>
-              <th>Nowa ilość na stanie</th>
+              <th>Ilość na stanie</th>
               <th>Jednostka</th>
+              <th></th>
             </tr>
-            {message.map(renderInventory)}
-          </tbody>
+          </thead>
+          <tbody>{message.map(renderInventory)}</tbody>
         </table>
       </div>
     </>
