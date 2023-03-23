@@ -30,7 +30,16 @@ messagesRouter.route("/create", validateAccessToken).post((req, res) => {
   });
   newItem.save();
 });
-
+//tu
+messagesRouter
+  .route("/delete/:idRemoveItem", validateAccessToken)
+  .delete((req, res) => {
+    const idRemoveItem = req.params.idRemoveItem;
+    // console.log(idRemoveItem);
+    Item.findById(`${idRemoveItem}`).then((doc) => {
+      doc.deleteOne();
+    });
+  });
 messagesRouter.get("/public", (req, res) => {
   const message = getPublicMessage();
 

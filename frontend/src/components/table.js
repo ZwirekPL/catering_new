@@ -1,4 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { AddProductModal } from "../components/addProductModal";
 import { getProtectedResource } from "../services/message.service";
@@ -258,10 +259,14 @@ export const Table = () => {
       isMounted = false;
     };
   }, [getAccessTokenSilently, showLoginModal]);
+
+  //tu
   const handleRemoveItem = (index) => {
-    console.log(index);
+    // console.log(index);
     const idRemoveItem = message[index]._id;
-    console.log(idRemoveItem);
+    // console.log(idRemoveItem);
+    axios.delete("http://localhost:6060/api/messages/delete/" + idRemoveItem);
+    window.location.reload();
   };
 
   const renderInventory = (message, index) => {
