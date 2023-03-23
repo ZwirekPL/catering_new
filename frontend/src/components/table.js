@@ -237,7 +237,7 @@ export const Table = () => {
     const getMessage = async () => {
       const accessToken = await getAccessTokenSilently();
       const { data, error } = await getProtectedResource(accessToken);
-      console.log(data);
+      // console.log(data);
 
       if (!isMounted) {
         return;
@@ -258,6 +258,11 @@ export const Table = () => {
       isMounted = false;
     };
   }, [getAccessTokenSilently, showLoginModal]);
+  const handleRemoveItem = (index) => {
+    console.log(index);
+    const idRemoveItem = message[index]._id;
+    console.log(idRemoveItem);
+  };
 
   const renderInventory = (message, index) => {
     return (
@@ -269,15 +274,17 @@ export const Table = () => {
           <input type="number" placeholder="Wpisz nową wartość" />
         </td>
         <td>
-          <div className="parent-trash">
+          <div className="parent-unit-trash">
             <div>{message.unit}</div>
-            <div className="trash">&#10006;</div>
+            <div onClick={() => handleRemoveItem(index)} className="trash">
+              &#10006;
+            </div>
           </div>
         </td>
       </tr>
     );
   };
-  console.log(message);
+  // console.log(message);
   const handleShowLoginModal = () => setShowLoginModal(true);
   return (
     <>
@@ -286,38 +293,34 @@ export const Table = () => {
       )}
       <div className="table-body">
         <table>
-          <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th>
-              <button
-                className="button button--primary"
-                onClick={handleShowLoginModal}
-              >
-                Dodaj nowy produkt
-              </button>
-            </th>
-          </tr>
-          <tr>
-            <th>Nazwa</th>
-            <th>Pojemność</th>
-            <th>Opakowanie zbiorcze</th>
-            <th>Nowa ilość na stanie</th>
-            <th>Jednostka</th>
-          </tr>
-          {message.map(renderInventory)}
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th>
+                <button
+                  className="button button--primary"
+                  onClick={handleShowLoginModal}
+                >
+                  Dodaj nowy produkt
+                </button>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Nazwa</th>
+              <th>Pojemność</th>
+              <th>Opakowanie zbiorcze</th>
+              <th>Nowa ilość na stanie</th>
+              <th>Jednostka</th>
+            </tr>
+            {message.map(renderInventory)}
+          </tbody>
         </table>
       </div>
     </>
-    //   <div className="table">
-    //     <span className="table__title">{title}</span>
-    //     <div className="table__container">
-    //       <div className="table__wrapper">
-    //         <pre className="table__body">{code}</pre>
-    //       </div>
-    //     </div>
-    //   </div>
   );
 };

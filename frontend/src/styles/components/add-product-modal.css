@@ -54,16 +54,21 @@ form {
     opacity: 0;
   }
   to {
-    background-color: 0.6;
+    background-color: 0.8;
   }
 }
 .error-div {
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 85%;
   height: 3em;
-  background-color: red;
-  opacity: 0.6;
+  border-radius: 0.6rem;
+  background-color: var(--mandarine);
+  opacity: 0.8;
   animation-name: error;
-  animation-duration: 4s;
+  animation-duration: 0.5s;
+  font-family: var(--font-secondary);
 }
 tr {
   width: 90%;

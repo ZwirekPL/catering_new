@@ -40,7 +40,7 @@ input:focus {
   outline: 2px solid var(--mandarine);
   border: none;
 }
-.parent-trash {
+.parent-unit-trash {
   display: flex;
   flex-direction: row;
   justify-content: space-around;

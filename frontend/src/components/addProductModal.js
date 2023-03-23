@@ -24,11 +24,32 @@ export const AddProductModal = ({ setShowLoginModal }) => {
       };
     });
   };
-  // zrobić nastepne błędy
-  const itemnull = () => {
+  // ERRORS
+  const itemNull = () => {
     setErrorIsVisible(true);
     setErrorMessage("Pole Nazwa jest wymagane. Proszę je uzupełnić.");
   };
+  const capacityNull = () => {
+    setErrorIsVisible(true);
+    setErrorMessage("Pole Pojemność jest wymagane. Proszę je uzupełnić.");
+  };
+  const bulkQuantityNull = () => {
+    setErrorIsVisible(true);
+    setErrorMessage(
+      "Pole Opakowanie zbiorcze jest wymagane. Proszę je uzupełnić."
+    );
+  };
+  const quantityNowNull = () => {
+    setErrorIsVisible(true);
+    setErrorMessage(
+      "Pole Nowa ilość na stanie jest wymagane. Proszę je uzupełnić."
+    );
+  };
+  const unitNull = () => {
+    setErrorIsVisible(true);
+    setErrorMessage("Pole Jednostka jest wymagane. Proszę je uzupełnić.");
+  };
+  //.
   const handleCloseLoginModal = () => setShowLoginModal(false);
   const handleClick = (event) => {
     event.preventDefault();
@@ -45,7 +66,19 @@ export const AddProductModal = ({ setShowLoginModal }) => {
       return null;
     }
     if (!input.item) {
-      return itemnull();
+      return itemNull();
+    }
+    if (!input.capacity) {
+      return capacityNull();
+    }
+    if (!input.bulkQuantity) {
+      return bulkQuantityNull();
+    }
+    if (!input.quantityNow) {
+      return quantityNowNull();
+    }
+    if (!input.unit) {
+      return unitNull();
     }
     axios.post("http://localhost:6060/api/messages/create", newItem);
     setShowLoginModal(false);
