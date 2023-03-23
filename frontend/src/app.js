@@ -54,3 +54,4 @@ export const App = () => {
 // Zwalidować dodawanie produktów aby nie dodwało pustych.
 // dodać funkcję usuwania danego elementu.
 // obsłużyć input aby poprawiało wartość.
+// dodać tooltipa do inputa z tym co ma zrobic.

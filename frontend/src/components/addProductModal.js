@@ -4,6 +4,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 export const AddProductModal = ({ setShowLoginModal }) => {
   const { user } = useAuth0();
+  const [errorIsVisible, setErrorIsVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [input, setInput] = useState({
     userName: user.name,
     item: "",
@@ -22,6 +24,11 @@ export const AddProductModal = ({ setShowLoginModal }) => {
       };
     });
   };
+  // zrobić nastepne błędy
+  const itemnull = () => {
+    setErrorIsVisible(true);
+    setErrorMessage("Pole Nazwa jest wymagane. Proszę je uzupełnić.");
+  };
   const handleCloseLoginModal = () => setShowLoginModal(false);
   const handleClick = (event) => {
     event.preventDefault();
@@ -34,6 +41,12 @@ export const AddProductModal = ({ setShowLoginModal }) => {
       quantityNow: input.quantityNow,
       unit: input.unit,
     };
+    if (!user.name) {
+      return null;
+    }
+    if (!input.item) {
+      return itemnull();
+    }
     axios.post("http://localhost:6060/api/messages/create", newItem);
     setShowLoginModal(false);
   };
@@ -48,6 +61,11 @@ export const AddProductModal = ({ setShowLoginModal }) => {
           </div>
         </div>
         <div className="productModal-form">
+          {errorIsVisible ? (
+            <div className="error-div">
+              <p>{errorMessage}</p>
+            </div>
+          ) : null}
           <form>
             <tr>
               <th>Nazwa</th>
