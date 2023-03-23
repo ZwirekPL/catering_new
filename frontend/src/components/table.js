@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { AddProductModal } from "../components/addProductModal";
 import { UpdateProductModal } from "../components/updateProductModal";
-import { getProtectedResource } from "../services/message.service";
+import { getUserItems } from "../services/message.service";
 
 export const Table = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -234,14 +234,14 @@ export const Table = () => {
   //   },
   // ];
 
-  const { getAccessTokenSilently } = useAuth0();
+  const { getAccessTokenSilently, user } = useAuth0();
 
   useEffect(() => {
     let isMounted = true;
 
     const getMessage = async () => {
       const accessToken = await getAccessTokenSilently();
-      const { data, error } = await getProtectedResource(accessToken);
+      const { data, error } = await getUserItems(accessToken, user);
       // console.log(data);
 
       if (!isMounted) {

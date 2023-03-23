@@ -36,10 +36,6 @@ export const App = () => {
         element={<AuthenticationGuard component={StoragePage} />}
       />
       <Route
-        path="/protected"
-        element={<AuthenticationGuard component={ProtectedPage} />}
-      />
-      <Route
         path="/shopping-list"
         element={<AuthenticationGuard component={AdminPage} />}
       />
@@ -52,5 +48,5 @@ export const App = () => {
 // Sprawdzenie czy sprawdza autoryzację podczas dodawnaia do bazy danych.
 // Sprawdzić jak wyglada wylogowywanie i wylogowywać po opuszczeniu strony,
 // Dodać wybieranie która placówka ma się wyświetlać.
-// obsłużyć input aby poprawiało wartość.
-// dodać tooltipa do inputa z tym co ma zrobic.
+
+// Zacząć listy zakupowe.

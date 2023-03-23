@@ -1,22 +1,18 @@
 const Item = require("../models/item");
 
+const getUserItems = (userName) => {
+  const dataFind = Item.find({
+    userName: `${userName}`,
+  }).exec();
+  // console.log(`messages`, dataFind);
+  return dataFind;
+};
+
 const getPublicMessage = () => {
   return {
     text: "This is a publiccc message.",
   };
 };
-const getProtectedMessage = () => {
-  const dataFind = Item.find({
-    userName: "dietyojca@gmail.com",
-  }).exec();
-  // console.log(`messages`, dataFind);
-  return dataFind;
-};
-// const getProtectedMessage = () => {
-//   return {
-//     text: "This is a protected message.",
-//   };
-// };
 
 const getAdminMessage = () => {
   return {
@@ -26,6 +22,6 @@ const getAdminMessage = () => {
 
 module.exports = {
   getPublicMessage,
-  getProtectedMessage,
+  getUserItems,
   getAdminMessage,
 };

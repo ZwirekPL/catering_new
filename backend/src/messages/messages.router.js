@@ -2,7 +2,7 @@ const express = require("express");
 const Item = require("../models/item");
 const {
   getAdminMessage,
-  getProtectedMessage,
+  getUserItems,
   getPublicMessage,
 } = require("./messages.service");
 const {
@@ -63,22 +63,10 @@ messagesRouter
     // console.log(updatedItem);
     res.status(200);
   });
-
-messagesRouter.get("/public", (req, res) => {
-  const message = getPublicMessage();
-
-  res.status(200).json(message);
-});
-
-// messagesRouter.get("/protected", validateAccessToken, (req, res) => {
-//   const message = getProtectedMessage();
-
-//   res.status(200).json(message);
-// });
-
-messagesRouter.get("/protected", validateAccessToken, (req, res) => {
-  const message = getProtectedMessage().then((data) => {
-    // console.log(`router`, data);
+messagesRouter.get("/protected/:userName", validateAccessToken, (req, res) => {
+  const userName = req.params.userName;
+  // console.log(userName);
+  const message = getUserItems(userName).then((data) => {
     res.status(200).json(data);
   });
 });
