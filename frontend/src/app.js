@@ -48,5 +48,5 @@ export const App = () => {
 // Sprawdzenie czy sprawdza autoryzację podczas dodawnaia do bazy danych.
 // Sprawdzić jak wyglada wylogowywanie i wylogowywać po opuszczeniu strony,
 // Dodać wybieranie która placówka ma się wyświetlać.
-
+// Dodać przesuwanie tygodni.
 // Zacząć listy zakupowe.
