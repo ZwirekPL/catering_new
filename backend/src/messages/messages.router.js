@@ -4,7 +4,7 @@ const Storage = require("../models/storage");
 const {
   getAdminMessage,
   getUserItems,
-  getPublicMessage,
+  getInventoryHistory,
 } = require("./messages.service");
 const {
   checkRequiredPermissions,
@@ -63,9 +63,8 @@ messagesRouter
     // console.log(updatedItem);
     res.status(200);
   });
-
 messagesRouter
-  .route("/inventory/:userName", validateAccessToken)
+  .route("/inventory/send/:userName", validateAccessToken)
   .post((req, res) => {
     // console.log("req,", req.body);
     const userName = req.params.userName;
@@ -76,6 +75,17 @@ messagesRouter
       inventoryArr,
     });
     newInventory.save();
+  });
+
+messagesRouter
+  .route("/inventory/get/:userName", validateAccessToken)
+  .get((req, res) => {
+    const userName = req.params.userName;
+    // console.log(userName);
+    const message = getInventoryHistory(userName).then((data) => {
+      console.log(data);
+      res.status(200).json(data);
+    });
   });
 
 messagesRouter.get("/protected/:userName", validateAccessToken, (req, res) => {

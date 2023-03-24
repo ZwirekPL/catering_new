@@ -9,7 +9,6 @@ import { HomePage } from "./pages/home-page";
 import { NotFoundPage } from "./pages/not-found-page";
 import { ProfilePage } from "./pages/profile-page";
 import { StoragePage } from "./pages/storage-page";
-import { ProtectedPage } from "./pages/protected-page";
 import { PublicPage } from "./pages/public-page";
 
 export const App = () => {

@@ -262,7 +262,7 @@ export const Table = () => {
     return () => {
       isMounted = false;
     };
-  }, [getAccessTokenSilently, showLoginModal]);
+  }, [getAccessTokenSilently, showLoginModal, user]);
 
   const handleRemoveItem = (index) => {
     // console.log(index);
@@ -311,7 +311,7 @@ export const Table = () => {
   const handleSendInventory = () => {
     console.log("message", message);
     axios.post(
-      "http://localhost:6060/api/messages/inventory/" + user.name,
+      "http://localhost:6060/api/messages/inventory/send/" + user.name,
       message
     );
     // zrobić modal potwierdzający lub w przycisku.
