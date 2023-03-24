@@ -13,7 +13,9 @@ table {
   border-collapse: collapse;
   width: 100%;
 }
-
+.width-190px {
+  width: 190px;
+}
 td,
 th {
   text-align: left;
@@ -25,6 +27,9 @@ tr:nth-child(even) {
 }
 tr:hover {
   background-color: #666;
+}
+tr:first-child:hover {
+  background-color: #444;
 }
 input {
   background-color: #222;

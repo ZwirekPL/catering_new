@@ -308,6 +308,12 @@ export const Table = () => {
     // console.log(idUpdateItem);
     setShowUpdateModal(true);
   };
+  const handleSendInventory = () => {
+    // Całe message wysłać na serwer za pomocą post jak w dodaj item.
+    // Zapisać aktualną datę, użytkownika i dodać czas wygaśnięcia.
+    //
+    //zrobić Schema dla nowej listy w mongoose.
+  };
   return (
     <>
       {showLoginModal && (
@@ -328,15 +334,15 @@ export const Table = () => {
               <th></th>
               <th></th>
               <th></th>
+              <th></th>
               <th>
                 <button
-                  className="button button--primary"
+                  className="button button--primary width-190px"
                   onClick={handleShowLoginModal}
                 >
                   Dodaj nowy produkt
                 </button>
               </th>
-              <th></th>
             </tr>
             <tr>
               <th>Nazwa</th>
@@ -348,6 +354,23 @@ export const Table = () => {
             </tr>
           </thead>
           <tbody>{message.map(renderInventory)}</tbody>
+          <tfoot>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th>
+                <button
+                  className="button button--secondary"
+                  onClick={handleSendInventory}
+                >
+                  Potwierdź inwentaryzację
+                </button>
+              </th>
+            </tr>
+          </tfoot>
         </table>
       </div>
     </>
