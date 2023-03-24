@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import { PageLoader } from "./components/page-loader";
 import { AuthenticationGuard } from "./components/authentication-guard";
 import { ShoppingList } from "./pages/shopping-list";
+import { HistoryShoppingList } from "./pages/history-shopping-list";
 import { CallbackPage } from "./pages/callback-page";
 import { HomePage } from "./pages/home-page";
 import { NotFoundPage } from "./pages/not-found-page";
@@ -42,6 +43,10 @@ export const App = () => {
       <Route
         path="/shopping-list"
         element={<AuthenticationGuard component={ShoppingList} />}
+      />
+      <Route
+        path="/shopping-list/history"
+        element={<AuthenticationGuard component={HistoryShoppingList} />}
       />
       <Route path="/callback" element={<CallbackPage />} />
       <Route path="*" element={<NotFoundPage />} />

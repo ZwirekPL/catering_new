@@ -16,7 +16,7 @@ export const ShoppingList = () => {
           </p>
           <div className="shopping-list">
             <NavLink
-              to="/storage/history"
+              to="/shopping-list/history"
               end
               className="shopping-list-btn button button--primary"
             >

@@ -62,13 +62,12 @@ export const ShoppingListTable = () => {
   //   console.log(listNow);
   const handleshowAddModal = () => setShowAddModal(true);
 
-  const handleSendInventory = () => {
+  const handleSendShoppingList = () => {
     console.log("message", message);
     axios.post(
-      "http://localhost:6060/api/messages/inventory/send/" + user.name,
+      "http://localhost:6060/api/messages/shopping/send/" + user.name,
       message
     );
-    // zrobić modal potwierdzający lub w przycisku.
     window.location.reload();
   };
   return (
@@ -117,7 +116,7 @@ export const ShoppingListTable = () => {
               <th>
                 <button
                   className="button button--secondary"
-                  onClick={handleSendInventory}
+                  onClick={handleSendShoppingList}
                 >
                   Potwierdź listę zakupową
                 </button>

@@ -31,6 +31,26 @@ export const getInventoryHistory = async (accessToken, user) => {
       Authorization: `Bearer ${accessToken}`,
     },
   };
+
+  const { data, error } = await callExternalApi({ config });
+  return {
+    data: data || null,
+    error,
+  };
+};
+
+export const getShoppingListHistory = async (accessToken, user) => {
+  const userName = user.name;
+  // console.log(user.name);
+  const config = {
+    url: `${apiServerUrl}/api/messages/shopping/get/` + userName,
+    method: "GET",
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+
   const { data, error } = await callExternalApi({ config });
   return {
     data: data || null,

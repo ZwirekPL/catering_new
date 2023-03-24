@@ -1,10 +1,12 @@
 const express = require("express");
 const Item = require("../models/item");
 const Storage = require("../models/storage");
+const ShoppingList = require("../models/shopping-list");
 const {
   getAdminMessage,
   getUserItems,
   getInventoryHistory,
+  getShoppingListHistory,
 } = require("./messages.service");
 const {
   checkRequiredPermissions,
@@ -74,17 +76,42 @@ messagesRouter
       userName,
       products,
     });
+    console.log(newInventory);
+    newInventory.save();
+  });
+messagesRouter
+  .route("/shopping/send/:userName", validateAccessToken)
+  .post((req, res) => {
+    // console.log("req,", req.body);
+    const userName = req.params.userName;
+    const products = req.body;
+    // console.log(products);
+    const newInventory = new ShoppingList({
+      userName,
+      products,
+    });
     // console.log(newInventory);
     newInventory.save();
   });
-// TUTAJ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// Nie zapisuje produktów w tablicy BD
 messagesRouter
   .route("/inventory/get/:userName", validateAccessToken)
   .get((req, res) => {
     const userName = req.params.userName;
     // console.log(userName);
     const message = getInventoryHistory(userName).then((data) => {
+      // console.log(data);
+      // console.log(data[0].products);
+      res.status(200).json(data);
+    });
+  });
+
+// TUTAJ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+messagesRouter
+  .route("/shopping/get/:userName", validateAccessToken)
+  .get((req, res) => {
+    const userName = req.params.userName;
+    // console.log(userName);
+    const message = getShoppingListHistory(userName).then((data) => {
       // console.log(data);
       // console.log(data[0].products);
       res.status(200).json(data);

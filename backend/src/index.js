@@ -5,7 +5,6 @@ const mongoose = require("mongoose");
 const helmet = require("helmet");
 const nocache = require("nocache");
 const { messagesRouter } = require("./messages/messages.router");
-const { itemRouter } = require("./routes/itemRoute");
 const { errorHandler } = require("./middleware/error.middleware");
 const { notFoundHandler } = require("./middleware/not-found.middleware");
 
@@ -64,7 +63,6 @@ app.use(
 
 app.use("/api", apiRouter);
 apiRouter.use("/messages", messagesRouter);
-// apiRouter.use("/item", itemRouter);
 
 app.use(errorHandler);
 app.use(notFoundHandler);
