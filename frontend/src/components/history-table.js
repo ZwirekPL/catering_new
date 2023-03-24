@@ -24,8 +24,11 @@ export const HistoryTable = ({ inventory }) => {
               <th>
                 <p>Data utworzenia inwentaryzacji: {createDate}</p>
               </th>
+              <th></th>
+              <th></th>
+              <th></th>
               <th>
-                <p>Użytkownik {userName}</p>
+                <p>Użytkownik: {userName}</p>
               </th>
             </tr>
             <tr>
