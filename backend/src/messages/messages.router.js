@@ -1,5 +1,6 @@
 const express = require("express");
 const Item = require("../models/item");
+const Storage = require("../models/storage");
 const {
   getAdminMessage,
   getUserItems,
@@ -30,7 +31,6 @@ messagesRouter.route("/create", validateAccessToken).post((req, res) => {
   });
   newItem.save();
 });
-//tu
 messagesRouter
   .route("/delete/:idRemoveItem", validateAccessToken)
   .delete((req, res) => {
@@ -63,6 +63,21 @@ messagesRouter
     // console.log(updatedItem);
     res.status(200);
   });
+
+messagesRouter
+  .route("/inventory/:userName", validateAccessToken)
+  .post((req, res) => {
+    // console.log("req,", req.body);
+    const userName = req.params.userName;
+    const inventoryArr = req.body;
+    // console.log(inventory);
+    const newInventory = new Storage({
+      userName,
+      inventoryArr,
+    });
+    newInventory.save();
+  });
+
 messagesRouter.get("/protected/:userName", validateAccessToken, (req, res) => {
   const userName = req.params.userName;
   // console.log(userName);

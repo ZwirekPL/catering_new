@@ -242,7 +242,7 @@ export const Table = () => {
     const getMessage = async () => {
       const accessToken = await getAccessTokenSilently();
       const { data, error } = await getUserItems(accessToken, user);
-      // console.log(data);
+      // console.log(user);
 
       if (!isMounted) {
         return;
@@ -309,6 +309,13 @@ export const Table = () => {
     setShowUpdateModal(true);
   };
   const handleSendInventory = () => {
+    console.log("message", message);
+    axios.post(
+      "http://localhost:6060/api/messages/inventory/" + user.name,
+      message
+    );
+    // zrobić modal potwierdzający lub w przycisku.
+    window.location.reload();
     // Całe message wysłać na serwer za pomocą post jak w dodaj item.
     // Zapisać aktualną datę, użytkownika i dodać czas wygaśnięcia.
     //

@@ -1,18 +1,13 @@
 const mongoose = require("mongoose");
-import Item from "../models/item";
-const itemSchema = Item;
+const Item = require("./item");
 
 const storageSchema = new mongoose.Schema(
   {
-    userId: mongoose.Schema.Types.ObjectId,
     userName: String,
-    products: [itemSchema],
-    capacity: String,
-    bulkQuantity: Number,
-    quantityNow: Number,
-    unit: String,
+    products: [Item.schema],
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Storage", storageSchema);
+const Storage = mongoose.model("Storage", storageSchema);
+module.exports = Storage;
