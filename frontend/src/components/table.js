@@ -1,7 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { AddProductModal } from "../components/addProductModal";
+import { AddProductModal } from "./add-product-modal";
 import { UpdateProductModal } from "../components/updateProductModal";
 import { getUserItems } from "../services/message.service";
 
@@ -66,10 +66,10 @@ export const Table = () => {
         <td>
           <div className="parent-plus-trash">
             <div className="plus" onClick={() => handleShowUpdateModal(index)}>
-              &#9998;<span class="plus-tooltiptext">Edytuj</span>
+              &#9998;<span className="plus-tooltiptext">Edytuj</span>
             </div>
             <div onClick={() => handleRemoveItem(index)} className="trash">
-              &#10006;<span class="trash-tooltiptext">Usuń</span>
+              &#10006;<span className="trash-tooltiptext">Usuń</span>
             </div>
           </div>
         </td>

@@ -1,8 +1,16 @@
 import { useAuth0 } from "@auth0/auth0-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Keyboard, Pagination, Navigation } from "swiper";
 import React, { useEffect, useState } from "react";
 import { HistoryTable } from "../components/history-table";
 import { getInventoryHistory } from "../services/message.service";
 import { PageLayout } from "../components/page-layout";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/keyboard";
+import "swiper/css/navigation";
+import "../styles/components/history-storage-page.css";
 
 export const HistoryStoragePage = () => {
   const [historyInventory, setHistoryInventory] = useState([]);
@@ -29,7 +37,7 @@ export const HistoryStoragePage = () => {
       isMounted = false;
     };
   }, [getAccessTokenSilently, user]);
-  console.log(historyInventory);
+  //   console.log(historyInventory);
 
   return (
     <PageLayout>
@@ -38,16 +46,42 @@ export const HistoryStoragePage = () => {
           Historia Inwentaryzacji
         </h1>
         <div className="content__body">
-          <p id="page-description">
+          <p>
             <span>
               Tutaj możesz sprawdzić historię swoich inwentaryzacji. Pamiętaj,
               że po 30 dniach od zapisania zostaje ona usunięta.
             </span>
           </p>
-          {historyInventory.map((inventory, index) => (
-            <HistoryTable inventory={inventory} />
-          ))}
-          {/* <HistoryTable /> */}
+          <Swiper
+            navigation={true}
+            slidesPerView={1}
+            spaceBetween={10}
+            pagination={{
+              clickable: true,
+            }}
+            keyboard={true}
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 1,
+                spaceBetween: 50,
+              },
+            }}
+            modules={[Pagination, Keyboard, Navigation]}
+          >
+            {historyInventory.map((inventory, index) => (
+              <SwiperSlide key={index}>
+                <HistoryTable inventory={inventory} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </PageLayout>

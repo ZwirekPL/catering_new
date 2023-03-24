@@ -2,7 +2,7 @@ export const HistoryTable = ({ inventory }) => {
   const productsArr = inventory.products;
   const createDate = inventory.createdAt.substr(0, 10);
 
-  console.log(createDate);
+  //   console.log(createDate);
   const renderInventory = (productsArr, index) => {
     return (
       <tr key={index}>
@@ -19,7 +19,11 @@ export const HistoryTable = ({ inventory }) => {
       <div className="table-body">
         <table>
           <thead>
-            <p>Data utworzenia inwentaryzacji: {createDate}</p>
+            <tr>
+              <th>
+                <p>Data utworzenia inwentaryzacji: {createDate}</p>
+              </th>
+            </tr>
             <tr>
               <th>Nazwa</th>
               <th>Pojemność</th>

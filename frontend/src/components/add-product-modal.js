@@ -156,7 +156,6 @@ export const AddProductModal = ({ setShowAddModal }) => {
                 />
               </th>
             </tr>
-
             <button
               className="button button--primary width-100"
               onClick={handleClick}
