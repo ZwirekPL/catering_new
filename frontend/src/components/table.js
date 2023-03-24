@@ -6,233 +6,11 @@ import { UpdateProductModal } from "../components/updateProductModal";
 import { getUserItems } from "../services/message.service";
 
 export const Table = () => {
-  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [idUpdateItem, setidUpdateItem] = useState();
   const [itemToUpdate, setitemToUpdate] = useState();
   const [message, setMessage] = useState([]);
-  // const inventory = [
-  //   {
-  //     name: "Pomidor",
-  //     producer: "Pan Warzywko",
-  //     category: "Warzywa",
-  //     buyBy: "Kierowcy",
-  //     whereBuy: "sergross",
-  //     quantity: "34",
-  //     unit: "szt.",
-  //     bulkQuantity: "23",
-  //     capacity: "ND",
-  //   },
-  //   {
-  //     name: "Ogórek",
-  //     producer: "Sellgross",
-  //     category: "Warzywa",
-  //     buyBy: "Kierowcy",
-  //     whereBuy: "sergross",
-  //     quantity: "0",
-  //     unit: "szt.",
-  //     bulkQuantity: "16",
-  //     capacity: "ND",
-  //   },
-  //   {
-  //     name: "Płatki Owsiane",
-  //     producer: "Melvit",
-  //     category: "Sypkie",
-  //     buyBy: "Transgourmet",
-  //     whereBuy: "Transgourmet",
-  //     quantity: "12",
-  //     unit: "szt.",
-  //     bulkQuantity: "6",
-  //     capacity: "1kg",
-  //   },
-  //   {
-  //     name: "Dżem",
-  //     producer: "Łowicz",
-  //     category: "Słoiki",
-  //     buyBy: "Transgourmet",
-  //     whereBuy: "Transgourmet",
-  //     quantity: "1",
-  //     unit: "szt.",
-  //     bulkQuantity: "6",
-  //     capacity: "400g",
-  //   },
-  //   {
-  //     name: "Masło",
-  //     producer: "Pilos",
-  //     category: "Przetwory Mleczne",
-  //     buyBy: "Kierowcy",
-  //     whereBuy: "Lidl",
-  //     quantity: "12",
-  //     unit: "szt.",
-  //     bulkQuantity: "40",
-  //     capacity: "250g",
-  //   },
-  //   {
-  //     name: "Bułeczki Maślane",
-  //     producer: "Pano",
-  //     category: "Pieczywo",
-  //     buyBy: "Kierowcy",
-  //     whereBuy: "Biedronka",
-  //     quantity: "10",
-  //     unit: "szt.",
-  //     bulkQuantity: "8",
-  //     capacity: "10szt.",
-  //   },
-  //   {
-  //     name: "Olej",
-  //     producer: "TopSeller",
-  //     category: "Oleje",
-  //     buyBy: "Transgourmet",
-  //     whereBuy: "Transgourmet",
-  //     quantity: "2",
-  //     unit: "szt.",
-  //     bulkQuantity: "4",
-  //     capacity: "5L",
-  //   },
-  //   {
-  //     name: "Kasza Bulgur",
-  //     producer: "TopSeller",
-  //     category: "Sypkie",
-  //     buyBy: "Transgourmet",
-  //     whereBuy: "Transgourmet",
-  //     quantity: "1",
-  //     unit: "szt.",
-  //     bulkQuantity: "1",
-  //     capacity: "5kg",
-  //   },
-  //   {
-  //     name: "Szpinak",
-  //     producer: "Mrożone",
-  //     category: "Mrożone",
-  //     buyBy: "Kierowcy",
-  //     whereBuy: "Biedronka",
-  //     quantity: "0",
-  //     unit: "szt.",
-  //     bulkQuantity: "1",
-  //     capacity: "xxxg",
-  //   },
-  //   {
-  //     name: "Domestos",
-  //     producer: "Domestos",
-  //     category: "Chemia",
-  //     buyBy: "Kierowcy",
-  //     whereBuy: "sergross",
-  //     quantity: "0",
-  //     unit: "szt.",
-  //     bulkQuantity: "6",
-  //     capacity: "1L",
-  //   },
-  //   {
-  //     name: "Płyn do zmywarki",
-  //     producer: "Stalgast",
-  //     category: "Chemia",
-  //     buyBy: "Kamila",
-  //     whereBuy: "Sklepie",
-  //     quantity: "6",
-  //     unit: "szt.",
-  //     bulkQuantity: "1",
-  //     capacity: "10L",
-  //   },
-  //   {
-  //     name: "Żółty Ser",
-  //     producer: "Pilos",
-  //     category: "Przetwory Mleczne",
-  //     buyBy: "Kierowcy",
-  //     whereBuy: "Lidl",
-  //     quantity: "12",
-  //     unit: "szt.",
-  //     bulkQuantity: "35",
-  //     capacity: "500g",
-  //   },
-  //   {
-  //     name: "Ser na tosty",
-  //     producer: "Pilos",
-  //     category: "Przetwory Mleczne",
-  //     buyBy: "Kierowcy",
-  //     whereBuy: "Lidl",
-  //     quantity: "12",
-  //     unit: "szt.",
-  //     bulkQuantity: "23",
-  //     capacity: "200g",
-  //   },
-  //   {
-  //     name: "Chleb Tostowy",
-  //     producer: "Pano",
-  //     category: "Pieczywo",
-  //     buyBy: "Kierowcy",
-  //     whereBuy: "Biedronka",
-  //     quantity: "0",
-  //     unit: "szt.",
-  //     bulkQuantity: "8",
-  //     capacity: "500g",
-  //   },
-  //   {
-  //     name: "Sałata",
-  //     producer: "Sellgross",
-  //     category: "Warzywa",
-  //     buyBy: "Kierowcy",
-  //     whereBuy: "sergross",
-  //     quantity: "34",
-  //     unit: "szt.",
-  //     bulkQuantity: "23",
-  //     capacity: "ND",
-  //   },
-  //   {
-  //     name: "Końcówka do mopa płaska",
-  //     producer: "Vileda",
-  //     category: "Chemia",
-  //     buyBy: "Kierowcy",
-  //     whereBuy: "sergross",
-  //     quantity: "34",
-  //     unit: "szt.",
-  //     bulkQuantity: "23",
-  //     capacity: "ND",
-  //   },
-  //   {
-  //     name: "Folia aluminiowa",
-  //     producer: "Lidl",
-  //     category: "Chemia",
-  //     buyBy: "Kierowcy",
-  //     whereBuy: "Lidl",
-  //     quantity: "34",
-  //     unit: "szt.",
-  //     bulkQuantity: "23",
-  //     capacity: "ND",
-  //   },
-  //   {
-  //     name: "Makaron Spaghetti",
-  //     producer: "Lidl",
-  //     category: "Sypkie",
-  //     buyBy: "Kierowcy",
-  //     whereBuy: "Lidl",
-  //     quantity: "34",
-  //     unit: "szt.",
-  //     bulkQuantity: "23",
-  //     capacity: "500g",
-  //   },
-  //   {
-  //     name: "Makaron Penne",
-  //     producer: "Lidl",
-  //     category: "Sypkie",
-  //     buyBy: "Kierowcy",
-  //     whereBuy: "Lidl",
-  //     quantity: "34",
-  //     unit: "szt.",
-  //     bulkQuantity: "23",
-  //     capacity: "500g",
-  //   },
-  //   {
-  //     name: "Twaróg z rzodkiewką",
-  //     producer: "President",
-  //     category: "Przetwory Mleczne",
-  //     buyBy: "Kierowcy",
-  //     whereBuy: "Biedronka",
-  //     quantity: "34",
-  //     unit: "szt.",
-  //     bulkQuantity: "23",
-  //     capacity: "250g",
-  //   },
-  // ];
 
   const { getAccessTokenSilently, user } = useAuth0();
 
@@ -262,7 +40,7 @@ export const Table = () => {
     return () => {
       isMounted = false;
     };
-  }, [getAccessTokenSilently, showLoginModal, user]);
+  }, [getAccessTokenSilently, showAddModal, user]);
 
   const handleRemoveItem = (index) => {
     // console.log(index);
@@ -299,7 +77,7 @@ export const Table = () => {
     );
   };
   // console.log(message);
-  const handleShowLoginModal = () => setShowLoginModal(true);
+  const handleshowAddModal = () => setShowAddModal(true);
   const handleShowUpdateModal = (index) => {
     const idRemoveItem = message[index]._id;
     const itemToUpdate = message[index];
@@ -316,16 +94,10 @@ export const Table = () => {
     );
     // zrobić modal potwierdzający lub w przycisku.
     window.location.reload();
-    // Całe message wysłać na serwer za pomocą post jak w dodaj item.
-    // Zapisać aktualną datę, użytkownika i dodać czas wygaśnięcia.
-    //
-    //zrobić Schema dla nowej listy w mongoose.
   };
   return (
     <>
-      {showLoginModal && (
-        <AddProductModal setShowLoginModal={setShowLoginModal} />
-      )}
+      {showAddModal && <AddProductModal setShowAddModal={setShowAddModal} />}
       {showUpdateModal && (
         <UpdateProductModal
           setShowUpdateModal={setShowUpdateModal}
@@ -345,7 +117,7 @@ export const Table = () => {
               <th>
                 <button
                   className="button button--primary width-190px"
-                  onClick={handleShowLoginModal}
+                  onClick={handleshowAddModal}
                 >
                   Dodaj nowy produkt
                 </button>

@@ -68,22 +68,25 @@ messagesRouter
   .post((req, res) => {
     // console.log("req,", req.body);
     const userName = req.params.userName;
-    const inventoryArr = req.body;
-    // console.log(inventory);
+    const products = req.body;
+    // console.log(products);
     const newInventory = new Storage({
       userName,
-      inventoryArr,
+      products,
     });
+    // console.log(newInventory);
     newInventory.save();
   });
-
+// TUTAJ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// Nie zapisuje produktów w tablicy BD
 messagesRouter
   .route("/inventory/get/:userName", validateAccessToken)
   .get((req, res) => {
     const userName = req.params.userName;
     // console.log(userName);
     const message = getInventoryHistory(userName).then((data) => {
-      console.log(data);
+      // console.log(data);
+      // console.log(data[0].products);
       res.status(200).json(data);
     });
   });

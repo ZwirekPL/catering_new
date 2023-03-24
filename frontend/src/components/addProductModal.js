@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 
-export const AddProductModal = ({ setShowLoginModal }) => {
+export const AddProductModal = ({ setShowAddModal }) => {
   const { user } = useAuth0();
   const [errorIsVisible, setErrorIsVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -50,7 +50,7 @@ export const AddProductModal = ({ setShowLoginModal }) => {
     setErrorMessage("Pole Jednostka jest wymagane. Proszę je uzupełnić.");
   };
   //.
-  const handleCloseLoginModal = () => setShowLoginModal(false);
+  const handleCloseLoginModal = () => setShowAddModal(false);
   const handleClick = (event) => {
     event.preventDefault();
     // console.log(input);
@@ -81,7 +81,7 @@ export const AddProductModal = ({ setShowLoginModal }) => {
       return unitNull();
     }
     axios.post("http://localhost:6060/api/messages/create", newItem);
-    setShowLoginModal(false);
+    setShowAddModal(false);
     window.location.reload();
   };
 

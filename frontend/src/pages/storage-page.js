@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { Table } from "../components/table";
 import { PageLayout } from "../components/page-layout";
 
@@ -16,6 +17,15 @@ export const StoragePage = () => {
               inwentaryzacje.
             </span>
           </p>
+          <div className="history-storage">
+            <NavLink
+              to="/storage/history"
+              end
+              className="history-storage-btn button button--primary"
+            >
+              Przejdź do historii inwentaryzacji
+            </NavLink>
+          </div>
           <Table />
         </div>
       </div>

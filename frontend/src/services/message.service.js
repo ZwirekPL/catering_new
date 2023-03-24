@@ -20,6 +20,24 @@ export const getUserItems = async (accessToken, user) => {
   };
 };
 
+export const getInventoryHistory = async (accessToken, user) => {
+  const userName = user.name;
+  // console.log(user.name);
+  const config = {
+    url: `${apiServerUrl}/api/messages/inventory/get/` + userName,
+    method: "GET",
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+  const { data, error } = await callExternalApi({ config });
+  return {
+    data: data || null,
+    error,
+  };
+};
+
 export const getPublicResource = async () => {
   const config = {
     url: `${apiServerUrl}/api/messages/public`,
