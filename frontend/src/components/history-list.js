@@ -22,7 +22,7 @@ export const HistoryList = ({ inventory }) => {
           <thead>
             <tr>
               <th>
-                <p>Data utworzenia inwentaryzacji: {createDate}</p>
+                <p>Data utworzenia listy zakupowej: {createDate}</p>
               </th>
               <th></th>
               <th></th>

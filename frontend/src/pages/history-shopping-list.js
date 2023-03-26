@@ -43,13 +43,13 @@ export const HistoryShoppingList = () => {
     <PageLayout>
       <div className="content-layout">
         <h1 id="page-title" className="content__title">
-          Historia Inwentaryzacji
+          Historia Zakupów.
         </h1>
         <div className="content__body">
           <p>
             <span>
-              Tutaj możesz sprawdzić historię swoich inwentaryzacji. Pamiętaj,
-              że po 30 dniach od zapisania zostaje ona usunięta.
+              Tutaj możesz sprawdzić historię swoich zakupów. Pamiętaj, że po 30
+              dniach od zapisania zostaje ona usunięta.
             </span>
           </p>
           <Swiper

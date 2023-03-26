@@ -2,10 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { ShoppingListTable } from "../components/shopping-list-table";
 import { PageLayout } from "../components/page-layout";
+// import { OkModal } from "../components/ok-modal";
 
 export const ShoppingList = () => {
   return (
     <PageLayout>
+      {/* <OkModal /> */}
       <div className="content-layout">
         <h1 id="page-title" className="content__title">
           Listy Zakupowe

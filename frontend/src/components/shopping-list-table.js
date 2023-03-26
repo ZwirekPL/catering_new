@@ -2,6 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { AddListModal } from "./add-list-modal";
+import { OkModal } from "./ok-modal";
 import { getUserItems } from "../services/message.service";
 
 export const ShoppingListTable = () => {

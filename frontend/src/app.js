@@ -57,5 +57,13 @@ export const App = () => {
 // Sprawdzenie czy sprawdza autoryzację podczas dodawnaia do bazy danych.
 // Sprawdzić jak wyglada wylogowywanie i wylogowywać po opuszczeniu strony,
 // Dodać wybieranie która placówka ma się wyświetlać.
-// Dodać przesuwanie tygodni.
-// Zacząć listy zakupowe.
+// Zacząć czyścić.
+// Porównanie czy kamila to kamila ( stockowane w ENV.)
+// Obsługa kamili po stronie frontu + backend
+// Usunięcie zarejestruj ze zwykłej wersji, tylko u Kamili.
+// U Kamili : wybieranie placówki do listy i historii
+// Kto zmienił ostatni zapisać w DB tak aby można było pobrać zmiany też u innych.
+// Kierowcy dostęp tylko do list zakupowych placówek i głównej.
+// Media Queries
+// obsługa odebrania lub wysłania danych na serwer.
+// podział na kategorie.
