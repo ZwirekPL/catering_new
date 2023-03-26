@@ -45,3 +45,4 @@ export const HistoryList = ({ inventory }) => {
     </>
   );
 };
+// obsłużyć input w liscie
