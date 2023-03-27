@@ -58,7 +58,7 @@ export const App = () => {
 // Sprawdzić jak wyglada wylogowywanie i wylogowywać po opuszczeniu strony,
 // Dodać wybieranie która placówka ma się wyświetlać.
 // Zacząć czyścić.
-// Porównanie czy kamila to kamila ( stockowane w ENV.)
+// Porównanie czy kamila to kamila ( stockowane w ENV.) i na backend i frontend
 // Obsługa kamili po stronie frontu + backend
 // Usunięcie zarejestruj ze zwykłej wersji, tylko u Kamili.
 // U Kamili : wybieranie placówki do listy i historii
@@ -67,3 +67,4 @@ export const App = () => {
 // Media Queries
 // obsługa odebrania lub wysłania danych na serwer.
 // podział na kategorie.
+// Dodać konta i obsługę kierowców.

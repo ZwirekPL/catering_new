@@ -92,3 +92,24 @@ export const getAdminResource = async (accessToken) => {
     error,
   };
 };
+
+//TUTAJ
+
+export const getOtherUserItems = async (accessToken, otherUser) => {
+  const userName = otherUser;
+
+  // console.log(user.name);
+  const config = {
+    url: `${apiServerUrl}/api/messages/protected/` + userName,
+    method: "GET",
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+  const { data, error } = await callExternalApi({ config });
+  return {
+    data: data || null,
+    error,
+  };
+};
