@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 
-export const AddProductModal = ({ setShowAddModal }) => {
+export const AddProductModal = ({ setShowAddModal, nameUser }) => {
   const { user } = useAuth0();
   const [errorIsVisible, setErrorIsVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [input, setInput] = useState({
-    userName: user.name,
+    userName: nameUser,
     item: "",
     capacity: "",
     bulkQuantity: "",
     quantityNow: "",
     unit: "",
+    editBy: user.name,
   });
 
   const handleOnChange = (event) => {
@@ -53,16 +54,17 @@ export const AddProductModal = ({ setShowAddModal }) => {
   const handleCloseLoginModal = () => setShowAddModal(false);
   const handleClick = (event) => {
     event.preventDefault();
-    // console.log(input);
+    console.log(user);
     const newItem = {
-      userName: user.name,
+      userName: nameUser,
       item: input.item,
       capacity: input.capacity,
       bulkQuantity: input.bulkQuantity,
       quantityNow: input.quantityNow,
       unit: input.unit,
+      editBy: user.name,
     };
-    if (!user.name) {
+    if (!nameUser) {
       return null;
     }
     if (!input.item) {

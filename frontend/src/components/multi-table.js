@@ -18,7 +18,6 @@ export const MultiTable = () => {
   const [idUpdateItem, setidUpdateItem] = useState();
   const [itemToUpdate, setitemToUpdate] = useState();
   const [message, setMessage] = useState([]);
-  const [messagetwo, setMessageTwo] = useState([]);
 
   const { getAccessTokenSilently, user } = useAuth0();
   useEffect(() => {
@@ -43,7 +42,7 @@ export const MultiTable = () => {
     };
 
     getMessage();
-    console.log(message);
+    // console.log(message);
     return () => {
       isMounted = false;
     };
@@ -62,14 +61,14 @@ export const MultiTable = () => {
   //   window.location.reload();
   // };
 
-  const renderInventory = (messagetwo, index) => {
+  const renderInventory = (message, index) => {
     return (
       <tr key={index}>
-        <td>{messagetwo.item}</td>
-        <td>{messagetwo.capacity}</td>
-        <td>{messagetwo.bulkQuantity}</td>
-        <td>{messagetwo.quantityNow}</td>
-        <td>{messagetwo.unit}</td>
+        <td>{message.item}</td>
+        <td>{message.capacity}</td>
+        <td>{message.bulkQuantity}</td>
+        <td>{message.quantityNow}</td>
+        <td>{message.unit}</td>
         <td>
           <div className="parent-plus-trash">
             <div className="plus" onClick={() => handleShowUpdateModal(index)}>
@@ -96,39 +95,45 @@ export const MultiTable = () => {
   const handleSendInventory = () => {
     console.log("message", message);
     axios.post(
-      "http://localhost:6060/api/messages/inventory/send/" + user.name,
-      message
+      "http://localhost:6060/api/messages/inventory/send/" + selectValue,
+      { data: message, editUser: user.name }
     );
-    window.location.reload();
+    // window.location.reload();
   };
   const handleChange = (event) => {
     setSelectValue(event.target.value);
-    console.log(selectValue);
+    // console.log(selectValue);
   };
   const handleClick = () => {
     const getMessage = async () => {
       const accessToken = await getAccessTokenSilently();
       const { data, error } = await getOtherUserItems(accessToken, selectValue);
-      console.log(selectValue);
+      // console.log(selectValue);
 
       if (data) {
-        setMessageTwo(data);
+        setMessage(data);
       }
 
       if (error) {
-        setMessageTwo(error);
+        setMessage(error);
       }
     };
 
     getMessage();
-    console.log(messagetwo);
+    // console.log(message);
   };
   return (
     <>
-      {showAddModal && <AddProductModal setShowAddModal={setShowAddModal} />}
+      {showAddModal && (
+        <AddProductModal
+          nameUser={selectValue}
+          setShowAddModal={setShowAddModal}
+        />
+      )}
       {showUpdateModal && (
         <UpdateProductModal
           setShowUpdateModal={setShowUpdateModal}
+          nameUser={selectValue}
           idUpdateItem={idUpdateItem}
           itemToUpdate={itemToUpdate}
         />
@@ -188,7 +193,7 @@ export const MultiTable = () => {
               <th></th>
             </tr>
           </thead>
-          <tbody>{messagetwo.map(renderInventory)}</tbody>
+          <tbody>{message.map(renderInventory)}</tbody>
           <tfoot>
             <tr>
               <th></th>

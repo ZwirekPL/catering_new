@@ -23,6 +23,7 @@ messagesRouter.route("/create", validateAccessToken).post((req, res) => {
   const bulkQuantity = req.body.bulkQuantity;
   const quantityNow = req.body.quantityNow;
   const unit = req.body.unit;
+  const editBy = req.body.editBy;
   const newItem = new Item({
     userName,
     item,
@@ -30,8 +31,10 @@ messagesRouter.route("/create", validateAccessToken).post((req, res) => {
     bulkQuantity,
     quantityNow,
     unit,
+    editBy,
   });
   newItem.save();
+  // console.log(req.body);
 });
 messagesRouter
   .route("/delete/:idRemoveItem", validateAccessToken)
@@ -70,13 +73,15 @@ messagesRouter
   .post((req, res) => {
     // console.log("req,", req.body);
     const userName = req.params.userName;
-    const products = req.body;
-    // console.log(products);
+    const products = req.body.data;
+    const editBy = req.body.editUser;
+    // console.log(editBy);
     const newInventory = new Storage({
       userName,
       products,
+      editBy,
     });
-    console.log(newInventory);
+    // console.log(newInventory);
     newInventory.save();
   });
 messagesRouter

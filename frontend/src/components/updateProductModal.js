@@ -4,6 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 export const UpdateProductModal = ({
   setShowUpdateModal,
+  nameUser,
   idUpdateItem,
   itemToUpdate,
 }) => {
@@ -12,12 +13,13 @@ export const UpdateProductModal = ({
   const [errorIsVisible, setErrorIsVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [input, setInput] = useState({
-    userName: user.name,
+    userName: nameUser,
     item: itemToUpdate.item,
     capacity: itemToUpdate.capacity,
     bulkQuantity: itemToUpdate.bulkQuantity,
     quantityNow: itemToUpdate.quantityNow,
     unit: itemToUpdate.unit,
+    editBy: user.name,
   });
 
   const handleOnChange = (event) => {
@@ -60,14 +62,15 @@ export const UpdateProductModal = ({
     event.preventDefault();
     // console.log(input);
     const updateItem = {
-      userName: user.name,
+      userName: nameUser,
       item: input.item,
       capacity: input.capacity,
       bulkQuantity: input.bulkQuantity,
       quantityNow: input.quantityNow,
       unit: input.unit,
+      editBy: user.name,
     };
-    if (!user.name) {
+    if (!nameUser) {
       return null;
     }
     if (!input.item) {

@@ -5,6 +5,7 @@ const storageSchema = new mongoose.Schema(
   {
     userName: String,
     products: [Item.schema],
+    editBy: String,
     expireAt: {
       type: Date,
       default: Date.now() + 24 * 60 * 60 * 1000, // expires in 1 Day

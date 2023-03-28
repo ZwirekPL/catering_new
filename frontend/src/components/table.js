@@ -97,10 +97,16 @@ export const Table = () => {
   };
   return (
     <>
-      {showAddModal && <AddProductModal setShowAddModal={setShowAddModal} />}
+      {showAddModal && (
+        <AddProductModal
+          nameUser={user.name}
+          setShowAddModal={setShowAddModal}
+        />
+      )}
       {showUpdateModal && (
         <UpdateProductModal
           setShowUpdateModal={setShowUpdateModal}
+          nameUser={user.name}
           idUpdateItem={idUpdateItem}
           itemToUpdate={itemToUpdate}
         />

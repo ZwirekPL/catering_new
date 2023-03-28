@@ -8,6 +8,7 @@ const itemSchema = new mongoose.Schema(
     bulkQuantity: { type: Number },
     quantityNow: { type: Number },
     unit: { type: String },
+    editBy: { type: String },
   },
   { timestamps: true }
 );
