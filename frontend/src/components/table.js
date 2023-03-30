@@ -13,7 +13,6 @@ export const Table = () => {
   const [message, setMessage] = useState([]);
 
   const { getAccessTokenSilently, user } = useAuth0();
-
   useEffect(() => {
     let isMounted = true;
 
