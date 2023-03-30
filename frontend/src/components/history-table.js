@@ -5,6 +5,7 @@ export const HistoryTable = ({ inventory }) => {
 
   //   console.log(createDate);
   const renderInventory = (productsArr, index) => {
+    console.log(productsArr);
     return (
       <tr key={index}>
         <td>{productsArr.item}</td>

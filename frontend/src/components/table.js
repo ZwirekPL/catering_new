@@ -9,7 +9,6 @@ export const Table = () => {
   const { getAccessTokenSilently, user } = useAuth0();
 
   const [selectValue, setSelectValue] = useState(`${user.name}`);
-  // const [sendInventory, setSendInventory] = useState("");
   const [admin, setAdmin] = useState(false);
 
   const [showAddModal, setShowAddModal] = useState(false);

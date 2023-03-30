@@ -21,8 +21,8 @@ export const getUserItems = async (accessToken, user) => {
 };
 
 export const getInventoryHistory = async (accessToken, user) => {
-  const userName = user.name;
-  // console.log(user.name);
+  const userName = user;
+  console.log(user);
   const config = {
     url: `${apiServerUrl}/api/messages/inventory/get/` + userName,
     method: "GET",
