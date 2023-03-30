@@ -1,6 +1,7 @@
 // Obsłużyć dodawnie i usuwanie produktów na innych listach niż kamilii
 // Obsłużyć dadawanie adnotacji kto edytował
 // zrobić modal potwierdzający lub w przycisku.
+// usunać to
 
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";

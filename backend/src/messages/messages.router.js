@@ -56,6 +56,7 @@ messagesRouter
     const newBulkQuantity = req.body.bulkQuantity;
     const newQuantityNow = req.body.quantityNow;
     const newUnit = req.body.unit;
+    const newEditBy = req.body.editBy;
     // console.log(newItem);
     const updateItem = await Item.findById(idUpdateItem).exec();
     updateItem.userName = newUserName;
@@ -64,6 +65,7 @@ messagesRouter
     updateItem.bulkQuantity = newBulkQuantity;
     updateItem.quantityNow = newQuantityNow;
     updateItem.unit = newUnit;
+    updateItem.editBy = newEditBy;
     const updatedItem = await updateItem.save();
     // console.log(updatedItem);
     res.status(200);

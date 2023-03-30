@@ -9,7 +9,7 @@ export const UpdateProductModal = ({
   itemToUpdate,
 }) => {
   const { user } = useAuth0();
-  //   console.log(idUpdateItem);
+
   const [errorIsVisible, setErrorIsVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [input, setInput] = useState({
@@ -60,7 +60,7 @@ export const UpdateProductModal = ({
   const handleCloseUpdateModal = () => setShowUpdateModal(false);
   const handleClick = (event) => {
     event.preventDefault();
-    // console.log(input);
+    console.log(user.name);
     const updateItem = {
       userName: nameUser,
       item: input.item,
