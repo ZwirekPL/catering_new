@@ -2,7 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { Table } from "../components/table";
-import { MultiTable } from "../components/multi-table";
+import { AdminTable } from "../components/admin-table";
 import { PageLayout } from "../components/page-layout";
 
 export const StoragePage = () => {
@@ -31,7 +31,7 @@ export const StoragePage = () => {
                 Przejdź do historii inwentaryzacji
               </NavLink>
             </div>
-            <MultiTable />
+            <AdminTable />
           </div>
         </div>
       </PageLayout>

@@ -6,11 +6,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { AddProductModal } from "./add-product-modal";
-import { UpdateProductModal } from "../components/updateProductModal";
+import { UpdateProductModal } from "./updateProductModal";
 import { getUserItems } from "../services/message.service";
 import { getOtherUserItems } from "../services/message.service";
 
-export const MultiTable = () => {
+export const AdminTable = () => {
   const [selectValue, setSelectValue] = useState("");
 
   const [showAddModal, setShowAddModal] = useState(false);

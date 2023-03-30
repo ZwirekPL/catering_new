@@ -38,7 +38,55 @@ export const HistoryStoragePage = () => {
     };
   }, [getAccessTokenSilently, user]);
   //   console.log(historyInventory);
-
+  if (user.email === "kamila@test.pl") {
+    return (
+      <PageLayout>
+        <div className="content-layout">
+          <h1 id="page-title" className="content__title">
+            Historia Inwentaryzacji
+          </h1>
+          <div className="content__body">
+            <p>
+              <span>
+                Tutaj możesz sprawdzić historię swoich inwentaryzacji. Pamiętaj,
+                że po 30 dniach od zapisania zostaje ona usunięta.
+              </span>
+            </p>
+            <Swiper
+              navigation={true}
+              slidesPerView={1}
+              spaceBetween={10}
+              pagination={{
+                clickable: true,
+              }}
+              keyboard={true}
+              breakpoints={{
+                640: {
+                  slidesPerView: 1,
+                  spaceBetween: 20,
+                },
+                768: {
+                  slidesPerView: 1,
+                  spaceBetween: 20,
+                },
+                1024: {
+                  slidesPerView: 1,
+                  spaceBetween: 50,
+                },
+              }}
+              modules={[Pagination, Keyboard, Navigation]}
+            >
+              {historyInventory.map((inventory, index) => (
+                <SwiperSlide key={index}>
+                  <HistoryTable inventory={inventory} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </div>
+      </PageLayout>
+    );
+  }
   return (
     <PageLayout>
       <div className="content-layout">
