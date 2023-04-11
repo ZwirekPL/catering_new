@@ -91,11 +91,13 @@ messagesRouter
   .post((req, res) => {
     // console.log("req,", req.body);
     const userName = req.params.userName;
-    const products = req.body;
+    const products = req.body.data;
+    const editBy = req.body.editUser;
     // console.log(products);
     const newInventory = new ShoppingList({
       userName,
       products,
+      editBy,
     });
     // console.log(newInventory);
     newInventory.save();

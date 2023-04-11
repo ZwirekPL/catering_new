@@ -45,12 +45,12 @@ input:focus {
   outline: 2px solid var(--mandarine);
   border: none;
 }
-.parent-plus-trash {
+.parent-edit-trash {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
-.plus {
+.edit {
   font-size: 3rem;
   font-weight: bold;
   cursor: pointer;
@@ -58,7 +58,7 @@ input:focus {
   position: relative;
   display: inline-block;
 }
-.plus .plus-tooltiptext {
+.edit .edit-tooltiptext {
   visibility: hidden;
   width: 50px;
   background-color: rgba(0, 0, 0, 0.8);
@@ -74,10 +74,10 @@ input:focus {
   top: -5px;
   right: 105%;
 }
-.plus:hover .plus-tooltiptext {
+.edit:hover .edit-tooltiptext {
   visibility: visible;
 }
-.plus:hover {
+.edit:hover {
   color: var(--yellow);
 }
 

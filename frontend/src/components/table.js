@@ -104,9 +104,9 @@ export const Table = () => {
         <td>{message.quantityNow}</td>
         <td>{message.unit}</td>
         <td>
-          <div className="parent-plus-trash">
-            <div className="plus" onClick={() => handleShowUpdateModal(index)}>
-              &#9998;<span className="plus-tooltiptext">Edytuj</span>
+          <div className="parent-edit-trash">
+            <div className="edit" onClick={() => handleShowUpdateModal(index)}>
+              &#9998;<span className="edit-tooltiptext">Edytuj</span>
             </div>
             <div onClick={() => handleRemoveItem(index)} className="trash">
               &#10006;<span className="trash-tooltiptext">Usuń</span>
