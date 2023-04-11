@@ -18,8 +18,6 @@ export const HistoryStoragePage = () => {
   const [selectValue, setSelectValue] = useState(`${user.name}`);
   const [admin, setAdmin] = useState(false);
 
-  //Change table concept for less request to backend.
-
   useEffect(() => {
     let isMounted = true;
     const getHistory = async () => {
