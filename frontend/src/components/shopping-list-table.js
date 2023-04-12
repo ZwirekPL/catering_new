@@ -1,4 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
+import { useCookies } from "react-cookie";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { AddListModal } from "./add-list-modal";
@@ -12,17 +13,34 @@ export const ShoppingListTable = () => {
   const [idUpdateItem, setidUpdateItem] = useState();
   const [itemToUpdate, setitemToUpdate] = useState();
   const [message, setMessage] = useState([]);
+  const [cookies, setCookie] = useCookies(["currently"]);
 
   const { getAccessTokenSilently, user } = useAuth0();
 
-  const [selectValue, setSelectValue] = useState(`${user.name}`);
+  const [selectValue, setSelectValue] = useState(
+    `${cookies.currently}` || `${user.name}`
+  );
   const [admin, setAdmin] = useState(false);
+  const getMessage = async () => {
+    const accessToken = await getAccessTokenSilently();
+    const { data, error } = await getOtherUserItems(accessToken, selectValue);
+
+    if (data) {
+      setMessage(data);
+      setSelectValue(data[0].userName);
+      setCookie("currently", `${data[0].userName}`, []);
+    }
+
+    if (error) {
+      setMessage(error);
+    }
+  };
   useEffect(() => {
     let isMounted = true;
     const getUserItem = async () => {
       const accessToken = await getAccessTokenSilently();
       const { data, error } = await getUserItems(accessToken, user);
-      // console.log(user);
+
       if (!isMounted) {
         return;
       }
@@ -34,12 +52,15 @@ export const ShoppingListTable = () => {
       }
       if (user.email === "kamila@test.pl") {
         setAdmin(true);
+        getMessage();
       }
     };
     getUserItem();
+
     return () => {
       isMounted = false;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getAccessTokenSilently, user]);
 
   const handleRemoveItem = (index) => {
@@ -55,22 +76,7 @@ export const ShoppingListTable = () => {
     // console.log(selectValue);
   };
   const handleClick = () => {
-    const getMessage = async () => {
-      const accessToken = await getAccessTokenSilently();
-      const { data, error } = await getOtherUserItems(accessToken, selectValue);
-      // console.log(selectValue);
-
-      if (data) {
-        setMessage(data);
-      }
-
-      if (error) {
-        setMessage(error);
-      }
-    };
-
     getMessage();
-    // console.log(message);
   };
 
   const renderInventory = (message, index) => {
@@ -215,3 +221,4 @@ export const ShoppingListTable = () => {
   );
 };
 // po reloadzie trzeba wybrac automatycznie placówkę na której byłą.
+// DODAĆ NOWY DOKUMENT W MOGNO, I TAM WYSYŁAĆ TYLKO AKTUALNA LISTĘ KTÓRA BEDZIE ODNAJDYWANA I EDYTOWANA ABY Z TAMTAD MOGLI POBIERAĆ KIEROWCY.
