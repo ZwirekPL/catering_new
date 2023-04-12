@@ -5,14 +5,18 @@ import { LogoutButton } from "../../buttons/logout-button";
 import { SignupButton } from "../../buttons/signup-button";
 
 export const NavBarButtons = () => {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, user } = useAuth0();
 
   return (
     <div className="nav-bar__buttons">
       {!isAuthenticated && (
         <>
-          <SignupButton />
           <LoginButton />
+        </>
+      )}
+      {isAuthenticated && user.email === "kamila@test.pl" && (
+        <>
+          <SignupButton />
         </>
       )}
       {isAuthenticated && (

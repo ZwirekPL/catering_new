@@ -220,5 +220,3 @@ export const ShoppingListTable = () => {
     </>
   );
 };
-// po reloadzie trzeba wybrac automatycznie placówkę na której byłą.
-// DODAĆ NOWY DOKUMENT W MOGNO, I TAM WYSYŁAĆ TYLKO AKTUALNA LISTĘ KTÓRA BEDZIE ODNAJDYWANA I EDYTOWANA ABY Z TAMTAD MOGLI POBIERAĆ KIEROWCY.

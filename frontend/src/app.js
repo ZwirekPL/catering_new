@@ -58,8 +58,6 @@ export const App = () => {
 // Sprawdzić jak wyglada wylogowywanie i wylogowywać po opuszczeniu strony,
 // Dodać wybieranie która placówka ma się wyświetlać.
 // Zacząć czyścić.
-// U Kamili : wybieranie placówki do listy i historii
-// Kto zmienił ostatni zapisać w DB tak aby można było pobrać zmiany też u innych.
 // Kierowcy dostęp tylko do list zakupowych placówek i głównej.
 // Media Queries
 // obsługa odebrania lub wysłania danych na serwer.
