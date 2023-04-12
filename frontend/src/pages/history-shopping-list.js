@@ -25,7 +25,7 @@ export const HistoryShoppingList = () => {
         accessToken,
         user.name
       );
-      // console.log(user);
+      console.log(user);
       if (!isMounted) {
         return;
       }

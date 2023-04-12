@@ -64,3 +64,8 @@ export const App = () => {
 // podział na kategorie.
 // Dodać konta i obsługę kierowców.
 // DODAĆ NOWY DOKUMENT W MOGNO, I TAM WYSYŁAĆ TYLKO AKTUALNA LISTĘ KTÓRA BEDZIE ODNAJDYWANA I EDYTOWANA ABY Z TAMTAD MOGLI POBIERAĆ KIEROWCY.
+// Dodawanie rekordów do DB z małych liter i capitalize na froncie.
+// Przeszukiwanie tych list po malych literach aby dodać do siebie ilosci.
+// status zamowienia na liscie zakupowej.
+// Edytowanie statusu tylko przez kierowców i kamilę.
+// element klikalny logo jest za duzy i wchodzi na przycisk historia ...

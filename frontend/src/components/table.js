@@ -1,4 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
+import { useCookies } from "react-cookie";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { AddProductModal } from "./add-product-modal";
@@ -7,8 +8,11 @@ import { getUserItems, getOtherUserItems } from "../services/message.service";
 
 export const Table = () => {
   const { getAccessTokenSilently, user } = useAuth0();
+  const [cookies, setCookie] = useCookies(["currently"]);
 
-  const [selectValue, setSelectValue] = useState(`${user.name}`);
+  const [selectValue, setSelectValue] = useState(
+    `${cookies.currently}` || `${user.name}`
+  );
   const [admin, setAdmin] = useState(false);
 
   const [showAddModal, setShowAddModal] = useState(false);
@@ -17,10 +21,26 @@ export const Table = () => {
   const [itemToUpdate, setitemToUpdate] = useState();
   const [message, setMessage] = useState([]);
 
+  const getMessage = async () => {
+    const accessToken = await getAccessTokenSilently();
+    const { data, error } = await getOtherUserItems(accessToken, selectValue);
+    // console.log(selectValue);
+
+    if (data) {
+      setMessage(data);
+      setSelectValue(data[0].userName);
+      setCookie("currently", `${data[0].userName}`, []);
+    }
+
+    if (error) {
+      setMessage(error);
+    }
+  };
+
   useEffect(() => {
     let isMounted = true;
 
-    const getMessage = async () => {
+    const getUserInv = async () => {
       const accessToken = await getAccessTokenSilently();
       const { data, error } = await getUserItems(accessToken, user);
       // console.log(user);
@@ -31,6 +51,8 @@ export const Table = () => {
 
       if (data) {
         setMessage(data);
+        setSelectValue(data[0].userName);
+        setCookie("currently", `${data[0].userName}`, []);
       }
 
       if (error) {
@@ -39,13 +61,15 @@ export const Table = () => {
 
       if (user.email === "kamila@test.pl") {
         setAdmin(true);
+        getMessage();
       }
     };
 
-    getMessage();
+    getUserInv();
     return () => {
       isMounted = false;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getAccessTokenSilently, user]);
 
   const handleSendInventory = () => {
@@ -64,20 +88,6 @@ export const Table = () => {
     // console.log(selectValue);
   };
   const handleClick = () => {
-    const getMessage = async () => {
-      const accessToken = await getAccessTokenSilently();
-      const { data, error } = await getOtherUserItems(accessToken, selectValue);
-      // console.log(selectValue);
-
-      if (data) {
-        setMessage(data);
-      }
-
-      if (error) {
-        setMessage(error);
-      }
-    };
-
     getMessage();
     // console.log(message);
   };

@@ -8,14 +8,13 @@ import { UpdateProductModal } from "../components/updateProductModal";
 import { getUserItems, getOtherUserItems } from "../services/message.service";
 
 export const ShoppingListTable = () => {
+  const { getAccessTokenSilently, user } = useAuth0();
   const [showAddModal, setShowAddModal] = useState(false);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [idUpdateItem, setidUpdateItem] = useState();
   const [itemToUpdate, setitemToUpdate] = useState();
   const [message, setMessage] = useState([]);
   const [cookies, setCookie] = useCookies(["currently"]);
-
-  const { getAccessTokenSilently, user } = useAuth0();
 
   const [selectValue, setSelectValue] = useState(
     `${cookies.currently}` || `${user.name}`
@@ -24,7 +23,6 @@ export const ShoppingListTable = () => {
   const getMessage = async () => {
     const accessToken = await getAccessTokenSilently();
     const { data, error } = await getOtherUserItems(accessToken, selectValue);
-
     if (data) {
       setMessage(data);
       setSelectValue(data[0].userName);
@@ -46,6 +44,8 @@ export const ShoppingListTable = () => {
       }
       if (data) {
         setMessage(data);
+        setSelectValue(data[0].userName);
+        setCookie("currently", `${data[0].userName}`, []);
       }
       if (error) {
         setMessage(error);

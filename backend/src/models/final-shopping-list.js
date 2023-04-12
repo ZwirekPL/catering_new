@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Item = require("./item");
 
-const shoppingListSchema = new mongoose.Schema(
+const finalShoppingListSchema = new mongoose.Schema(
   {
     userName: String,
     products: [Item.schema],
@@ -18,5 +18,8 @@ const shoppingListSchema = new mongoose.Schema(
   }
 );
 
-const ShoppingList = mongoose.model("ShoppingList", shoppingListSchema);
-module.exports = ShoppingList;
+const FinalShoppingList = mongoose.model(
+  "FinalShoppingList",
+  finalShoppingListSchema
+);
+module.exports = FinalShoppingList;

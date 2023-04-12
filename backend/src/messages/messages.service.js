@@ -17,7 +17,7 @@ const getInventoryHistory = (userName) => {
   // console.log(`messages`, dataFind);
   return dataFind;
 };
-// TUTAJ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 const getShoppingListHistory = (userName) => {
   const dataFind = ShoppingList.find({
     userName: `${userName}`,
@@ -25,6 +25,7 @@ const getShoppingListHistory = (userName) => {
   // console.log(`messages`, dataFind);
   return dataFind;
 };
+// TUTAJ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 const getPublicMessage = () => {
   return {
