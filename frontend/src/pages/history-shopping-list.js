@@ -15,15 +15,22 @@ import "../styles/components/history-storage-page.css";
 export const HistoryShoppingList = () => {
   const [historyShoppingList, setHistoryShoppingList] = useState([]);
   const { getAccessTokenSilently, user } = useAuth0();
-
+  const [selectValue, setSelectValue] = useState(`${user.name}`);
+  const [admin, setAdmin] = useState(false);
   useEffect(() => {
     let isMounted = true;
     const getHistory = async () => {
       const accessToken = await getAccessTokenSilently();
-      const { data, error } = await getShoppingListHistory(accessToken, user);
+      const { data, error } = await getShoppingListHistory(
+        accessToken,
+        user.name
+      );
       // console.log(user);
       if (!isMounted) {
         return;
+      }
+      if (user.email === "kamila@test.pl") {
+        setAdmin(true);
       }
       if (data) {
         setHistoryShoppingList(data);
@@ -39,6 +46,31 @@ export const HistoryShoppingList = () => {
   }, [getAccessTokenSilently, user]);
   //   console.log(historyInventory);
 
+  const handleChange = (event) => {
+    setSelectValue(event.target.value);
+    // console.log(selectValue);
+  };
+  const handleClick = () => {
+    const getHistoryOtherShoppingList = async () => {
+      const accessToken = await getAccessTokenSilently();
+      const { data, error } = await getShoppingListHistory(
+        accessToken,
+        selectValue
+      );
+
+      if (data) {
+        setHistoryShoppingList(data);
+        // console.log(selectValue);
+      }
+
+      if (error) {
+        setHistoryShoppingList(error);
+      }
+    };
+
+    getHistoryOtherShoppingList();
+  };
+
   return (
     <PageLayout>
       <div className="content-layout">
@@ -52,6 +84,38 @@ export const HistoryShoppingList = () => {
               dniach od zapisania zostaje ona usunięta.
             </span>
           </p>
+          {admin && (
+            <>
+              <label htmlFor="departament">Wybierz placówkę:</label>
+
+              <select
+                name="departament"
+                id="departament"
+                value={selectValue}
+                onChange={handleChange}
+              >
+                <option value="izbicka">izbicka</option>
+                <option value="kamila@test.pl">stradomska</option>
+                {/* <option value="stradomska">stradomska</option> */}
+                <option value="dietyojca@gmail.com">białowieska</option>
+                {/* <option value="białowieska">białowieska</option> */}
+                <option value="glanzgarage@gmail.com">korytnicka</option>
+                {/* <option value="korytnicka">korytnicka</option> */}
+                <option value="terespolska">terespolska</option>
+                <option value="tamka">tamka</option>
+                <option value="broniewskiego">broniewskiego</option>
+                <option value="szeligowska">szeligowska</option>
+                <option value="chłapowskiego">chłapowskiego</option>
+                <option value="aleja ken">aleja KEN</option>
+                <option value="samochodowa1">Samochodowa U1</option>
+                <option value="samochodowa2">Samochodowa U3</option>
+                <option value="bobrowiecka">bobrowiecka</option>
+                <option value="rekrucka1">rekrucka Żłobek</option>
+                <option value="rekrucka2">rekrucka Przedszkole</option>
+              </select>
+              <button onClick={handleClick}>Pobierz</button>
+            </>
+          )}
           <Swiper
             navigation={true}
             slidesPerView={1}

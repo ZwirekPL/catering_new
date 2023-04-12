@@ -40,10 +40,9 @@ export const getInventoryHistory = async (accessToken, user) => {
 };
 
 export const getShoppingListHistory = async (accessToken, user) => {
-  const userName = user.name;
   // console.log(user.name);
   const config = {
-    url: `${apiServerUrl}/api/messages/shopping/get/` + userName,
+    url: `${apiServerUrl}/api/messages/shopping/get/` + user,
     method: "GET",
     headers: {
       "content-type": "application/json",

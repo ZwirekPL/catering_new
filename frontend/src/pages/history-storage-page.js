@@ -56,7 +56,7 @@ export const HistoryStoragePage = () => {
 
       if (data) {
         setHistoryInventory(data);
-        console.log(selectValue);
+        // console.log(selectValue);
       }
 
       if (error) {
@@ -65,7 +65,7 @@ export const HistoryStoragePage = () => {
     };
 
     getHistoryOther();
-    console.log(historyInventory);
+    // console.log(historyInventory);
   };
 
   console.log(historyInventory);
