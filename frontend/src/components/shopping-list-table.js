@@ -3,7 +3,7 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { AddListModal } from "./add-list-modal";
-import { UpdateProductModal } from "../components/updateProductModal";
+import { UpdateListProductModal } from "../components/update-list-product-modal";
 // import { OkModal } from "./ok-modal";
 import { getUserItems, getOtherUserItems } from "../services/message.service";
 
@@ -69,7 +69,7 @@ export const ShoppingListTable = () => {
     setMessage((message) =>
       message.filter((element) => element._id !== idRemoveItem)
     );
-    console.log("12", message);
+    // console.log("12", message);
   };
   const handleChange = (event) => {
     setSelectValue(event.target.value);
@@ -131,11 +131,12 @@ export const ShoppingListTable = () => {
         />
       )}
       {showUpdateModal && (
-        <UpdateProductModal
+        <UpdateListProductModal
           setShowUpdateModal={setShowUpdateModal}
           nameUser={selectValue}
           idUpdateItem={idUpdateItem}
           itemToUpdate={itemToUpdate}
+          setMessage={setMessage}
         />
       )}
       <div className="table-body">
