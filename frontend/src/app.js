@@ -70,4 +70,5 @@ export const App = () => {
 // status zamowienia na liscie zakupowej.
 // Edytowanie statusu tylko przez kierowców i kamilę.
 // element klikalny logo jest za duzy i wchodzi na przycisk historia ...
-// zmiana w shopping list wpływa na magazyn
+// dodaje wszystkie elementy do listy itemów shooping ale jeśli sie powtarza id wysakuje błąd
+// sprawić tak aby wyszukiwało rekord i dodawało liczbę aby sie nie powtarzały.

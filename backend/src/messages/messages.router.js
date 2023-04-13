@@ -2,6 +2,7 @@ const express = require("express");
 const Item = require("../models/item");
 const Storage = require("../models/storage");
 const ShoppingList = require("../models/shopping-list");
+const ShoppingItem = require("../models/shopping-list-item");
 const {
   getAdminMessage,
   getUserItems,
@@ -92,6 +93,12 @@ messagesRouter
     // console.log("req,", req.body);
     const userName = req.params.userName;
     const products = req.body.data;
+    const productsLength = products.length - 1;
+    const item = products[0].item;
+    const capacity = products[0].capacity;
+    const bulkQuantity = products[0].bulkQuantity;
+    const quantityNow = products[0].quantityNow;
+    const unit = products[0].unit;
     const editBy = req.body.editUser;
     // console.log(products);
     const newInventory = new ShoppingList({
@@ -99,7 +106,17 @@ messagesRouter
       products,
       editBy,
     });
-    // console.log(newInventory);
+    const newShoppingItem = ShoppingItem.insertMany(products)
+      .then(function () {
+        console.log("Successfully saved many items to DB");
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+
+    // products.map(newShoppingItem).save();
+    // console.log(newShoppingItem);
+    newShoppingItem.save();
     newInventory.save();
   });
 messagesRouter

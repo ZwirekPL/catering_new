@@ -9,6 +9,11 @@ const shoppingItemSchema = new mongoose.Schema(
     quantityNow: { type: Number },
     unit: { type: String },
     editBy: { type: String },
+    expireAt: {
+      type: Date,
+      default: Date.now() + 30 * 24 * 60 * 60 * 1000, // expires in 30 Day
+      // required: true,
+    },
   },
   { timestamps: true }
 );

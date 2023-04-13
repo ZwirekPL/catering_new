@@ -61,15 +61,6 @@ export const UpdateListProductModal = ({
   const handleClick = (event) => {
     event.preventDefault();
     console.log(user.name);
-    const updateItem = {
-      userName: nameUser,
-      item: input.item,
-      capacity: input.capacity,
-      bulkQuantity: input.bulkQuantity,
-      quantityNow: input.quantityNow,
-      unit: input.unit,
-      editBy: user.name,
-    };
     if (!nameUser) {
       return null;
     }

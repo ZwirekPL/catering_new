@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { AddListModal } from "./add-list-modal";
 import { UpdateListProductModal } from "../components/update-list-product-modal";
 // import { OkModal } from "./ok-modal";
-import { getUserItems, getOtherUserItems } from "../services/message.service";
+import { getShoppingListHistory } from "../services/message.service";
 
 export const ShoppingListTable = () => {
   const { getAccessTokenSilently, user } = useAuth0();
@@ -22,9 +22,13 @@ export const ShoppingListTable = () => {
   const [admin, setAdmin] = useState(false);
   const getMessage = async () => {
     const accessToken = await getAccessTokenSilently();
-    const { data, error } = await getOtherUserItems(accessToken, selectValue);
+    const { data, error } = await getShoppingListHistory(
+      accessToken,
+      selectValue
+    );
     if (data) {
-      setMessage(data);
+      const length = data.length - 1;
+      setMessage(data[length].products);
       setSelectValue(data[0].userName);
       setCookie("currently", `${data[0].userName}`, []);
     }
@@ -37,13 +41,16 @@ export const ShoppingListTable = () => {
     let isMounted = true;
     const getUserItem = async () => {
       const accessToken = await getAccessTokenSilently();
-      const { data, error } = await getUserItems(accessToken, user);
-
+      const { data, error } = await getShoppingListHistory(
+        accessToken,
+        user.name
+      );
       if (!isMounted) {
         return;
       }
       if (data) {
-        setMessage(data);
+        const length = data.length - 1;
+        setMessage(data[length].products);
         setSelectValue(data[0].userName);
         setCookie("currently", `${data[0].userName}`, []);
       }
@@ -112,7 +119,7 @@ export const ShoppingListTable = () => {
   };
 
   const handleSendShoppingList = () => {
-    console.log("message", message);
+    // console.log("message", message);
     axios.post(
       "http://localhost:6060/api/messages/shopping/send/" + selectValue,
       { data: message, editUser: user.name }
