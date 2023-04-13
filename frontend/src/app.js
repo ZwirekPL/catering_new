@@ -63,7 +63,8 @@ export const App = () => {
 // obsługa odebrania lub wysłania danych na serwer.
 // podział na kategorie.
 // Dodać konta i obsługę kierowców.
-// DODAĆ NOWY DOKUMENT W MOGNO, I TAM WYSYŁAĆ TYLKO AKTUALNA LISTĘ KTÓRA BEDZIE ODNAJDYWANA I EDYTOWANA ABY Z TAMTAD MOGLI POBIERAĆ KIEROWCY.
+
+// Pobierać u kierowców z bazy daaynch tylko ostatnia .lenght - 1 .
 // Dodawanie rekordów do DB z małych liter i capitalize na froncie.
 // Przeszukiwanie tych list po malych literach aby dodać do siebie ilosci.
 // status zamowienia na liscie zakupowej.
