@@ -1,33 +1,55 @@
 import React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import { NavLink } from "react-router-dom";
 import { ShoppingListTable } from "../components/shopping-list-table";
+import { ShoppingListTableDrivers } from "../components/driver-shopping-list-table.js";
 import { PageLayout } from "../components/page-layout";
 // import { OkModal } from "../components/ok-modal";
 
 export const ShoppingList = () => {
+  const { user } = useAuth0();
   return (
     <PageLayout>
       {/* <OkModal /> */}
-      <div className="content-layout">
-        <h1 id="page-title" className="content__title">
-          Listy Zakupowe
-        </h1>
-        <div className="content__body">
-          <p id="page-description">
-            <span>Tutaj możesz utworzyć listę zakupową.</span>
-          </p>
-          <div className="shopping-list">
-            <NavLink
-              to="/shopping-list/history"
-              end
-              className="shopping-list-btn button button--primary"
-            >
-              Przejdź do historii list zakupowych.
-            </NavLink>
+      {user.email !== "kierowca1@test.pl" &&
+        user.email !== "kierowca2@test.pl" &&
+        user.email !== "kierowca3@test.pl" && (
+          <div className="content-layout">
+            <h1 id="page-title" className="content__title">
+              Listy Zakupowe
+            </h1>
+            <div className="content__body">
+              <p id="page-description">
+                <span>Tutaj możesz utworzyć listę zakupową.</span>
+              </p>
+              <div className="shopping-list">
+                <NavLink
+                  to="/shopping-list/history"
+                  end
+                  className="shopping-list-btn button button--primary"
+                >
+                  Przejdź do historii list zakupowych.
+                </NavLink>
+              </div>
+              <ShoppingListTable />
+            </div>
           </div>
-          <ShoppingListTable />
+        )}
+      {(user.email === "kierowca1@test.pl" ||
+        user.email === "kierowca2@test.pl" ||
+        user.email === "kierowca3@test.pl") && (
+        <div className="content-layout">
+          <h1 id="page-title" className="content__title">
+            Listy Zakupowe
+          </h1>
+          <div className="content__body">
+            <p id="page-description">
+              <span>Tutaj możesz utworzyć listę zakupową.</span>
+            </p>
+            <ShoppingListTableDrivers />
+          </div>
         </div>
-      </div>
+      )}
     </PageLayout>
   );
 };

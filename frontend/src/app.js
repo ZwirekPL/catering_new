@@ -70,3 +70,4 @@ export const App = () => {
 // status zamowienia na liscie zakupowej.
 // Edytowanie statusu tylko przez kierowców i kamilę.
 // element klikalny logo jest za duzy i wchodzi na przycisk historia ...
+// zmiana w shopping list wpływa na magazyn
