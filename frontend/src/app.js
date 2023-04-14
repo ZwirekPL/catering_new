@@ -72,3 +72,6 @@ export const App = () => {
 // element klikalny logo jest za duzy i wchodzi na przycisk historia ...
 // dodaje wszystkie elementy do listy itemów shooping ale jeśli sie powtarza id wysakuje błąd
 // sprawić tak aby wyszukiwało rekord i dodawało liczbę aby sie nie powtarzały.
+// dodac focus na dodawanie nowego produktu.
+// dodaje wszystkie ale jak wyjdzie błąd wysypuje sie i nie zapisuje.
+// lowercase w schema mongoose

@@ -8,6 +8,7 @@ const {
   getUserItems,
   getInventoryHistory,
   getShoppingListHistory,
+  getShoppingListItems,
 } = require("./messages.service");
 const {
   checkRequiredPermissions,
@@ -94,11 +95,6 @@ messagesRouter
     const userName = req.params.userName;
     const products = req.body.data;
     const productsLength = products.length - 1;
-    const item = products[0].item;
-    const capacity = products[0].capacity;
-    const bulkQuantity = products[0].bulkQuantity;
-    const quantityNow = products[0].quantityNow;
-    const unit = products[0].unit;
     const editBy = req.body.editUser;
     // console.log(products);
     const newInventory = new ShoppingList({
@@ -106,17 +102,21 @@ messagesRouter
       products,
       editBy,
     });
-    const newShoppingItem = ShoppingItem.insertMany(products)
-      .then(function () {
-        console.log("Successfully saved many items to DB");
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
+    // const newShoppingItem = ShoppingItem.insertMany(products)
+    //   .then(function () {
+    //     console.log("Successfully saved many items to DB");
+    //   })
+    //   .catch(function (err) {
+    //     console.log(err);
+    //   });
 
-    // products.map(newShoppingItem).save();
-    // console.log(newShoppingItem);
-    newShoppingItem.save();
+    const items = products.map((product) => {
+      getShoppingListItems(product.item).then((result) => {
+        console.log("1", result);
+        return result;
+      });
+    });
+
     newInventory.save();
   });
 messagesRouter
