@@ -73,7 +73,7 @@ export const Table = () => {
   }, [getAccessTokenSilently, user]);
 
   const handleSendInventory = () => {
-    console.log("message", message);
+    // console.log("message", message);
     axios.post(
       "http://localhost:6060/api/messages/inventory/send/" + selectValue,
       { data: message, editUser: user.name }

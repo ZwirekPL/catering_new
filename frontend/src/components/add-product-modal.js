@@ -18,10 +18,11 @@ export const AddProductModal = ({ setShowAddModal, nameUser }) => {
 
   const handleOnChange = (event) => {
     const { name, value } = event.target;
+    const toLowerCase = value.toLowerCase();
     setInput((prevInput) => {
       return {
         ...prevInput,
-        [name]: value,
+        [name]: toLowerCase,
       };
     });
   };
@@ -107,6 +108,7 @@ export const AddProductModal = ({ setShowAddModal, nameUser }) => {
               <th>Nazwa</th>
               <th>
                 <input
+                  autoFocus
                   onChange={handleOnChange}
                   name="item"
                   value={input.item}

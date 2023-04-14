@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const shoppingItemSchema = new mongoose.Schema(
   {
     userName: { type: String },
-    item: { type: String },
+    item: { type: String, lowercase: true },
     capacity: { type: String },
     bulkQuantity: { type: Number },
     quantityNow: { type: Number },

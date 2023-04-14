@@ -53,25 +53,21 @@ export const App = () => {
     </Routes>
   );
 };
-// Animacje do modali,
+// element klikalny logo jest za duzy i wchodzi na przycisk historia ...
+// obsługa odebrania lub wysłania danych na serwer.
+
 // Sprawdzenie czy sprawdza autoryzację podczas dodawnaia do bazy danych.
 // Sprawdzić jak wyglada wylogowywanie i wylogowywać po opuszczeniu strony,
-// Dodać wybieranie która placówka ma się wyświetlać.
 // Zacząć czyścić.
-// Kierowcy dostęp tylko do list zakupowych placówek i głównej.
 // Media Queries
-// obsługa odebrania lub wysłania danych na serwer.
-// podział na kategorie.
-// Dodać konta i obsługę kierowców.
 
-// Pobierać u kierowców z bazy daaynch tylko ostatnia .lenght - 1 .
-// Dodawanie rekordów do DB z małych liter i capitalize na froncie.
-// Przeszukiwanie tych list po malych literach aby dodać do siebie ilosci.
+// podział na kategorie.
+// Dodać obsługę kierowców.
 // status zamowienia na liscie zakupowej.
 // Edytowanie statusu tylko przez kierowców i kamilę.
-// element klikalny logo jest za duzy i wchodzi na przycisk historia ...
+
+// Kierowcy dostęp tylko do list zakupowych głównej.
 // dodaje wszystkie elementy do listy itemów shooping ale jeśli sie powtarza id wysakuje błąd
 // sprawić tak aby wyszukiwało rekord i dodawało liczbę aby sie nie powtarzały.
-// dodac focus na dodawanie nowego produktu.
 // dodaje wszystkie ale jak wyjdzie błąd wysypuje sie i nie zapisuje.
-// lowercase w schema mongoose
+// Przeszukiwanie tych list po malych literach aby dodać do siebie ilosci.

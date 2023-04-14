@@ -19,7 +19,8 @@ table {
 td,
 th {
   text-align: left;
-  padding: 8px;
+  padding: 6px;
+  text-transform: capitalize;
 }
 
 tr:nth-child(even) {
