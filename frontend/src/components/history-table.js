@@ -18,7 +18,7 @@ export const HistoryTable = ({ inventory }) => {
   };
   return (
     <>
-      <div className="table-body">
+      <div className="table-body-history">
         <table>
           <thead>
             <tr>

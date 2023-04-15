@@ -155,13 +155,16 @@ export const Table = () => {
       <div className="table-body">
         {admin && (
           <>
-            <label for="departament">Wybierz placówkę:</label>
+            <label className="table-select-label" for="departament">
+              Wybierz placówkę:
+            </label>
 
             <select
               name="departament"
               id="departament"
               value={selectValue}
               onChange={handleChange}
+              className="button table-select"
             >
               <option value="izbicka">izbicka</option>
               <option value="kamila@test.pl">stradomska</option>
@@ -182,54 +185,61 @@ export const Table = () => {
               <option value="rekrucka1">rekrucka Żłobek</option>
               <option value="rekrucka2">rekrucka Przedszkole</option>
             </select>
-            <button onClick={handleClick}>Pobierz</button>
+            <button
+              className="button button--primary table-select-button"
+              onClick={handleClick}
+            >
+              Pobierz
+            </button>
           </>
         )}
-        <table>
-          <thead>
-            <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th>
-                <button
-                  className="button button--primary width-190px"
-                  onClick={handleshowAddModal}
-                >
-                  Dodaj nowy produkt
-                </button>
-              </th>
-            </tr>
-            <tr>
-              <th>Nazwa</th>
-              <th>Pojemność</th>
-              <th>Opakowanie zbiorcze</th>
-              <th>Ilość na stanie</th>
-              <th>Jednostka</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>{message.map(renderInventory)}</tbody>
-          <tfoot>
-            <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th>
-                <button
-                  className="button button--secondary"
-                  onClick={handleSendInventory}
-                >
-                  Potwierdź inwentaryzację
-                </button>
-              </th>
-            </tr>
-          </tfoot>
-        </table>
+        <div className="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>
+                  <button
+                    className="button button--primary width-190px"
+                    onClick={handleshowAddModal}
+                  >
+                    Dodaj nowy produkt
+                  </button>
+                </th>
+              </tr>
+              <tr>
+                <th>Nazwa</th>
+                <th>Pojemność</th>
+                <th>Zbiorcze</th>
+                <th>Ilość</th>
+                <th>Jednostka</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>{message.map(renderInventory)}</tbody>
+            <tfoot>
+              <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>
+                  <button
+                    className="button button--secondary"
+                    onClick={handleSendInventory}
+                  >
+                    Potwierdź inwentaryzację
+                  </button>
+                </th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
       </div>
     </>
   );

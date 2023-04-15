@@ -6,23 +6,46 @@
   margin-top: 3.2rem;
   overflow: hidden;
   background-color: #444;
+  padding: 0 1rem;
 }
-
+.table-select-label {
+  margin-top: 1em;
+  width: clamp(20rem, 30%, 50%);
+}
+.table-select {
+  width: clamp(20rem, 30%, 50%);
+  margin-bottom: 0.5em;
+}
+.table-select-button {
+  width: clamp(20rem, 30%, 50%);
+}
+.table-responsive {
+  overflow-x: auto;
+}
 table {
   font-family: arial, sans-serif;
+  font-size: 0.8em;
   border-collapse: collapse;
-  width: 100%;
 }
 .width-190px {
   width: 190px;
+}
+@media only screen and (max-width: 480px) {
+  .width-190px {
+    /* responsive */
+    width: 100px;
+  }
 }
 td,
 th {
   text-align: left;
   padding: 6px;
   text-transform: capitalize;
+  text-align: center;
 }
-
+tr {
+  height: 10px;
+}
 tr:nth-child(even) {
   background-color: #222;
 }
@@ -55,7 +78,6 @@ input:focus {
   font-size: 3rem;
   font-weight: bold;
   cursor: pointer;
-  margin-right: 4rem;
   position: relative;
   display: inline-block;
 }

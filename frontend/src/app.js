@@ -53,21 +53,24 @@ export const App = () => {
     </Routes>
   );
 };
-// element klikalny logo jest za duzy i wchodzi na przycisk historia ...
-// obsługa odebrania lub wysłania danych na serwer.
 
 // Sprawdzenie czy sprawdza autoryzację podczas dodawnaia do bazy danych.
 // Sprawdzić jak wyglada wylogowywanie i wylogowywać po opuszczeniu strony,
 // Zacząć czyścić.
 // Media Queries
 
-// podział na kategorie.
+// podział na kategorie.(wybór przed magazynem i lista zakupową)
+// odwrotna kolejność w historiach inwentaryzacji, list zakupowych.
 // Dodać obsługę kierowców.
 // status zamowienia na liscie zakupowej.
 // Edytowanie statusu tylko przez kierowców i kamilę.
+// obsługa nie masz jeszcze nic w bazach danych.
+// usunąć profile ( zaminić na jąkąś powitalna strone), FAQ ?? ,
 
+//zrobic główna listę zakupową.
 // Kierowcy dostęp tylko do list zakupowych głównej.
 // dodaje wszystkie elementy do listy itemów shooping ale jeśli sie powtarza id wysakuje błąd
 // sprawić tak aby wyszukiwało rekord i dodawało liczbę aby sie nie powtarzały.
 // dodaje wszystkie ale jak wyjdzie błąd wysypuje sie i nie zapisuje.
 // Przeszukiwanie tych list po malych literach aby dodać do siebie ilosci.
+// obsługa odebrania lub wysłania danych na serwer.
