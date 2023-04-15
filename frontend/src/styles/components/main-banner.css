@@ -4,8 +4,7 @@
   align-items: center;
 
   width: 100%;
-
-  background: var(--yellow-mandarine-gradient);
+  height: clamp(50%, 90vh, 100%);
 
   color: var(--black);
 
@@ -39,10 +38,10 @@
   justify-content: center;
   align-items: center;
 
-  background-color: var(--white);
+  background-color: var(--yellow-mandarine-gradient);
   border-radius: 50%;
 
-  box-shadow: 0 2px 4px rgb(0 0 0 / 12%);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 30%);
 
   /* responsive */
 
@@ -82,20 +81,19 @@
   font-size: 20px;
   line-height: 3.2rem;
 }
-
 @media only screen and (max-width: 540px) {
   .main-banner {
     padding: 3.2rem 1.6rem;
   }
 
   .main-banner__logo {
-    width: 9.6rem;
-    height: 9.6rem;
+    width: 15rem;
+    height: 15rem;
   }
 
   .main-banner__image {
-    width: 7.2rem;
-    height: 7.2rem;
+    width: 10rem;
+    height: 10rem;
   }
 
   .main-banner__image--small {

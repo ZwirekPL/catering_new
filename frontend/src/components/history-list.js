@@ -17,30 +17,32 @@ export const HistoryList = ({ inventory }) => {
   };
   return (
     <>
-      <div className="table-body">
-        <table>
-          <thead>
-            <tr>
-              <th>
-                <p>Data utworzenia listy zakupowej: {createDate}</p>
-              </th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th>
-                <p>Użytkownik: {userName}</p>
-              </th>
-            </tr>
-            <tr>
-              <th>Nazwa</th>
-              <th>Pojemność</th>
-              <th>Opakowanie zbiorcze</th>
-              <th>Ilość na stanie</th>
-              <th>Jednostka</th>
-            </tr>
-          </thead>
-          <tbody>{productsArr.map(renderInventory)}</tbody>
-        </table>
+      <div className="table-body history">
+        <div className="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  <p>Data utworzenia listy zakupowej: {createDate}</p>
+                </th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>
+                  <p>Użytkownik: {userName}</p>
+                </th>
+              </tr>
+              <tr>
+                <th>Nazwa</th>
+                <th>Pojemność</th>
+                <th>Opakowanie zbiorcze</th>
+                <th>Ilość na stanie</th>
+                <th>Jednostka</th>
+              </tr>
+            </thead>
+            <tbody>{productsArr.map(renderInventory)}</tbody>
+          </table>
+        </div>
       </div>
     </>
   );

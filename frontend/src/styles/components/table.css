@@ -8,6 +8,9 @@
   background-color: #444;
   padding: 0 1rem;
 }
+.history {
+  padding: 0 10rem;
+}
 .table-select-label {
   margin-top: 1em;
   width: clamp(20rem, 30%, 50%);
@@ -16,8 +19,16 @@
   width: clamp(20rem, 30%, 50%);
   margin-bottom: 0.5em;
 }
+.table-select-222 {
+  width: 20%;
+  margin: 0 2rem 0.5em 2rem;
+  background-color: #333;
+}
 .table-select-button {
   width: clamp(20rem, 30%, 50%);
+}
+.table-select-button-none {
+  width: none;
 }
 .table-responsive {
   overflow-x: auto;
@@ -34,6 +45,9 @@ table {
   .width-190px {
     /* responsive */
     width: 100px;
+  }
+  .history {
+    padding: 0 1rem;
   }
 }
 td,

@@ -2,7 +2,7 @@
 @import "button.css";
 @import "table.css";
 @import "page-footer.css";
-@import "hero-banner.css";
+@import "main-banner.css";
 @import "page-loader.css";
 @import "nav-bar.css";
 @import "mobile-nav-bar.css";
@@ -10,6 +10,5 @@
 @import "layouts/index.css";
 @import "angular.css";
 @import "add-product-modal.css";
-@import "history-table.css";
 @import "ok-modal.css";
 @import "multi-table.css";

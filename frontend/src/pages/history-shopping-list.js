@@ -86,13 +86,16 @@ export const HistoryShoppingList = () => {
           </p>
           {admin && (
             <>
-              <label htmlFor="departament">Wybierz placówkę:</label>
+              <label className="table-select-label" htmlFor="departament">
+                Wybierz placówkę:
+              </label>
 
               <select
                 name="departament"
                 id="departament"
                 value={selectValue}
                 onChange={handleChange}
+                className="button table-select-222"
               >
                 <option value="izbicka">izbicka</option>
                 <option value="kamila@test.pl">stradomska</option>
@@ -113,7 +116,12 @@ export const HistoryShoppingList = () => {
                 <option value="rekrucka1">rekrucka Żłobek</option>
                 <option value="rekrucka2">rekrucka Przedszkole</option>
               </select>
-              <button onClick={handleClick}>Pobierz</button>
+              <button
+                className="button button--primary table-select-button-none"
+                onClick={handleClick}
+              >
+                Pobierz
+              </button>
             </>
           )}
           <Swiper
