@@ -2,9 +2,12 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { AddProductModal } from "./add-product-modal";
-import { UpdateProductModal } from "../components/updateProductModal";
-import { getUserItems, getOtherUserItems } from "../services/message.service";
+import { AddProductModal } from "../modals/add-storage-product-modal";
+import { UpdateProductModal } from "../modals/update-storage-product-modal";
+import {
+  getUserItems,
+  getOtherUserItems,
+} from "../../services/message.service";
 
 export const Table = () => {
   const { getAccessTokenSilently, user } = useAuth0();

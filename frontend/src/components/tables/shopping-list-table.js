@@ -2,15 +2,12 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { AddListModal } from "./add-list-modal";
-import { UpdateListProductModal } from "../components/update-list-product-modal";
+import { AddListModal } from "../modals/add-list-modal";
+import { UpdateListProductModal } from "../modals/update-list-product-modal";
 // import { OkModal } from "./ok-modal";
-import {
-  getUserItems,
-  getShoppingListHistory,
-} from "../services/message.service";
+import { getShoppingListHistory } from "../../services/message.service";
 
-export const ShoppingListTableDrivers = () => {
+export const ShoppingListTable = () => {
   const { getAccessTokenSilently, user } = useAuth0();
   const [showAddModal, setShowAddModal] = useState(false);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
@@ -22,6 +19,7 @@ export const ShoppingListTableDrivers = () => {
   const [selectValue, setSelectValue] = useState(
     `${cookies.currently}` || `${user.name}`
   );
+  const [admin, setAdmin] = useState(false);
   const getMessage = async () => {
     const accessToken = await getAccessTokenSilently();
     const { data, error } = await getShoppingListHistory(
@@ -43,24 +41,24 @@ export const ShoppingListTableDrivers = () => {
     let isMounted = true;
     const getUserItem = async () => {
       const accessToken = await getAccessTokenSilently();
-      const { data, error } = await getUserItems(accessToken, user);
-
+      const { data, error } = await getShoppingListHistory(
+        accessToken,
+        user.name
+      );
       if (!isMounted) {
         return;
       }
       if (data) {
-        setMessage(data);
+        const length = data.length - 1;
+        setMessage(data[length].products);
         setSelectValue(data[0].userName);
         setCookie("currently", `${data[0].userName}`, []);
       }
       if (error) {
         setMessage(error);
       }
-      if (
-        user.email === "kierowca1@test.pl" ||
-        user.email === "kierowca2@test.pl" ||
-        user.email === "kierowca3@test.pl"
-      ) {
+      if (user.email === "kamila@test.pl") {
+        setAdmin(true);
         getMessage();
       }
     };
@@ -121,7 +119,7 @@ export const ShoppingListTableDrivers = () => {
   };
 
   const handleSendShoppingList = () => {
-    console.log("message", message);
+    // console.log("message", message);
     axios.post(
       "http://localhost:6060/api/messages/shopping/send/" + selectValue,
       { data: message, editUser: user.name }
@@ -149,79 +147,93 @@ export const ShoppingListTableDrivers = () => {
         />
       )}
       <div className="table-body">
-        <label for="departament">Wybierz placówkę:</label>
+        {admin && (
+          <>
+            <label className="table-select-label" for="departament">
+              Wybierz placówkę:
+            </label>
 
-        <select
-          name="departament"
-          id="departament"
-          value={selectValue}
-          onChange={handleChange}
-        >
-          <option value="izbicka">izbicka</option>
-          <option value="kamila@test.pl">stradomska</option>
-          {/* <option value="stradomska">stradomska</option> */}
-          <option value="dietyojca@gmail.com">białowieska</option>
-          {/* <option value="białowieska">białowieska</option> */}
-          <option value="glanzgarage@gmail.com">korytnicka</option>
-          {/* <option value="korytnicka">korytnicka</option> */}
-          <option value="terespolska">terespolska</option>
-          <option value="tamka">tamka</option>
-          <option value="broniewskiego">broniewskiego</option>
-          <option value="szeligowska">szeligowska</option>
-          <option value="chłapowskiego">chłapowskiego</option>
-          <option value="aleja ken">aleja KEN</option>
-          <option value="samochodowa1">Samochodowa U1</option>
-          <option value="samochodowa2">Samochodowa U3</option>
-          <option value="bobrowiecka">bobrowiecka</option>
-          <option value="rekrucka1">rekrucka Żłobek</option>
-          <option value="rekrucka2">rekrucka Przedszkole</option>
-        </select>
-        <button onClick={handleClick}>Pobierz</button>
-        <table>
-          <thead>
-            <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th>
-                <button
-                  className="button button--primary width-190px"
-                  onClick={handleshowAddModal}
-                >
-                  Dodaj nowy produkt
-                </button>
-              </th>
-            </tr>
-            <tr>
-              <th>Nazwa</th>
-              <th>Pojemność</th>
-              <th>Opakowanie zbiorcze</th>
-              <th>Ilość na stanie</th>
-              <th>Jednostka</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>{message.map(renderInventory)}</tbody>
-          <tfoot>
-            <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th>
-                <button
-                  className="button button--secondary"
-                  onClick={handleSendShoppingList}
-                >
-                  Potwierdź listę zakupową
-                </button>
-              </th>
-            </tr>
-          </tfoot>
-        </table>
+            <select
+              name="departament"
+              id="departament"
+              value={selectValue}
+              onChange={handleChange}
+              className="button table-select"
+            >
+              <option value="izbicka">izbicka</option>
+              <option value="kamila@test.pl">stradomska</option>
+              {/* <option value="stradomska">stradomska</option> */}
+              <option value="dietyojca@gmail.com">białowieska</option>
+              {/* <option value="białowieska">białowieska</option> */}
+              <option value="glanzgarage@gmail.com">korytnicka</option>
+              {/* <option value="korytnicka">korytnicka</option> */}
+              <option value="terespolska">terespolska</option>
+              <option value="tamka">tamka</option>
+              <option value="broniewskiego">broniewskiego</option>
+              <option value="szeligowska">szeligowska</option>
+              <option value="chłapowskiego">chłapowskiego</option>
+              <option value="aleja ken">aleja KEN</option>
+              <option value="samochodowa1">Samochodowa U1</option>
+              <option value="samochodowa2">Samochodowa U3</option>
+              <option value="bobrowiecka">bobrowiecka</option>
+              <option value="rekrucka1">rekrucka Żłobek</option>
+              <option value="rekrucka2">rekrucka Przedszkole</option>
+            </select>
+            <button
+              className="button button--primary table-select-button"
+              onClick={handleClick}
+            >
+              Pobierz
+            </button>
+          </>
+        )}
+        <div className="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>
+                  <button
+                    className="button button--primary width-190px"
+                    onClick={handleshowAddModal}
+                  >
+                    Dodaj nowy produkt
+                  </button>
+                </th>
+              </tr>
+              <tr>
+                <th>Nazwa</th>
+                <th>Pojemność</th>
+                <th>Zbiorcze</th>
+                <th>Ilość</th>
+                <th>Jednostka</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>{message.map(renderInventory)}</tbody>
+            <tfoot>
+              <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>
+                  <button
+                    className="button button--secondary"
+                    onClick={handleSendShoppingList}
+                  >
+                    Potwierdź listę zakupową
+                  </button>
+                </th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
       </div>
     </>
   );

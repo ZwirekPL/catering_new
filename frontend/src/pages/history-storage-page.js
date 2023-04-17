@@ -2,9 +2,9 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Keyboard, Pagination, Navigation } from "swiper";
 import React, { useEffect, useState } from "react";
-import { HistoryTable } from "../components/history-table";
+import { HistoryTable } from "../components/tables/history-storage-table";
 import { getInventoryHistory } from "../services/message.service";
-import { PageLayout } from "../components/page-layout";
+import { PageLayout } from "../components/layout/page-layout";
 
 import "swiper/css";
 import "swiper/css/pagination";

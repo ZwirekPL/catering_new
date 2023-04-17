@@ -147,3 +147,10 @@ input:focus {
 .trash:hover {
   color: var(--mandarine);
 }
+select {
+  border-radius: 0.6rem;
+  background-color: #222;
+  text-transform: capitalize;
+  color: #fff;
+  font-family: var(--font-primary);
+}

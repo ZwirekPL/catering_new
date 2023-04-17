@@ -1,5 +1,5 @@
 import React from "react";
-import CateringIcon from "../images/catering.png";
+import CateringIcon from "../../images/catering.png";
 
 export const MainBanner = () => {
   return (

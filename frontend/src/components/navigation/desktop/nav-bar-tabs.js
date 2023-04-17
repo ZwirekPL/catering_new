@@ -8,7 +8,6 @@ export const NavBarTabs = () => {
   return (
     <div className="nav-bar__tabs">
       <NavBarTab path="/faq" label="FAQ?" />
-      <NavBarTab path="/profile" label="Profile" />
 
       {isAuthenticated &&
         user.email !== "kierowca1@test.pl" &&

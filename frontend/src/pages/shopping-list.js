@@ -1,9 +1,9 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { NavLink } from "react-router-dom";
-import { ShoppingListTable } from "../components/shopping-list-table";
-import { ShoppingListTableDrivers } from "../components/driver-shopping-list-table.js";
-import { PageLayout } from "../components/page-layout";
+import { ShoppingListTable } from "../components/tables/shopping-list-table";
+import { ShoppingListTableDrivers } from "../components/tables/driver-shopping-list-table.js";
+import { PageLayout } from "../components/layout/page-layout";
 // import { OkModal } from "../components/ok-modal";
 
 export const ShoppingList = () => {

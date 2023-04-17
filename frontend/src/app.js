@@ -1,17 +1,16 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { PageLoader } from "./components/page-loader";
-import { AuthenticationGuard } from "./components/authentication-guard";
+import { PageLoader } from "./components/layout/page-loader";
+import { AuthenticationGuard } from "./components/auth/authentication-guard";
 import { ShoppingList } from "./pages/shopping-list";
 import { HistoryShoppingList } from "./pages/history-shopping-list";
 import { CallbackPage } from "./pages/callback-page";
 import { HomePage } from "./pages/home-page";
 import { NotFoundPage } from "./pages/not-found-page";
-import { ProfilePage } from "./pages/profile-page";
 import { StoragePage } from "./pages/storage-page";
 import { HistoryStoragePage } from "./pages/history-storage-page.js";
-import { PublicPage } from "./pages/public-page";
+import { FAQ } from "./pages/faq.js";
 
 export const App = () => {
   const { isLoading } = useAuth0();
@@ -23,15 +22,9 @@ export const App = () => {
       </div>
     );
   }
-
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route
-        path="/profile"
-        element={<AuthenticationGuard component={ProfilePage} />}
-      />
-      <Route path="/public" element={<PublicPage />} />
       <Route
         path="/storage"
         element={<AuthenticationGuard component={StoragePage} />}
@@ -48,6 +41,7 @@ export const App = () => {
         path="/shopping-list/history"
         element={<AuthenticationGuard component={HistoryShoppingList} />}
       />
+      <Route path="/faq" element={<AuthenticationGuard component={FAQ} />} />
       <Route path="/callback" element={<CallbackPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
@@ -57,7 +51,7 @@ export const App = () => {
 // Sprawdzenie czy sprawdza autoryzację podczas dodawnaia do bazy danych.
 // Sprawdzić jak wyglada wylogowywanie i wylogowywać po opuszczeniu strony,
 // Zacząć czyścić.
-// Media Queries
+// Media Queries??
 
 // podział na kategorie.(wybór przed magazynem i lista zakupową)
 // odwrotna kolejność w historiach inwentaryzacji, list zakupowych.

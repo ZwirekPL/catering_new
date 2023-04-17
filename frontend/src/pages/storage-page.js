@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Table } from "../components/table";
-import { PageLayout } from "../components/page-layout";
+import { Table } from "../components/tables/storage-table";
+import { PageLayout } from "../components/layout/page-layout";
 
 export const StoragePage = () => {
   return (

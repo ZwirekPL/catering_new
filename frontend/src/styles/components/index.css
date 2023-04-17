@@ -1,6 +1,6 @@
 @import "auth0-features.css";
 @import "button.css";
-@import "table.css";
+@import "storage-table.css";
 @import "page-footer.css";
 @import "main-banner.css";
 @import "page-loader.css";
@@ -10,5 +10,3 @@
 @import "layouts/index.css";
 @import "angular.css";
 @import "add-product-modal.css";
-@import "ok-modal.css";
-@import "multi-table.css";

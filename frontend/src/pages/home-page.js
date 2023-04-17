@@ -1,6 +1,6 @@
 import React from "react";
-import { MainBanner } from "../components/main-banner";
-import { PageLayout } from "../components/page-layout";
+import { MainBanner } from "../components/layout/main-banner";
+import { PageLayout } from "../components/layout/page-layout";
 
 export const HomePage = () => (
   <PageLayout>

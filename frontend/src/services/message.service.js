@@ -31,7 +31,6 @@ export const getInventoryHistory = async (accessToken, user) => {
       Authorization: `Bearer ${accessToken}`,
     },
   };
-
   const { data, error } = await callExternalApi({ config });
   return {
     data: data || null,
@@ -49,7 +48,6 @@ export const getShoppingListHistory = async (accessToken, user) => {
       Authorization: `Bearer ${accessToken}`,
     },
   };
-
   const { data, error } = await callExternalApi({ config });
   return {
     data: data || null,
@@ -65,9 +63,7 @@ export const getPublicResource = async () => {
       "content-type": "application/json",
     },
   };
-
   const { data, error } = await callExternalApi({ config });
-
   return {
     data: data || null,
     error,
@@ -83,20 +79,15 @@ export const getAdminResource = async (accessToken) => {
       Authorization: `Bearer ${accessToken}`,
     },
   };
-
   const { data, error } = await callExternalApi({ config });
-
   return {
     data: data || null,
     error,
   };
 };
 
-//TUTAJ
-
 export const getOtherUserItems = async (accessToken, otherUser) => {
   const userName = otherUser;
-
   // console.log(user.name);
   const config = {
     url: `${apiServerUrl}/api/messages/protected/` + userName,

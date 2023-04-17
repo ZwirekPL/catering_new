@@ -3,30 +3,28 @@ import React from "react";
 import { MobileNavBarTab } from "./mobile-nav-bar-tab";
 
 export const MobileNavBarTabs = ({ handleClick }) => {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, user } = useAuth0();
 
   return (
     <div className="mobile-nav-bar__tabs">
-      <MobileNavBarTab path="/faq" label="FAQ?" handleClick={handleClick} />
-      <MobileNavBarTab
-        path="/profile"
-        label="Profile"
-        handleClick={handleClick}
-      />
-      {isAuthenticated && (
-        <>
-          <MobileNavBarTab
-            path="/storage"
-            label="Magazyn"
-            handleClick={handleClick}
-          />
-          <MobileNavBarTab
-            path="/shopping-list"
-            label="Listy Zakupowe"
-            handleClick={handleClick}
-          />
-        </>
-      )}
+      <MobileNavBarTab path="/faq" label="FAQ?" />
+      {isAuthenticated &&
+        user.email !== "kierowca1@test.pl" &&
+        user.email !== "kierowca2@test.pl" &&
+        user.email !== "kierowca3@test.pl" && (
+          <>
+            <MobileNavBarTab path="/storage" label="Magazyn" />
+            <MobileNavBarTab path="/shopping-list" label="Listy Zakupowe" />
+          </>
+        )}
+      {isAuthenticated &&
+        (user.email === "kierowca1@test.pl" ||
+          user.email === "kierowca2@test.pl" ||
+          user.email === "kierowca3@test.pl") && (
+          <>
+            <MobileNavBarTab path="/shopping-list" label="Listy Zakupowe" />
+          </>
+        )}
     </div>
   );
 };
