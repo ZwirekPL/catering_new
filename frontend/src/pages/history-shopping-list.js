@@ -148,7 +148,7 @@ export const HistoryShoppingList = () => {
             }}
             modules={[Pagination, Keyboard, Navigation]}
           >
-            {historyShoppingList.map((inventory, index) => (
+            {historyShoppingList.toReversed().map((inventory, index) => (
               <SwiperSlide key={index}>
                 <HistoryList inventory={inventory} />
               </SwiperSlide>

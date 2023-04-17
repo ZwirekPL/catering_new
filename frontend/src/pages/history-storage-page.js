@@ -146,7 +146,7 @@ export const HistoryStoragePage = () => {
             }}
             modules={[Pagination, Keyboard, Navigation]}
           >
-            {historyInventory.map((inventory, index) => (
+            {historyInventory.toReversed().map((inventory, index) => (
               <SwiperSlide key={index}>
                 <HistoryTable inventory={inventory} />
               </SwiperSlide>
