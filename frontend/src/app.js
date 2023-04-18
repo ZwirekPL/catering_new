@@ -25,6 +25,7 @@ export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/faq" element={<FAQ />} />
       <Route
         path="/storage"
         element={<AuthenticationGuard component={StoragePage} />}
@@ -41,7 +42,6 @@ export const App = () => {
         path="/shopping-list/history"
         element={<AuthenticationGuard component={HistoryShoppingList} />}
       />
-      <Route path="/faq" element={<AuthenticationGuard component={FAQ} />} />
       <Route path="/callback" element={<CallbackPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
@@ -54,13 +54,13 @@ export const App = () => {
 // Media Queries??
 
 // podział na kategorie.(wybór przed magazynem i lista zakupową)
-// odwrotna kolejność w historiach inwentaryzacji, list zakupowych.
-// Dodać obsługę kierowców.
 // status zamowienia na liscie zakupowej.
-// Edytowanie statusu tylko przez kierowców i kamilę.
-// obsługa nie masz jeszcze nic w bazach danych.
-// usunąć profile ( zaminić na jąkąś powitalna strone), FAQ ?? ,
+// wylogowywać po opuszczeniu strony
 
+// obsługa nie masz jeszcze nic w bazach danych.
+
+// Edytowanie statusu tylko przez kierowców i kamilę.
+// Dodać obsługę kierowców.
 //zrobic główna listę zakupową.
 // Kierowcy dostęp tylko do list zakupowych głównej.
 // dodaje wszystkie elementy do listy itemów shooping ale jeśli sie powtarza id wysakuje błąd
