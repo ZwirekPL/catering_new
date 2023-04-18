@@ -91,7 +91,8 @@ export const AddListModal = ({ setShowAddModal, setMessage }) => {
               <p>{errorMessage}</p>
             </div>
           ) : null}
-          <form>
+          <form id="add-list-form"></form>
+          <table>
             <tr>
               <th>Nazwa</th>
               <th>
@@ -101,6 +102,7 @@ export const AddListModal = ({ setShowAddModal, setMessage }) => {
                   name="item"
                   value={input.item}
                   type="text"
+                  form="add-list-form"
                 />
               </th>
             </tr>
@@ -112,6 +114,7 @@ export const AddListModal = ({ setShowAddModal, setMessage }) => {
                   name="capacity"
                   value={input.capacity}
                   type="text"
+                  form="add-list-form"
                 />
               </th>
             </tr>
@@ -123,6 +126,7 @@ export const AddListModal = ({ setShowAddModal, setMessage }) => {
                   name="bulkQuantity"
                   value={input.bulkQuantity}
                   type="number"
+                  form="add-list-form"
                 />
               </th>
             </tr>
@@ -134,6 +138,7 @@ export const AddListModal = ({ setShowAddModal, setMessage }) => {
                   name="quantityNow"
                   value={input.quantityNow}
                   type="number"
+                  form="add-storage-form"
                 />
               </th>
             </tr>
@@ -145,16 +150,18 @@ export const AddListModal = ({ setShowAddModal, setMessage }) => {
                   name="unit"
                   value={input.unit}
                   type="text"
+                  form="add-storage-form"
                 />
               </th>
             </tr>
-            <button
-              className="button button--primary width-100"
-              onClick={handleClick}
-            >
-              Dodaj
-            </button>
-          </form>
+          </table>
+          <button
+            className="button button--primary width-100"
+            onClick={handleClick}
+            form="add-list-form"
+          >
+            Dodaj
+          </button>
         </div>
       </div>
     </div>

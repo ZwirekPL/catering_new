@@ -113,7 +113,8 @@ export const UpdateProductModal = ({
               <p>{errorMessage}</p>
             </div>
           ) : null}
-          <form>
+          <form id="update-storage-form"></form>
+          <table>
             <tr>
               <th>Nazwa</th>
               <th>
@@ -122,6 +123,7 @@ export const UpdateProductModal = ({
                   name="item"
                   value={input.item}
                   type="text"
+                  form="update-storage-form"
                 />
               </th>
             </tr>
@@ -133,6 +135,7 @@ export const UpdateProductModal = ({
                   name="capacity"
                   value={input.capacity}
                   type="text"
+                  form="update-storage-form"
                 />
               </th>
             </tr>
@@ -144,6 +147,7 @@ export const UpdateProductModal = ({
                   name="bulkQuantity"
                   value={input.bulkQuantity}
                   type="number"
+                  form="update-storage-form"
                 />
               </th>
             </tr>
@@ -155,6 +159,7 @@ export const UpdateProductModal = ({
                   name="quantityNow"
                   value={input.quantityNow}
                   type="number"
+                  form="update-storage-form"
                 />
               </th>
             </tr>
@@ -166,17 +171,18 @@ export const UpdateProductModal = ({
                   name="unit"
                   value={input.unit}
                   type="text"
+                  form="update-storage-form"
                 />
               </th>
             </tr>
-
-            <button
-              className="button button--primary width-100"
-              onClick={handleClick}
-            >
-              Zmień
-            </button>
-          </form>
+          </table>
+          <button
+            className="button button--primary width-100"
+            onClick={handleClick}
+            form="update-storage-form"
+          >
+            Zmień
+          </button>
         </div>
       </div>
     </div>

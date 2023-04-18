@@ -103,7 +103,8 @@ export const UpdateListProductModal = ({
               <p>{errorMessage}</p>
             </div>
           ) : null}
-          <form>
+          <form id="update-list-form"></form>
+          <table>
             <tr>
               <th>Nazwa</th>
               <th>
@@ -112,6 +113,7 @@ export const UpdateListProductModal = ({
                   name="item"
                   value={input.item}
                   type="text"
+                  form="update-list-form"
                 />
               </th>
             </tr>
@@ -123,6 +125,7 @@ export const UpdateListProductModal = ({
                   name="capacity"
                   value={input.capacity}
                   type="text"
+                  form="update-list-form"
                 />
               </th>
             </tr>
@@ -134,6 +137,7 @@ export const UpdateListProductModal = ({
                   name="bulkQuantity"
                   value={input.bulkQuantity}
                   type="number"
+                  form="update-list-form"
                 />
               </th>
             </tr>
@@ -145,6 +149,7 @@ export const UpdateListProductModal = ({
                   name="quantityNow"
                   value={input.quantityNow}
                   type="number"
+                  form="update-list-form"
                 />
               </th>
             </tr>
@@ -156,17 +161,18 @@ export const UpdateListProductModal = ({
                   name="unit"
                   value={input.unit}
                   type="text"
+                  form="update-list-form"
                 />
               </th>
             </tr>
-
-            <button
-              className="button button--primary width-100"
-              onClick={handleClick}
-            >
-              Zmień
-            </button>
-          </form>
+          </table>
+          <button
+            className="button button--primary width-100"
+            onClick={handleClick}
+            form="update-list-form"
+          >
+            Zmień
+          </button>
         </div>
       </div>
     </div>

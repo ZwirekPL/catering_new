@@ -19,7 +19,6 @@ export const ShoppingListTable = () => {
   );
   const [admin, setAdmin] = useState(false);
   const currentlyGet = (data) => {
-    console.log(data);
     if (data) {
       if (currently == null) {
         // Initialize page views count

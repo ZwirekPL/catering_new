@@ -103,7 +103,8 @@ export const AddProductModal = ({ setShowAddModal, nameUser }) => {
               <p>{errorMessage}</p>
             </div>
           ) : null}
-          <form>
+          <form id="add-storage-form"></form>
+          <table>
             <tr>
               <th>Nazwa</th>
               <th>
@@ -113,6 +114,7 @@ export const AddProductModal = ({ setShowAddModal, nameUser }) => {
                   name="item"
                   value={input.item}
                   type="text"
+                  form="add-storage-form"
                 />
               </th>
             </tr>
@@ -124,6 +126,7 @@ export const AddProductModal = ({ setShowAddModal, nameUser }) => {
                   name="capacity"
                   value={input.capacity}
                   type="text"
+                  form="add-storage-form"
                 />
               </th>
             </tr>
@@ -135,6 +138,7 @@ export const AddProductModal = ({ setShowAddModal, nameUser }) => {
                   name="bulkQuantity"
                   value={input.bulkQuantity}
                   type="number"
+                  form="add-storage-form"
                 />
               </th>
             </tr>
@@ -146,6 +150,7 @@ export const AddProductModal = ({ setShowAddModal, nameUser }) => {
                   name="quantityNow"
                   value={input.quantityNow}
                   type="number"
+                  form="add-storage-form"
                 />
               </th>
             </tr>
@@ -157,16 +162,18 @@ export const AddProductModal = ({ setShowAddModal, nameUser }) => {
                   name="unit"
                   value={input.unit}
                   type="text"
+                  form="add-storage-form"
                 />
               </th>
             </tr>
-            <button
-              className="button button--primary width-100"
-              onClick={handleClick}
-            >
-              Dodaj
-            </button>
-          </form>
+          </table>
+          <button
+            className="button button--primary width-100"
+            onClick={handleClick}
+            form="add-storage-form"
+          >
+            Dodaj
+          </button>
         </div>
       </div>
     </div>
