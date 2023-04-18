@@ -148,7 +148,7 @@ export const ShoppingListTableDrivers = () => {
         />
       )}
       <div className="table-body">
-        <label for="departament">Wybierz placówkę:</label>
+        <label htmlFor="departament">Wybierz placówkę:</label>
 
         <select
           name="departament"

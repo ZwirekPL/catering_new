@@ -22,14 +22,15 @@ export const App = () => {
       </div>
     );
   }
-  // let currently = sessionStorage.getItem("currently");
-  // if (currently !== null) {
-  //   logout({
-  //     logoutParams: {
-  //       returnTo: window.location.origin,
-  //     },
-  //   });
-  // }
+  let currently = sessionStorage.getItem("currently");
+  if (!currently) {
+    logout({
+      logoutParams: {
+        returnTo: window.location.origin,
+      },
+    });
+    sessionStorage.setItem("currently", "none");
+  }
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />

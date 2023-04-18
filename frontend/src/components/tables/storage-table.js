@@ -168,7 +168,7 @@ export const Table = () => {
       <div className="table-body">
         {admin && (
           <>
-            <label className="table-select-label" for="departament">
+            <label className="table-select-label" htmlFor="departament">
               Wybierz placówkę:
             </label>
 
