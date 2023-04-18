@@ -1,5 +1,4 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { useCookies } from "react-cookie";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { AddProductModal } from "../modals/add-storage-product-modal";
@@ -11,10 +10,10 @@ import {
 
 export const Table = () => {
   const { getAccessTokenSilently, user } = useAuth0();
-  const [cookies, setCookie] = useCookies(["currently"]);
+  let currently = sessionStorage.getItem("currently");
 
   const [selectValue, setSelectValue] = useState(
-    `${cookies.currently}` || `${user.name}`
+    `${currently}` || `${user.name}`
   );
   const [admin, setAdmin] = useState(false);
 
@@ -23,18 +22,29 @@ export const Table = () => {
   const [idUpdateItem, setidUpdateItem] = useState();
   const [itemToUpdate, setitemToUpdate] = useState();
   const [message, setMessage] = useState([]);
+  const currentlyGet = (data) => {
+    if (data) {
+      if (currently == null) {
+        // Initialize page views count
+        currently = data[0].userName;
+      } else {
+        // Increment count
+        currently = selectValue;
+      }
+      // Update session storage
+      sessionStorage.setItem("currently", currently);
+    }
+  };
 
   const getMessage = async () => {
     const accessToken = await getAccessTokenSilently();
     const { data, error } = await getOtherUserItems(accessToken, selectValue);
     // console.log(selectValue);
-
     if (data) {
       setMessage(data);
       setSelectValue(data[0].userName);
-      setCookie("currently", `${data[0].userName}`, []);
+      currentlyGet(data);
     }
-
     if (error) {
       setMessage(error);
     }
@@ -55,7 +65,7 @@ export const Table = () => {
       if (data) {
         setMessage(data);
         setSelectValue(data[0].userName);
-        setCookie("currently", `${data[0].userName}`, []);
+        currentlyGet(data);
       }
 
       if (error) {

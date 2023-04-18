@@ -13,7 +13,7 @@ import { HistoryStoragePage } from "./pages/history-storage-page.js";
 import { FAQ } from "./pages/faq.js";
 
 export const App = () => {
-  const { isLoading } = useAuth0();
+  const { isLoading, logout } = useAuth0();
 
   if (isLoading) {
     return (
@@ -22,6 +22,14 @@ export const App = () => {
       </div>
     );
   }
+  // let currently = sessionStorage.getItem("currently");
+  // if (currently !== null) {
+  //   logout({
+  //     logoutParams: {
+  //       returnTo: window.location.origin,
+  //     },
+  //   });
+  // }
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
@@ -47,7 +55,7 @@ export const App = () => {
     </Routes>
   );
 };
-
+// wylogowywanie z sessionstorage ??? wykonuje sie non stop a nie raz
 // Sprawdzenie czy sprawdza autoryzację podczas dodawnaia do bazy danych.
 // Sprawdzić jak wyglada wylogowywanie i wylogowywać po opuszczeniu strony,
 // Zacząć czyścić.

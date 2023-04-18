@@ -4,13 +4,11 @@ import { NavLink } from "react-router-dom";
 import { ShoppingListTable } from "../components/tables/shopping-list-table";
 import { ShoppingListTableDrivers } from "../components/tables/driver-shopping-list-table.js";
 import { PageLayout } from "../components/layout/page-layout";
-// import { OkModal } from "../components/ok-modal";
 
 export const ShoppingList = () => {
   const { user } = useAuth0();
   return (
     <PageLayout>
-      {/* <OkModal /> */}
       {user.email !== "kierowca1@test.pl" &&
         user.email !== "kierowca2@test.pl" &&
         user.email !== "kierowca3@test.pl" && (

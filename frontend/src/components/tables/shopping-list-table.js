@@ -1,25 +1,37 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { useCookies } from "react-cookie";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { AddListModal } from "../modals/add-list-modal";
 import { UpdateListProductModal } from "../modals/update-list-product-modal";
-// import { OkModal } from "./ok-modal";
 import { getShoppingListHistory } from "../../services/message.service";
 
 export const ShoppingListTable = () => {
   const { getAccessTokenSilently, user } = useAuth0();
+  let currently = sessionStorage.getItem("currently");
   const [showAddModal, setShowAddModal] = useState(false);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [idUpdateItem, setidUpdateItem] = useState();
   const [itemToUpdate, setitemToUpdate] = useState();
   const [message, setMessage] = useState([]);
-  const [cookies, setCookie] = useCookies(["currently"]);
 
   const [selectValue, setSelectValue] = useState(
-    `${cookies.currently}` || `${user.name}`
+    `${currently}` || `${user.name}`
   );
   const [admin, setAdmin] = useState(false);
+  const currentlyGet = (data) => {
+    console.log(data);
+    if (data) {
+      if (currently == null) {
+        // Initialize page views count
+        currently = data[0].userName;
+      } else {
+        // Increment count
+        currently = selectValue;
+      }
+      // Update session storage
+      sessionStorage.setItem("currently", currently);
+    }
+  };
   const getMessage = async () => {
     const accessToken = await getAccessTokenSilently();
     const { data, error } = await getShoppingListHistory(
@@ -30,7 +42,7 @@ export const ShoppingListTable = () => {
       const length = data.length - 1;
       setMessage(data[length].products);
       setSelectValue(data[0].userName);
-      setCookie("currently", `${data[0].userName}`, []);
+      currentlyGet(data);
     }
 
     if (error) {
@@ -52,7 +64,7 @@ export const ShoppingListTable = () => {
         const length = data.length - 1;
         setMessage(data[length].products);
         setSelectValue(data[0].userName);
-        setCookie("currently", `${data[0].userName}`, []);
+        currentlyGet(data);
       }
       if (error) {
         setMessage(error);
