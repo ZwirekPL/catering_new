@@ -21,6 +21,7 @@ messagesRouter.route("/create", validateAccessToken).post((req, res) => {
   const quantityNow = req.body.quantityNow;
   const unit = req.body.unit;
   const editBy = req.body.editBy;
+  const category = req.body.category;
   const newItem = new Item({
     userName,
     item,
@@ -29,18 +30,10 @@ messagesRouter.route("/create", validateAccessToken).post((req, res) => {
     quantityNow,
     unit,
     editBy,
+    category,
   });
   newItem.save();
 });
-
-messagesRouter
-  .route("/delete/:idRemoveItem", validateAccessToken)
-  .delete((req, res) => {
-    const idRemoveItem = req.params.idRemoveItem;
-    Item.findById(idRemoveItem).then((doc) => {
-      doc.deleteOne();
-    });
-  });
 
 messagesRouter
   .route("/update/:idUpdateItem", validateAccessToken)
@@ -53,6 +46,7 @@ messagesRouter
     const newQuantityNow = req.body.quantityNow;
     const newUnit = req.body.unit;
     const newEditBy = req.body.editBy;
+    const newCategory = req.body.category;
     const updateItem = await Item.findById(idUpdateItem).exec();
     updateItem.userName = newUserName;
     updateItem.item = newItem;
@@ -61,6 +55,7 @@ messagesRouter
     updateItem.quantityNow = newQuantityNow;
     updateItem.unit = newUnit;
     updateItem.editBy = newEditBy;
+    updateItem.category = newCategory;
     const updatedItem = await updateItem.save();
     res.status(200);
   });
@@ -71,10 +66,12 @@ messagesRouter
     const userName = req.params.userName;
     const products = req.body.data;
     const editBy = req.body.editUser;
+    const category = req.body.category;
     const newInventory = new Storage({
       userName,
       products,
       editBy,
+      category,
     });
     newInventory.save();
   });
@@ -86,6 +83,7 @@ messagesRouter
     const products = req.body.data;
     const productsLength = products.length - 1;
     const editBy = req.body.editUser;
+    const category = req.body.category;
     const newInventory = new ShoppingList({
       userName,
       products,
@@ -108,7 +106,16 @@ messagesRouter
 
     newInventory.save();
   });
+messagesRouter
+  .route("/delete/:idRemoveItem", validateAccessToken)
+  .delete((req, res) => {
+    const idRemoveItem = req.params.idRemoveItem;
+    Item.findById(idRemoveItem).then((doc) => {
+      doc.deleteOne();
+    });
+  });
 
+//
 messagesRouter
   .route("/inventory/get/:userName", validateAccessToken)
   .get((req, res) => {

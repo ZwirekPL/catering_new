@@ -45,7 +45,14 @@
 .button--secondary:hover {
   background: var(--emerald);
 }
+.button--third {
+  background-color: var(--violet);
+  color: var(--white);
+}
 
+.button--third:hover {
+  background: var(--dark-violet);
+}
 @media only screen and (max-width: 480px) {
   .button {
     /* responsive */

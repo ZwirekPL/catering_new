@@ -3,10 +3,11 @@ const Item = require("./item");
 
 const shoppingListSchema = new mongoose.Schema(
   {
-    userName: String,
+    userName: { type: String },
     products: [Item.schema],
-    status: String,
-    editBy: String,
+    status: { type: String },
+    editBy: { type: String },
+    category: { type: String },
     expireAt: {
       type: Date,
       default: Date.now() + 30 * 24 * 60 * 60 * 1000, // expires in 30 Day

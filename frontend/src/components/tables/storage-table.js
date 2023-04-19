@@ -210,8 +210,16 @@ export const Table = () => {
           <table>
             <thead>
               <tr>
-                <th></th>
-                <th></th>
+                <th>
+                  <button className="button button--primary width-190px">
+                    Art.spożywcze
+                  </button>
+                </th>
+                <th>
+                  <button className="button button--third width-190px">
+                    Art.Chemiczne
+                  </button>
+                </th>
                 <th></th>
                 <th></th>
                 <th></th>

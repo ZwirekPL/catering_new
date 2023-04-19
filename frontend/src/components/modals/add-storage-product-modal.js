@@ -14,6 +14,7 @@ export const AddProductModal = ({ setShowAddModal, nameUser }) => {
     quantityNow: "",
     unit: "",
     editBy: user.name,
+    category: "",
   });
 
   const handleOnChange = (event) => {
@@ -26,30 +27,36 @@ export const AddProductModal = ({ setShowAddModal, nameUser }) => {
       };
     });
   };
+
   // ERRORS
   const itemNull = () => {
     setErrorIsVisible(true);
-    setErrorMessage("Pole Nazwa jest wymagane. Proszę je uzupełnić.");
+    setErrorMessage("Pole nazwa jest wymagane. Proszę je uzupełnić.");
   };
   const capacityNull = () => {
     setErrorIsVisible(true);
-    setErrorMessage("Pole Pojemność jest wymagane. Proszę je uzupełnić.");
+    setErrorMessage("Pole pojemność jest wymagane. Proszę je uzupełnić.");
   };
   const bulkQuantityNull = () => {
     setErrorIsVisible(true);
     setErrorMessage(
-      "Pole Opakowanie zbiorcze jest wymagane. Proszę je uzupełnić."
+      "Pole opakowanie zbiorcze jest wymagane. Proszę je uzupełnić."
     );
   };
   const quantityNowNull = () => {
     setErrorIsVisible(true);
     setErrorMessage(
-      "Pole Nowa ilość na stanie jest wymagane. Proszę je uzupełnić."
+      "Pole nowa ilość na stanie jest wymagane. Proszę je uzupełnić."
     );
   };
   const unitNull = () => {
     setErrorIsVisible(true);
-    setErrorMessage("Pole Jednostka jest wymagane. Proszę je uzupełnić.");
+    setErrorMessage("Pole jednostka jest wymagane. Proszę je uzupełnić.");
+  };
+
+  const categoryNull = () => {
+    setErrorIsVisible(true);
+    setErrorMessage("Pole kategoria jest wymagane. Proszę je uzupełnić.");
   };
   //.
   const handleCloseLoginModal = () => setShowAddModal(false);
@@ -63,6 +70,7 @@ export const AddProductModal = ({ setShowAddModal, nameUser }) => {
       bulkQuantity: input.bulkQuantity,
       quantityNow: input.quantityNow,
       unit: input.unit,
+      category: input.category,
       editBy: user.name,
     };
     if (!nameUser) {
@@ -82,6 +90,9 @@ export const AddProductModal = ({ setShowAddModal, nameUser }) => {
     }
     if (!input.unit) {
       return unitNull();
+    }
+    if (!input.category) {
+      return categoryNull();
     }
     axios.post("http://localhost:6060/api/messages/create", newItem);
     setShowAddModal(false);
@@ -105,6 +116,36 @@ export const AddProductModal = ({ setShowAddModal, nameUser }) => {
           ) : null}
           <form id="add-storage-form"></form>
           <table>
+            {" "}
+            <tr>
+              <th>
+                <input
+                  type="radio"
+                  name="category"
+                  id="groceries"
+                  value="groceries"
+                  defaultChecked
+                  onChange={handleOnChange}
+                />
+                <label htmlFor="groceries" class="option option-1">
+                  <div class="dot"></div>
+                  <span>Art.spożywcze</span>
+                </label>
+              </th>
+              <th>
+                <input
+                  type="radio"
+                  name="category"
+                  id="chemical"
+                  value="chemical"
+                  onChange={handleOnChange}
+                />
+                <label htmlFor="chemical" class="option option-2">
+                  <div class="dot"></div>
+                  <span>Art.chemiczne</span>
+                </label>
+              </th>
+            </tr>
             <tr>
               <th>Nazwa</th>
               <th>

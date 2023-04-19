@@ -56,9 +56,7 @@ export const App = () => {
     </Routes>
   );
 };
-// wylogowywanie z sessionstorage ??? wykonuje sie non stop a nie raz
 // Sprawdzenie czy sprawdza autoryzację podczas dodawnaia do bazy danych.
-// Sprawdzić jak wyglada wylogowywanie i wylogowywać po opuszczeniu strony,
 // Zacząć czyścić.
 // Media Queries??
 
@@ -66,7 +64,7 @@ export const App = () => {
 // status zamowienia na liscie zakupowej.
 // wylogowywać po opuszczeniu strony
 
-// obsługa nie masz jeszcze nic w bazach danych.
+// obsługa jak nie masz jeszcze nic w bazach danych.!!
 
 // Edytowanie statusu tylko przez kierowców i kamilę.
 // Dodać obsługę kierowców.

@@ -20,6 +20,7 @@ export const UpdateProductModal = ({
     quantityNow: itemToUpdate.quantityNow,
     unit: itemToUpdate.unit,
     editBy: user.name,
+    category: itemToUpdate.category,
   });
 
   const handleOnChange = (event) => {
@@ -56,6 +57,10 @@ export const UpdateProductModal = ({
     setErrorIsVisible(true);
     setErrorMessage("Pole Jednostka jest wymagane. Proszę je uzupełnić.");
   };
+  const categoryNull = () => {
+    setErrorIsVisible(true);
+    setErrorMessage("Pole kategoria jest wymagane. Proszę je uzupełnić.");
+  };
   //.
   const handleCloseUpdateModal = () => setShowUpdateModal(false);
   const handleClick = (event) => {
@@ -88,6 +93,9 @@ export const UpdateProductModal = ({
     if (!input.unit) {
       return unitNull();
     }
+    if (!input.category) {
+      return categoryNull();
+    }
     axios.post(
       "http://localhost:6060/api/messages/update/" + idUpdateItem,
       updateItem
@@ -115,6 +123,35 @@ export const UpdateProductModal = ({
           ) : null}
           <form id="update-storage-form"></form>
           <table>
+            <tr>
+              <th>
+                <input
+                  type="radio"
+                  name="category"
+                  id="groceries"
+                  value="groceries"
+                  defaultChecked
+                  onChange={handleOnChange}
+                />
+                <label htmlFor="groceries" class="option option-1">
+                  <div class="dot"></div>
+                  <span>Art.spożywcze</span>
+                </label>
+              </th>
+              <th>
+                <input
+                  type="radio"
+                  name="category"
+                  id="chemical"
+                  value="chemical"
+                  onChange={handleOnChange}
+                />
+                <label htmlFor="chemical" class="option option-2">
+                  <div class="dot"></div>
+                  <span>Art.chemiczne</span>
+                </label>
+              </th>
+            </tr>
             <tr>
               <th>Nazwa</th>
               <th>
