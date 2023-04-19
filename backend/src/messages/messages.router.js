@@ -88,6 +88,7 @@ messagesRouter
       userName,
       products,
       editBy,
+      category,
     });
     // const newShoppingItem = ShoppingItem.insertMany(products)
     //   .then(function () {

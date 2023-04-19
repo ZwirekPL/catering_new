@@ -60,9 +60,11 @@ export const App = () => {
 // Zacząć czyścić.
 // Media Queries??
 
-// podział na kategorie.(wybór przed magazynem i lista zakupową)
 // status zamowienia na liscie zakupowej.
-// wylogowywać po opuszczeniu strony
+// dodać obsługę historii zamówień i list zakupowych historię.
+// obsługa braku wyników ??
+// srpawdzić czy wszystko działa.
+// usunąc rekordy i dodać od nowa.
 
 // obsługa jak nie masz jeszcze nic w bazach danych.!!
 

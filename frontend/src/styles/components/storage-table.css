@@ -1,6 +1,11 @@
+/* .content-body{
+  line-height: wiekosc tabeli;
+} */
+
 .table-body {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
   border-radius: 0.8rem;
   margin-top: 3.2rem;
@@ -8,16 +13,26 @@
   background-color: #444;
   padding: 0 1rem;
 }
+.table-admin-wrapper {
+  margin: 2% 1%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.table-responsive {
+  margin-top: 2%;
+}
 .history {
   padding: 0 10rem;
 }
 .table-select-label {
-  margin-top: 1em;
-  width: clamp(20rem, 30%, 50%);
+  /* margin-top: 1em; */
+  width: clamp(20rem, 20%, 50%);
 }
 .table-select {
-  width: clamp(20rem, 30%, 50%);
-  margin-bottom: 0.5em;
+  width: clamp(20rem, 20%, 50%);
+  /* margin-bottom: 0.5em; */
 }
 .table-select-222 {
   width: 20%;
@@ -25,7 +40,8 @@
   background-color: #333;
 }
 .table-select-button {
-  width: clamp(20rem, 30%, 50%);
+  width: clamp(20rem, 20%, 50%);
+  margin-left: 5%;
 }
 .table-select-button-none {
   width: none;

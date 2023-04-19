@@ -21,6 +21,7 @@ export const Table = () => {
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [idUpdateItem, setidUpdateItem] = useState();
   const [itemToUpdate, setitemToUpdate] = useState();
+  const [category, setCategory] = useState();
   const [message, setMessage] = useState([]);
   const currentlyGet = (data) => {
     if (data) {
@@ -88,7 +89,7 @@ export const Table = () => {
     // console.log("message", message);
     axios.post(
       "http://localhost:6060/api/messages/inventory/send/" + selectValue,
-      { data: message, editUser: user.name }
+      { data: message, editUser: user.name, category: category }
     );
     if (user.email === "kamila@test.pl") return null;
     else {
@@ -121,8 +122,9 @@ export const Table = () => {
     const afterFilter = message.filter(
       (element) => element.category === string
     );
-    console.log(afterFilter);
+    // console.log(afterFilter);
     setMessage(afterFilter);
+    setCategory(string);
   };
 
   const renderInventory = (message, index) => {
@@ -174,7 +176,7 @@ export const Table = () => {
       )}
       <div className="table-body">
         {admin && (
-          <>
+          <div className="table-admin-wrapper">
             <label className="table-select-label" htmlFor="departament">
               Wybierz placówkę:
             </label>
@@ -211,7 +213,7 @@ export const Table = () => {
             >
               Pobierz
             </button>
-          </>
+          </div>
         )}
         <div className="table-responsive">
           <table>

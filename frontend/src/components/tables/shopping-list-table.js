@@ -12,6 +12,7 @@ export const ShoppingListTable = () => {
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [idUpdateItem, setidUpdateItem] = useState();
   const [itemToUpdate, setitemToUpdate] = useState();
+  const [category, setCategory] = useState();
   const [message, setMessage] = useState([]);
 
   const [selectValue, setSelectValue] = useState(
@@ -93,8 +94,16 @@ export const ShoppingListTable = () => {
     setSelectValue(event.target.value);
     // console.log(selectValue);
   };
-  const handleClick = () => {
+  const handleGetOtherShoppingList = () => {
     getMessage();
+  };
+  const handleCategory = (string) => {
+    const afterFilter = message.filter(
+      (element) => element.category === string
+    );
+    // console.log(afterFilter);
+    setMessage(afterFilter);
+    setCategory(string);
   };
 
   const renderInventory = (message, index) => {
@@ -133,7 +142,7 @@ export const ShoppingListTable = () => {
     // console.log("message", message);
     axios.post(
       "http://localhost:6060/api/messages/shopping/send/" + selectValue,
-      { data: message, editUser: user.name }
+      { data: message, editUser: user.name, category: category }
     );
     if (user.email === "kamila@test.pl") return null;
     else {
@@ -159,7 +168,7 @@ export const ShoppingListTable = () => {
       )}
       <div className="table-body">
         {admin && (
-          <>
+          <div className="table-admin-wrapper">
             <label className="table-select-label" htmlFor="departament">
               Wybierz placówkę:
             </label>
@@ -192,18 +201,32 @@ export const ShoppingListTable = () => {
             </select>
             <button
               className="button button--primary table-select-button"
-              onClick={handleClick}
+              onClick={handleGetOtherShoppingList}
             >
               Pobierz
             </button>
-          </>
+          </div>
         )}
         <div className="table-responsive">
           <table>
             <thead>
               <tr>
-                <th></th>
-                <th></th>
+                <th>
+                  <button
+                    onClick={() => handleCategory("groceries")}
+                    className="button button--primary width-190px"
+                  >
+                    Art.spożywcze
+                  </button>
+                </th>
+                <th>
+                  <button
+                    onClick={() => handleCategory("chemical")}
+                    className="button button--third width-190px"
+                  >
+                    Art.Chemiczne
+                  </button>
+                </th>
                 <th></th>
                 <th></th>
                 <th></th>
