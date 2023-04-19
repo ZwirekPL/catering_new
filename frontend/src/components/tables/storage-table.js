@@ -35,7 +35,6 @@ export const Table = () => {
       sessionStorage.setItem("currently", currently);
     }
   };
-
   const getMessage = async () => {
     const accessToken = await getAccessTokenSilently();
     const { data, error } = await getOtherUserItems(accessToken, selectValue);
@@ -100,7 +99,7 @@ export const Table = () => {
     setSelectValue(event.target.value);
     // console.log(selectValue);
   };
-  const handleClick = () => {
+  const handleGetOtherItems = () => {
     getMessage();
     // console.log(message);
   };
@@ -117,6 +116,14 @@ export const Table = () => {
   //   axios.post("http://localhost:6060/api/messages/delete/" + idUpdateItem);
   //   window.location.reload();
   // };
+
+  const handleCategory = (string) => {
+    const afterFilter = message.filter(
+      (element) => element.category === string
+    );
+    console.log(afterFilter);
+    setMessage(afterFilter);
+  };
 
   const renderInventory = (message, index) => {
     return (
@@ -200,7 +207,7 @@ export const Table = () => {
             </select>
             <button
               className="button button--primary table-select-button"
-              onClick={handleClick}
+              onClick={handleGetOtherItems}
             >
               Pobierz
             </button>
@@ -211,12 +218,18 @@ export const Table = () => {
             <thead>
               <tr>
                 <th>
-                  <button className="button button--primary width-190px">
+                  <button
+                    onClick={() => handleCategory("groceries")}
+                    className="button button--primary width-190px"
+                  >
                     Art.spożywcze
                   </button>
                 </th>
                 <th>
-                  <button className="button button--third width-190px">
+                  <button
+                    onClick={() => handleCategory("chemical")}
+                    className="button button--third width-190px"
+                  >
                     Art.Chemiczne
                   </button>
                 </th>
