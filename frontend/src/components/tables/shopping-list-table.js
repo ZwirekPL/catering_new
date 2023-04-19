@@ -40,7 +40,7 @@ export const ShoppingListTable = () => {
     if (data) {
       const length = data.length - 1;
       setMessage(data[length].products);
-      setSelectValue(data[0].userName);
+      // setSelectValue(data[0].userName);
       currentlyGet(data);
     }
 
@@ -62,7 +62,7 @@ export const ShoppingListTable = () => {
       if (data) {
         const length = data.length - 1;
         setMessage(data[length].products);
-        setSelectValue(data[0].userName);
+        // setSelectValue(data[0].userName);
         currentlyGet(data);
       }
       if (error) {

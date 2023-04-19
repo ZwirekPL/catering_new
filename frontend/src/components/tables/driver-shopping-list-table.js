@@ -1,5 +1,4 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { useCookies } from "react-cookie";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { AddListModal } from "../modals/add-list-modal";
@@ -11,16 +10,29 @@ import {
 
 export const ShoppingListTableDrivers = () => {
   const { getAccessTokenSilently, user } = useAuth0();
+  let currently = sessionStorage.getItem("currently");
   const [showAddModal, setShowAddModal] = useState(false);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [idUpdateItem, setidUpdateItem] = useState();
   const [itemToUpdate, setitemToUpdate] = useState();
   const [message, setMessage] = useState([]);
-  const [cookies, setCookie] = useCookies(["currently"]);
 
   const [selectValue, setSelectValue] = useState(
-    `${cookies.currently}` || `${user.name}`
+    `${currently}` || `${user.name}`
   );
+  const currentlyGet = (data) => {
+    if (data) {
+      if (currently == null) {
+        // Initialize page views count
+        currently = data[0].userName;
+      } else {
+        // Increment count
+        currently = selectValue;
+      }
+      // Update session storage
+      sessionStorage.setItem("currently", currently);
+    }
+  };
   const getMessage = async () => {
     const accessToken = await getAccessTokenSilently();
     const { data, error } = await getShoppingListHistory(
@@ -30,8 +42,8 @@ export const ShoppingListTableDrivers = () => {
     if (data) {
       const length = data.length - 1;
       setMessage(data[length].products);
-      setSelectValue(data[0].userName);
-      setCookie("currently", `${data[0].userName}`, []);
+      // setSelectValue(data[0].userName);
+      currentlyGet(data);
     }
 
     if (error) {
@@ -49,8 +61,8 @@ export const ShoppingListTableDrivers = () => {
       }
       if (data) {
         setMessage(data);
-        setSelectValue(data[0].userName);
-        setCookie("currently", `${data[0].userName}`, []);
+        // setSelectValue(data[0].userName);
+        currentlyGet(data);
       }
       if (error) {
         setMessage(error);
@@ -148,13 +160,16 @@ export const ShoppingListTableDrivers = () => {
         />
       )}
       <div className="table-body">
-        <label htmlFor="departament">Wybierz placówkę:</label>
+        <label className="table-select-label" htmlFor="departament">
+          Wybierz placówkę:
+        </label>
 
         <select
           name="departament"
           id="departament"
           value={selectValue}
           onChange={handleChange}
+          className="button table-select"
         >
           <option value="izbicka">izbicka</option>
           <option value="kamila@test.pl">stradomska</option>
@@ -175,7 +190,12 @@ export const ShoppingListTableDrivers = () => {
           <option value="rekrucka1">rekrucka Żłobek</option>
           <option value="rekrucka2">rekrucka Przedszkole</option>
         </select>
-        <button onClick={handleClick}>Pobierz</button>
+        <button
+          onClick={handleClick}
+          className="button button--primary table-select-button"
+        >
+          Pobierz
+        </button>
         <table>
           <thead>
             <tr>

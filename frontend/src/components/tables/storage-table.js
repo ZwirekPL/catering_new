@@ -42,7 +42,7 @@ export const Table = () => {
     // console.log(selectValue);
     if (data) {
       setMessage(data);
-      setSelectValue(data[0].userName);
+      // setSelectValue(data[0].userName);
       currentlyGet(data);
     }
     if (error) {
@@ -64,7 +64,7 @@ export const Table = () => {
 
       if (data) {
         setMessage(data);
-        setSelectValue(data[0].userName);
+        // setSelectValue(data[0].userName);
         currentlyGet(data);
       }
 
