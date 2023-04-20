@@ -12,9 +12,7 @@ export const Table = () => {
   const { getAccessTokenSilently, user } = useAuth0();
   let currently = sessionStorage.getItem("currently");
 
-  const [selectValue, setSelectValue] = useState(
-    `${currently}` || `${user.name}`
-  );
+  const [selectValue, setSelectValue] = useState(currently || `${user.name}`);
   const [admin, setAdmin] = useState(false);
 
   const [showAddModal, setShowAddModal] = useState(false);
@@ -89,10 +87,19 @@ export const Table = () => {
 
   const handleSendInventory = () => {
     // console.log("message", message);
-    axios.post(
-      "http://localhost:6060/api/messages/inventory/send/" + selectValue,
-      { data: message, editUser: user.name, category: category }
-    );
+    if (filteredMessage !== null) {
+      axios.post(
+        "http://localhost:6060/api/messages/inventory/send/" + selectValue,
+        { data: filteredMessage, editUser: user.name, category: category }
+      );
+    }
+    if (filteredMessage === null) {
+      axios.post(
+        "http://localhost:6060/api/messages/inventory/send/" + selectValue,
+        { data: message, editUser: user.name }
+      );
+    }
+
     if (user.email === "kamila@test.pl") return null;
     else {
       window.location.reload();

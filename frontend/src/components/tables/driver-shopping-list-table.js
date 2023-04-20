@@ -15,6 +15,8 @@ export const ShoppingListTableDrivers = () => {
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [idUpdateItem, setidUpdateItem] = useState();
   const [itemToUpdate, setitemToUpdate] = useState();
+  const [category, setCategory] = useState();
+  const [filteredMessage, setFilteredMessage] = useState(null);
   const [message, setMessage] = useState([]);
 
   const [selectValue, setSelectValue] = useState(
@@ -33,21 +35,37 @@ export const ShoppingListTableDrivers = () => {
       sessionStorage.setItem("currently", currently);
     }
   };
-  const getMessage = async () => {
+  const getMessage = async (string) => {
     const accessToken = await getAccessTokenSilently();
     const { data, error } = await getShoppingListHistory(
       accessToken,
       selectValue
     );
-    if (data) {
-      const length = data.length - 1;
-      setMessage(data[length].products);
-      // setSelectValue(data[0].userName);
-      currentlyGet(data);
-    }
+    if (string) {
+      if (data) {
+        const filter = data.findLast((element) => element.category === string);
+        setMessage(filter.products);
+        console.log(filter);
+        // setSelectValue(data[0].userName);
+        currentlyGet(data);
+        setFilteredMessage(null);
+      }
 
-    if (error) {
-      setMessage(error);
+      if (error) {
+        setMessage(error);
+      }
+    } else {
+      if (data) {
+        const length = data.length - 1;
+        setMessage(data[length].products);
+        // setSelectValue(data[0].userName);
+        currentlyGet(data);
+        setFilteredMessage(null);
+      }
+
+      if (error) {
+        setMessage(error);
+      }
     }
   };
   useEffect(() => {
@@ -95,8 +113,18 @@ export const ShoppingListTableDrivers = () => {
     setSelectValue(event.target.value);
     // console.log(selectValue);
   };
-  const handleClick = () => {
+  const handleGetOtherShoppingList = () => {
+    setCategory(null);
     getMessage();
+  };
+  const handleCategory = (string) => {
+    getMessage(string);
+    const afterFilter = message.filter(
+      (element) => element.category === string
+    );
+    // console.log(afterFilter);
+    setFilteredMessage(afterFilter);
+    setCategory(string);
   };
 
   const renderInventory = (message, index) => {
@@ -135,7 +163,7 @@ export const ShoppingListTableDrivers = () => {
     console.log("message", message);
     axios.post(
       "http://localhost:6060/api/messages/shopping/send/" + selectValue,
-      { data: message, editUser: user.name }
+      { data: message, editUser: user.name, category: category }
     );
     if (user.email === "kamila@test.pl") return null;
     else {
@@ -148,6 +176,7 @@ export const ShoppingListTableDrivers = () => {
         <AddListModal
           setShowAddModal={setShowAddModal}
           setMessage={setMessage}
+          category={category}
         />
       )}
       {showUpdateModal && (
@@ -191,56 +220,81 @@ export const ShoppingListTableDrivers = () => {
           <option value="rekrucka2">rekrucka Przedszkole</option>
         </select>
         <button
-          onClick={handleClick}
+          onClick={handleGetOtherShoppingList}
           className="button button--primary table-select-button"
         >
           Pobierz
         </button>
-        <table>
-          <thead>
-            <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th>
-                <button
-                  className="button button--primary width-190px"
-                  onClick={handleshowAddModal}
-                >
-                  Dodaj nowy produkt
-                </button>
-              </th>
-            </tr>
-            <tr>
-              <th>Nazwa</th>
-              <th>Pojemność</th>
-              <th>Opakowanie zbiorcze</th>
-              <th>Ilość na stanie</th>
-              <th>Jednostka</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>{message.map(renderInventory)}</tbody>
-          <tfoot>
-            <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th>
-                <button
-                  className="button button--secondary"
-                  onClick={handleSendShoppingList}
-                >
-                  Potwierdź listę zakupową
-                </button>
-              </th>
-            </tr>
-          </tfoot>
-        </table>
+        <div className="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  <button
+                    onClick={() => handleCategory("groceries")}
+                    className={`button button--primary width-190px ${
+                      category === "groceries" && category
+                    }`}
+                  >
+                    Art.spożywcze
+                  </button>
+                </th>
+                <th>
+                  <button
+                    onClick={() => handleCategory("chemical")}
+                    className={`button button--third width-190px ${
+                      category === "chemical" && category
+                    }`}
+                  >
+                    Art.Chemiczne
+                  </button>
+                </th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>
+                  <button
+                    className="button button--primary width-190px"
+                    onClick={handleshowAddModal}
+                  >
+                    Dodaj nowy produkt
+                  </button>
+                </th>
+              </tr>
+              <tr>
+                <th>Nazwa</th>
+                <th>Pojemność</th>
+                <th>Opakowanie zbiorcze</th>
+                <th>Ilość na stanie</th>
+                <th>Jednostka</th>
+                <th></th>
+              </tr>
+            </thead>
+            {filteredMessage === null && (
+              <tbody>{message.map(renderInventory)}</tbody>
+            )}
+            {filteredMessage && (
+              <tbody>{filteredMessage.map(renderInventory)}</tbody>
+            )}
+            <tfoot>
+              <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>
+                  <button
+                    className="button button--secondary"
+                    onClick={handleSendShoppingList}
+                  >
+                    Potwierdź listę zakupową
+                  </button>
+                </th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
       </div>
     </>
   );

@@ -99,7 +99,11 @@ export const UpdateListProductModal = ({
       <div className="productModal">
         <div className="productModal-top">
           <p className="productModal-title">
-            Edytujesz: <strong>{itemToUpdate.item}</strong>
+            Edytujesz:{" "}
+            <strong>
+              {itemToUpdate.item.charAt(0).toUpperCase() +
+                itemToUpdate.item.slice(1)}
+            </strong>
           </p>
           <div className="productModal-xbtn" onClick={handleCloseUpdateModal}>
             &#10006;
@@ -120,7 +124,7 @@ export const UpdateListProductModal = ({
                   name="category"
                   id="groceries"
                   value="groceries"
-                  defaultChecked
+                  defaultChecked={input.category === "groceries"}
                   onChange={handleOnChange}
                 />
                 <label htmlFor="groceries" class="option option-1">
@@ -134,6 +138,7 @@ export const UpdateListProductModal = ({
                   name="category"
                   id="chemical"
                   value="chemical"
+                  defaultChecked={input.category === "chemical"}
                   onChange={handleOnChange}
                 />
                 <label htmlFor="chemical" class="option option-2">

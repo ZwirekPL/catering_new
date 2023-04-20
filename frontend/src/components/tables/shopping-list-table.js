@@ -16,9 +16,7 @@ export const ShoppingListTable = () => {
   const [filteredMessage, setFilteredMessage] = useState(null);
   const [message, setMessage] = useState([]);
 
-  const [selectValue, setSelectValue] = useState(
-    `${currently}` || `${user.name}`
-  );
+  const [selectValue, setSelectValue] = useState(currently || `${user.name}`);
   const [admin, setAdmin] = useState(false);
   const currentlyGet = (data) => {
     if (data) {
@@ -33,22 +31,37 @@ export const ShoppingListTable = () => {
       sessionStorage.setItem("currently", currently);
     }
   };
-  const getMessage = async () => {
+  const getMessage = async (string) => {
     const accessToken = await getAccessTokenSilently();
     const { data, error } = await getShoppingListHistory(
       accessToken,
       selectValue
     );
-    if (data) {
-      const length = data.length - 1;
-      setMessage(data[length].products);
-      // setSelectValue(data[0].userName);
-      currentlyGet(data);
-      setFilteredMessage(null);
-    }
+    if (string) {
+      if (data) {
+        const filter = data.findLast((element) => element.category === string);
+        setMessage(filter.products);
+        console.log(filter);
+        // setSelectValue(data[0].userName);
+        currentlyGet(data);
+        setFilteredMessage(null);
+      }
 
-    if (error) {
-      setMessage(error);
+      if (error) {
+        setMessage(error);
+      }
+    } else {
+      if (data) {
+        const length = data.length - 1;
+        setMessage(data[length].products);
+        // setSelectValue(data[0].userName);
+        currentlyGet(data);
+        setFilteredMessage(null);
+      }
+
+      if (error) {
+        setMessage(error);
+      }
     }
   };
   useEffect(() => {
@@ -64,9 +77,12 @@ export const ShoppingListTable = () => {
       }
       if (data) {
         const length = data.length - 1;
+        console.log(data.length);
         setMessage(data[length].products);
-        // setSelectValue(data[0].userName);
+        setSelectValue(data[0].userName);
+        //??
         currentlyGet(data);
+        console.log("data", user.email);
       }
       if (error) {
         setMessage(error);
@@ -83,23 +99,23 @@ export const ShoppingListTable = () => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getAccessTokenSilently, user]);
-
   const handleRemoveItem = (index) => {
     // console.log("1", index);
     const idRemoveItem = message[index]._id;
     setMessage((message) =>
       message.filter((element) => element._id !== idRemoveItem)
     );
-    // console.log("12", message);
   };
   const handleChange = (event) => {
     setSelectValue(event.target.value);
     // console.log(selectValue);
   };
   const handleGetOtherShoppingList = () => {
+    setCategory(null);
     getMessage();
   };
   const handleCategory = (string) => {
+    getMessage(string);
     const afterFilter = message.filter(
       (element) => element.category === string
     );
@@ -141,7 +157,6 @@ export const ShoppingListTable = () => {
   };
 
   const handleSendShoppingList = () => {
-    // console.log("message", message);
     axios.post(
       "http://localhost:6060/api/messages/shopping/send/" + selectValue,
       { data: message, editUser: user.name, category: category }
@@ -157,6 +172,7 @@ export const ShoppingListTable = () => {
         <AddListModal
           setShowAddModal={setShowAddModal}
           setMessage={setMessage}
+          category={category}
         />
       )}
       {showUpdateModal && (
@@ -174,7 +190,6 @@ export const ShoppingListTable = () => {
             <label className="table-select-label" htmlFor="departament">
               Wybierz placówkę:
             </label>
-
             <select
               name="departament"
               id="departament"

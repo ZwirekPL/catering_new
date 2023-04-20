@@ -108,7 +108,6 @@ export const AddListModal = ({ setShowAddModal, setMessage }) => {
                   name="category"
                   id="groceries"
                   value="groceries"
-                  defaultChecked
                   onChange={handleOnChange}
                 />
                 <label htmlFor="groceries" class="option option-1">

@@ -62,7 +62,7 @@ export const AddProductModal = ({ setShowAddModal, nameUser }) => {
   const handleCloseLoginModal = () => setShowAddModal(false);
   const handleClick = (event) => {
     event.preventDefault();
-    console.log(user);
+    // console.log(user);
     const newItem = {
       userName: nameUser,
       item: input.item,
