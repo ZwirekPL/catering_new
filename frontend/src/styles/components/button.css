@@ -53,6 +53,19 @@
 .button--third:hover {
   background: var(--dark-violet);
 }
+.width-190px {
+  width: 190px;
+  margin: 1%;
+}
+.groceries {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 0px 1em 0 rgb(24, 141, 236);
+}
+.chemical {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 0px 1em 0 rgb(213, 23, 238);
+}
+
 @media only screen and (max-width: 480px) {
   .button {
     /* responsive */

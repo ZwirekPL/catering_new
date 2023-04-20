@@ -13,6 +13,7 @@ export const ShoppingListTable = () => {
   const [idUpdateItem, setidUpdateItem] = useState();
   const [itemToUpdate, setitemToUpdate] = useState();
   const [category, setCategory] = useState();
+  const [filteredMessage, setFilteredMessage] = useState(null);
   const [message, setMessage] = useState([]);
 
   const [selectValue, setSelectValue] = useState(
@@ -43,6 +44,7 @@ export const ShoppingListTable = () => {
       setMessage(data[length].products);
       // setSelectValue(data[0].userName);
       currentlyGet(data);
+      setFilteredMessage(null);
     }
 
     if (error) {
@@ -102,7 +104,7 @@ export const ShoppingListTable = () => {
       (element) => element.category === string
     );
     // console.log(afterFilter);
-    setMessage(afterFilter);
+    setFilteredMessage(afterFilter);
     setCategory(string);
   };
 
@@ -214,7 +216,9 @@ export const ShoppingListTable = () => {
                 <th>
                   <button
                     onClick={() => handleCategory("groceries")}
-                    className="button button--primary width-190px"
+                    className={`button button--primary width-190px ${
+                      category === "groceries" && category
+                    }`}
                   >
                     Art.spożywcze
                   </button>
@@ -222,7 +226,9 @@ export const ShoppingListTable = () => {
                 <th>
                   <button
                     onClick={() => handleCategory("chemical")}
-                    className="button button--third width-190px"
+                    className={`button button--third width-190px ${
+                      category === "chemical" && category
+                    }`}
                   >
                     Art.Chemiczne
                   </button>
@@ -248,7 +254,12 @@ export const ShoppingListTable = () => {
                 <th></th>
               </tr>
             </thead>
-            <tbody>{message.map(renderInventory)}</tbody>
+            {filteredMessage === null && (
+              <tbody>{message.map(renderInventory)}</tbody>
+            )}
+            {filteredMessage && (
+              <tbody>{filteredMessage.map(renderInventory)}</tbody>
+            )}
             <tfoot>
               <tr>
                 <th></th>
