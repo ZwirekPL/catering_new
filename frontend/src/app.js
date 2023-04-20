@@ -22,15 +22,15 @@ export const App = () => {
       </div>
     );
   }
-  let currently = sessionStorage.getItem("currently");
-  if (!currently) {
-    logout({
-      logoutParams: {
-        returnTo: window.location.origin,
-      },
-    });
-    sessionStorage.setItem("currently", "none");
-  }
+  // let currently = sessionStorage.getItem("currently");
+  // if (!currently) {
+  //   logout({
+  //     logoutParams: {
+  //       returnTo: window.location.origin,
+  //     },
+  //   });
+  //   sessionStorage.setItem("currently", "none");
+  // }
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
@@ -62,9 +62,9 @@ export const App = () => {
 
 // status zamowienia na liscie zakupowej.
 // dodać obsługę historii zamówień i list zakupowych historię.
-// obsługa braku wyników ??
+// obsługa braku wyników ?? wyrzuca bledy w konsoli
 // srpawdzić czy wszystko działa.
-// usunąc rekordy i dodać od nowa.
+// ostylować kierowców bo cos sie rozjechało
 
 // obsługa jak nie masz jeszcze nic w bazach danych.!!
 
