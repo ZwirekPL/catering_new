@@ -24,23 +24,13 @@ const getShoppingListHistory = (userName) => {
   return dataFind;
 };
 
-// const getShoppingListItems = (itemId) => {
-//   const dataFind = ShoppingItem.findById(itemId).exec();
-//   // console.log(`messages`, dataFind);
-//   return dataFind;
-// };
-const getShoppingListItems = (itemName) => {
-  const dataFind = ShoppingItem.find({
-    item: `${itemName}`,
-  }).exec();
-  // console.log(`messages`, dataFind);
+const getShoppingListDrivers = (userName) => {
+  const dataFind = ShoppingList.find().exec();
   return dataFind;
 };
-// TUTAJ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 module.exports = {
   getInventoryHistory,
   getShoppingListHistory,
   getUserItems,
-  getShoppingListItems,
+  getShoppingListDrivers,
 };

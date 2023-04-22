@@ -67,6 +67,7 @@ export const App = () => {
 // ostylować kierowców bo cos sie rozjechało
 
 // obsługa jak nie masz jeszcze nic w bazach danych.!!
+// obsługa odebrania lub wysłania danych na serwer.
 
 // Edytowanie statusu tylko przez kierowców i kamilę.
 // Dodać obsługę kierowców.
@@ -76,4 +77,4 @@ export const App = () => {
 // sprawić tak aby wyszukiwało rekord i dodawało liczbę aby sie nie powtarzały.
 // dodaje wszystkie ale jak wyjdzie błąd wysypuje sie i nie zapisuje.
 // Przeszukiwanie tych list po malych literach aby dodać do siebie ilosci.
-// obsługa odebrania lub wysłania danych na serwer.
+//pozmieniac w driverlist aby edytowało i usuwało bezposrednio w DB.

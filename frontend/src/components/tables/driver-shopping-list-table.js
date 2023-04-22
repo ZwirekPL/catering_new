@@ -217,7 +217,7 @@ export const ShoppingListTableDrivers = () => {
           <option value="samochodowa2">Samochodowa U3</option>
           <option value="bobrowiecka">bobrowiecka</option>
           <option value="rekrucka1">rekrucka Żłobek</option>
-          <option value="rekrucka2">rekrucka Przedszkole</option>
+          <option value="kierowca1@test.pl">rekrucka Przedszkole</option>
         </select>
         <button
           onClick={handleGetOtherShoppingList}

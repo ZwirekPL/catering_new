@@ -124,7 +124,6 @@ export const UpdateListProductModal = ({
                   name="category"
                   id="groceries"
                   value="groceries"
-                  defaultChecked={input.category === "groceries"}
                   onChange={handleOnChange}
                 />
                 <label htmlFor="groceries" class="option option-1">
@@ -138,7 +137,6 @@ export const UpdateListProductModal = ({
                   name="category"
                   id="chemical"
                   value="chemical"
-                  defaultChecked={input.category === "chemical"}
                   onChange={handleOnChange}
                 />
                 <label htmlFor="chemical" class="option option-2">

@@ -7,7 +7,7 @@ const {
   getUserItems,
   getInventoryHistory,
   getShoppingListHistory,
-  getShoppingListItems,
+  getShoppingListDrivers,
 } = require("./messages.service");
 const { validateAccessToken } = require("../middleware/auth0.middleware.js");
 
@@ -78,7 +78,7 @@ messagesRouter
 
 messagesRouter
   .route("/shopping/send/:userName", validateAccessToken)
-  .post((req, res) => {
+  .post(async (req, res) => {
     const userName = req.params.userName;
     const products = req.body.data;
     const productsLength = products.length - 1;
@@ -90,23 +90,108 @@ messagesRouter
       editBy,
       category,
     });
-    // const newShoppingItem = ShoppingItem.insertMany(products)
+    const updateDriverList = async (products) => {
+      const currentList = await ShoppingItem.find({});
+      const result = Object.values(
+        [...currentList, ...products].reduce(
+          (
+            acc,
+            {
+              userName,
+              item,
+              capacity,
+              bulkQuantity,
+              quantityNow,
+              unit,
+              editBy,
+              category,
+            }
+          ) => {
+            acc[item] = {
+              userName,
+              item,
+              capacity,
+              bulkQuantity,
+              quantityNow:
+                (acc[item] ? acc[item].quantityNow : 0) + quantityNow,
+              unit,
+              editBy,
+              category,
+            };
+            return acc;
+          },
+          {}
+        )
+      );
+      const updateDriverItem = async (props) => {
+        const userName = props.userName;
+        const item = props.item;
+        const capacity = props.capacity;
+        const bulkQuantity = props.bulkQuantity;
+        const quantityNow = props.quantityNow;
+        const unit = props.unit;
+        const editBy = props.editBy;
+        const category = props.category;
+        // chyba dodaje stringi
+
+        await ShoppingItem.findOneAndUpdate(
+          { item: item },
+          {
+            userName,
+            item,
+            capacity,
+            bulkQuantity,
+            quantityNow,
+            unit,
+            editBy,
+            category,
+          },
+          {
+            new: true,
+            upsert: true, // Make this update into an upsert
+          }
+        );
+
+        // const newList = new ShoppingItem({
+        //   userName,
+        //   item,
+        //   capacity,
+        //   bulkQuantity,
+        //   quantityNow,
+        //   unit,
+        //   editBy,
+        //   category,
+        // });
+        // newList.save();
+      };
+      result.map((props) => {
+        updateDriverItem(props);
+      });
+
+      // console.log(result);
+      // const itemsToUpdate = currentList.filter((elem) => {
+      //   return products.some((ele) => {
+      //     return ele.item === elem.item;
+      //   });
+      // });
+      // const updatedItems =
+      // console.log(itemsToUpdate);
+    };
+
+    // const newShoppingItem = ShoppingItem.insertMany(products, {
+    //   ordered: false,
+    // })
     //   .then(function () {
     //     console.log("Successfully saved many items to DB");
     //   })
-    //   .catch(function (err) {
-    //     console.log(err);
+    //   .catch(function (err, docs) {
+    //     const errorIndex = err.writeErrors.map((error) => error.index);
+    //     console.log(errorIndex);
     //   });
-
-    const items = products.map((product) => {
-      getShoppingListItems(product.item).then((result) => {
-        console.log("1", result);
-        return result;
-      });
-    });
-
-    newInventory.save();
+    updateDriverList(products);
+    await newInventory.save();
   });
+
 messagesRouter
   .route("/delete/:idRemoveItem", validateAccessToken)
   .delete((req, res) => {
@@ -130,12 +215,23 @@ messagesRouter
   .route("/shopping/get/:userName", validateAccessToken)
   .get((req, res) => {
     const userName = req.params.userName;
-    // console.log(userName);
-    const message = getShoppingListHistory(userName).then((data) => {
-      // console.log(data);
-      // console.log(data[0].products);
-      res.status(200).json(data);
-    });
+    if (
+      userName === "kierowca1@test.pl" ||
+      userName === "kierowca2@test.pl" ||
+      userName === "kierowca3@test.pl"
+    ) {
+      const message = getShoppingListDrivers(userName).then((data) => {
+        res.status(200).json(data);
+
+        // console.log(data);
+      });
+    } else {
+      const message = getShoppingListHistory(userName).then((data) => {
+        // console.log(data);
+        // console.log(data[0].products);
+        res.status(200).json(data);
+      });
+    }
   });
 
 messagesRouter.get("/protected/:userName", validateAccessToken, (req, res) => {

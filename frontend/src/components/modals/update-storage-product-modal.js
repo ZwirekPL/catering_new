@@ -130,7 +130,6 @@ export const UpdateProductModal = ({
                   name="category"
                   id="groceries"
                   value="groceries"
-                  defaultChecked
                   onChange={handleOnChange}
                 />
                 <label htmlFor="groceries" class="option option-1">
