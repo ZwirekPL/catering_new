@@ -10,7 +10,6 @@ import {
 
 export const ShoppingListTableDrivers = () => {
   const { getAccessTokenSilently, user } = useAuth0();
-  let currently = sessionStorage.getItem("currently");
   const [showAddModal, setShowAddModal] = useState(false);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [idUpdateItem, setidUpdateItem] = useState();
@@ -19,85 +18,76 @@ export const ShoppingListTableDrivers = () => {
   const [filteredMessage, setFilteredMessage] = useState(null);
   const [message, setMessage] = useState([]);
 
-  const [selectValue, setSelectValue] = useState(
-    `${currently}` || `${user.name}`
-  );
-  const currentlyGet = (data) => {
-    if (data) {
-      if (currently == null) {
-        // Initialize page views count
-        currently = data[0].userName;
-      } else {
-        // Increment count
-        currently = selectValue;
-      }
-      // Update session storage
-      sessionStorage.setItem("currently", currently);
-    }
-  };
+  const [selectValue, setSelectValue] = useState(`${user.name}`);
+
   const getMessage = async (string) => {
     const accessToken = await getAccessTokenSilently();
     const { data, error } = await getShoppingListHistory(
       accessToken,
       selectValue
     );
-    if (string) {
-      if (data) {
-        const filter = data.findLast((element) => element.category === string);
-        setMessage(filter.products);
-        console.log(filter);
-        // setSelectValue(data[0].userName);
-        currentlyGet(data);
-        setFilteredMessage(null);
-      }
+    if (
+      selectValue === "kierowca1@test.pl" ||
+      selectValue === "kierowca2@test.pl" ||
+      selectValue === "kierowca3@test.pl"
+    ) {
+      if (string) {
+        if (data) {
+          const filter = data.filter((element) => element.category === string);
+          setMessage(filter);
+          console.log(filter);
+          // setSelectValue(data[0].userName);
+          setFilteredMessage(null);
+        }
 
-      if (error) {
-        setMessage(error);
+        if (error) {
+          setMessage(error);
+        }
+      } else {
+        if (data) {
+          setMessage(data);
+          console.log(data);
+          // setSelectValue(data[0].userName);
+          setFilteredMessage(null);
+        }
+
+        if (error) {
+          setMessage(error);
+        }
       }
     } else {
-      if (data) {
-        const length = data.length - 1;
-        setMessage(data[length].products);
-        // setSelectValue(data[0].userName);
-        currentlyGet(data);
-        setFilteredMessage(null);
-      }
+      if (string) {
+        if (data) {
+          const filter = data.findLast(
+            (element) => element.category === string
+          );
+          setMessage(filter.products);
+          console.log(filter);
+          // setSelectValue(data[0].userName);
+          setFilteredMessage(null);
+        }
 
-      if (error) {
-        setMessage(error);
+        if (error) {
+          setMessage(error);
+        }
+      } else {
+        if (data) {
+          const length = data.length - 1;
+          setMessage(data[length].products);
+          // console.log(data);
+          // setSelectValue(data[0].userName);
+          setFilteredMessage(null);
+        }
+
+        if (error) {
+          setMessage(error);
+        }
       }
     }
   };
+
   useEffect(() => {
-    let isMounted = true;
-    const getUserItem = async () => {
-      const accessToken = await getAccessTokenSilently();
-      const { data, error } = await getUserItems(accessToken, user);
-
-      if (!isMounted) {
-        return;
-      }
-      if (data) {
-        setMessage(data);
-        // setSelectValue(data[0].userName);
-        currentlyGet(data);
-      }
-      if (error) {
-        setMessage(error);
-      }
-      if (
-        user.email === "kierowca1@test.pl" ||
-        user.email === "kierowca2@test.pl" ||
-        user.email === "kierowca3@test.pl"
-      ) {
-        getMessage();
-      }
-    };
-    getUserItem();
-
-    return () => {
-      isMounted = false;
-    };
+    getMessage();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getAccessTokenSilently, user]);
 
@@ -165,10 +155,8 @@ export const ShoppingListTableDrivers = () => {
       "http://localhost:6060/api/messages/shopping/send/" + selectValue,
       { data: message, editUser: user.name, category: category }
     );
-    if (user.email === "kamila@test.pl") return null;
-    else {
-      window.location.reload();
-    }
+
+    window.location.reload();
   };
   return (
     <>
@@ -217,7 +205,7 @@ export const ShoppingListTableDrivers = () => {
           <option value="samochodowa2">Samochodowa U3</option>
           <option value="bobrowiecka">bobrowiecka</option>
           <option value="rekrucka1">rekrucka Żłobek</option>
-          <option value="kierowca1@test.pl">rekrucka Przedszkole</option>
+          <option value="rek2">rekrucka Przedszkole</option>
         </select>
         <button
           onClick={handleGetOtherShoppingList}

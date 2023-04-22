@@ -25,7 +25,7 @@ const getShoppingListHistory = (userName) => {
 };
 
 const getShoppingListDrivers = (userName) => {
-  const dataFind = ShoppingList.find().exec();
+  const dataFind = ShoppingItem.find().exec();
   return dataFind;
 };
 module.exports = {

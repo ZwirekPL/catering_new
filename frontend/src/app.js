@@ -77,4 +77,4 @@ export const App = () => {
 // sprawić tak aby wyszukiwało rekord i dodawało liczbę aby sie nie powtarzały.
 // dodaje wszystkie ale jak wyjdzie błąd wysypuje sie i nie zapisuje.
 // Przeszukiwanie tych list po malych literach aby dodać do siebie ilosci.
-//pozmieniac w driverlist aby edytowało i usuwało bezposrednio w DB.
+//pozmieniac w driverlist aby edytowało i usuwało bezposrednio w DB. - if do handle click
