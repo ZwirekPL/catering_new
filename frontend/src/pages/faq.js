@@ -23,7 +23,6 @@ export const FAQ = () => {
     { question: "pytanie 5", answer: "odpowiedz 5 " },
     { question: "pytanie 6", answer: "odpowiedz 6 " },
   ];
-  //   const [open, setOpen] = useState(false);
 
   return (
     <PageLayout>

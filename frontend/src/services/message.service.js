@@ -4,7 +4,6 @@ const apiServerUrl = process.env.REACT_APP_API_SERVER_URL;
 
 export const getUserItems = async (accessToken, user) => {
   const userName = user.name;
-  // console.log(user.name);
   const config = {
     url: `${apiServerUrl}/api/messages/protected/` + userName,
     method: "GET",
@@ -22,7 +21,6 @@ export const getUserItems = async (accessToken, user) => {
 
 export const getInventoryHistory = async (accessToken, user) => {
   const userName = user;
-  console.log(user);
   const config = {
     url: `${apiServerUrl}/api/messages/inventory/get/` + userName,
     method: "GET",
@@ -39,7 +37,6 @@ export const getInventoryHistory = async (accessToken, user) => {
 };
 
 export const getShoppingListHistory = async (accessToken, user) => {
-  // console.log(user.name);
   const config = {
     url: `${apiServerUrl}/api/messages/shopping/get/` + user,
     method: "GET",
@@ -88,7 +85,6 @@ export const getAdminResource = async (accessToken) => {
 
 export const getOtherUserItems = async (accessToken, otherUser) => {
   const userName = otherUser;
-  // console.log(user.name);
   const config = {
     url: `${apiServerUrl}/api/messages/protected/` + userName,
     method: "GET",

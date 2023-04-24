@@ -8,8 +8,6 @@ export const HistoryList = ({ inventory }) => {
     if (inventory.category === "chemical")
       return <p className="chemical-flash">Art.chemiczne</p>;
   };
-
-  // console.log(inventory);
   const renderInventory = (productsArr, index) => {
     return (
       <tr key={index}>

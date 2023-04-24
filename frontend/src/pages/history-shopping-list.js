@@ -25,7 +25,6 @@ export const HistoryShoppingList = () => {
         accessToken,
         user.name
       );
-      // console.log(data);
       if (!isMounted) {
         return;
       }
@@ -44,11 +43,9 @@ export const HistoryShoppingList = () => {
       isMounted = false;
     };
   }, [getAccessTokenSilently, user]);
-  //   console.log(historyInventory);
 
   const handleChange = (event) => {
     setSelectValue(event.target.value);
-    // console.log(selectValue);
   };
   const handleClick = () => {
     const getHistoryOtherShoppingList = async () => {
@@ -57,17 +54,13 @@ export const HistoryShoppingList = () => {
         accessToken,
         selectValue
       );
-
       if (data) {
         setHistoryShoppingList(data);
-        // console.log(selectValue);
       }
-
       if (error) {
         setHistoryShoppingList(error);
       }
     };
-
     getHistoryOtherShoppingList();
   };
 

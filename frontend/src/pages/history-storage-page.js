@@ -23,7 +23,6 @@ export const HistoryStoragePage = () => {
     const getHistory = async () => {
       const accessToken = await getAccessTokenSilently();
       const { data, error } = await getInventoryHistory(accessToken, user.name);
-      // console.log(data);
       if (!isMounted) {
         return;
       }
@@ -44,7 +43,6 @@ export const HistoryStoragePage = () => {
   }, [getAccessTokenSilently, user]);
   const handleChange = (event) => {
     setSelectValue(event.target.value);
-    // console.log(selectValue);
   };
   const handleClick = () => {
     const getHistoryOther = async () => {
@@ -56,16 +54,12 @@ export const HistoryStoragePage = () => {
 
       if (data) {
         setHistoryInventory(data);
-        // console.log(selectValue);
       }
-
       if (error) {
         setHistoryInventory(error);
       }
     };
-
     getHistoryOther();
-    // console.log(historyInventory);
   };
 
   console.log(historyInventory);

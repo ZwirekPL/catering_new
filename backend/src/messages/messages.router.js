@@ -33,6 +33,7 @@ messagesRouter.route("/create", validateAccessToken).post((req, res) => {
     category,
   });
   newItem.save();
+  res.status(200);
 });
 
 messagesRouter
@@ -74,6 +75,7 @@ messagesRouter
       category,
     });
     newInventory.save();
+    res.status(200);
   });
 
 messagesRouter
@@ -91,7 +93,6 @@ messagesRouter
     });
     const updateDriverList = async (products) => {
       const currentList = await ShoppingItem.find({});
-      // console.log(products);
       const result = Object.values(
         [...currentList, ...products].reduce(
           (
@@ -120,11 +121,9 @@ messagesRouter
               category,
             };
             return acc;
-          },
-          {}
+          }
         )
       );
-      // console.log(result);
       const updateDriverItem = async (props) => {
         const userName = props.userName;
         const item = props.item;
@@ -134,8 +133,6 @@ messagesRouter
         const unit = props.unit;
         const editBy = props.editBy;
         const category = props.category;
-        // chyba dodaje stringi
-
         await ShoppingItem.findOneAndUpdate(
           { item: item },
           {
@@ -150,48 +147,17 @@ messagesRouter
           },
           {
             new: true,
-            upsert: true, // Make this update into an upsert
+            upsert: true,
           }
         );
-
-        // const newList = new ShoppingItem({
-        //   userName,
-        //   item,
-        //   capacity,
-        //   bulkQuantity,
-        //   quantityNow,
-        //   unit,
-        //   editBy,
-        //   category,
-        // });
-        // newList.save();
       };
       result.map((props) => {
         updateDriverItem(props);
       });
-
-      // console.log(result);
-      // const itemsToUpdate = currentList.filter((elem) => {
-      //   return products.some((ele) => {
-      //     return ele.item === elem.item;
-      //   });
-      // });
-      // const updatedItems =
-      // console.log(itemsToUpdate);
     };
-
-    // const newShoppingItem = ShoppingItem.insertMany(products, {
-    //   ordered: false,
-    // })
-    //   .then(function () {
-    //     console.log("Successfully saved many items to DB");
-    //   })
-    //   .catch(function (err, docs) {
-    //     const errorIndex = err.writeErrors.map((error) => error.index);
-    //     console.log(errorIndex);
-    //   });
     updateDriverList(products);
     await newInventory.save();
+    res.status(200);
   });
 
 messagesRouter
@@ -224,6 +190,7 @@ messagesRouter
     const idRemoveItem = req.params.idRemoveItem;
     ShoppingItem.findById(idRemoveItem).then((doc) => {
       doc.deleteOne();
+      res.status(200);
     });
   });
 
@@ -233,6 +200,7 @@ messagesRouter
     const idRemoveItem = req.params.idRemoveItem;
     Item.findById(idRemoveItem).then((doc) => {
       doc.deleteOne();
+      res.status(200);
     });
   });
 
@@ -257,13 +225,9 @@ messagesRouter
     ) {
       const message = getShoppingListDrivers(userName).then((data) => {
         res.status(200).json(data);
-
-        // console.log(data);
       });
     } else {
       const message = getShoppingListHistory(userName).then((data) => {
-        // console.log(data);
-        // console.log(data[0].products);
         res.status(200).json(data);
       });
     }
@@ -271,7 +235,6 @@ messagesRouter
 
 messagesRouter.get("/protected/:userName", validateAccessToken, (req, res) => {
   const userName = req.params.userName;
-  // console.log(userName);
   const message = getUserItems(userName).then((data) => {
     res.status(200).json(data);
   });

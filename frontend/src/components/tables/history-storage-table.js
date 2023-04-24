@@ -8,9 +8,7 @@ export const HistoryTable = ({ inventory }) => {
     if (inventory.category === "chemical")
       return <p className="chemical-flash">Art.chemiczne</p>;
   };
-  //   console.log(createDate);
   const renderInventory = (productsArr, index) => {
-    // console.log(productsArr);
     return (
       <tr key={index}>
         <td>{productsArr.item}</td>

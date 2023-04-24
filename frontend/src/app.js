@@ -22,15 +22,6 @@ export const App = () => {
       </div>
     );
   }
-  // let currently = sessionStorage.getItem("currently");
-  // if (!currently) {
-  //   logout({
-  //     logoutParams: {
-  //       returnTo: window.location.origin,
-  //     },
-  //   });
-  //   sessionStorage.setItem("currently", "none");
-  // }
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
@@ -58,7 +49,6 @@ export const App = () => {
 };
 
 // Media Queries??
-// obsługa odebrania lub wysłania danych na serwer.
 // Zacząć czyścić.
 
 // Sprawdzenie czy sprawdza autoryzację podczas dodawnaia do bazy danych.

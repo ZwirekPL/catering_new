@@ -40,10 +40,8 @@ export const Table = () => {
   const getMessage = async () => {
     const accessToken = await getAccessTokenSilently();
     const { data, error } = await getOtherUserItems(accessToken, selectValue);
-    // console.log(selectValue);
     if (data) {
       setMessage(data);
-      // setSelectValue(data[0].userName);
       currentlyGet(data);
       setFilteredMessage(null);
     }
@@ -58,15 +56,11 @@ export const Table = () => {
     const getUserInv = async () => {
       const accessToken = await getAccessTokenSilently();
       const { data, error } = await getUserItems(accessToken, user);
-      // console.log(user);
-
       if (!isMounted) {
         return;
       }
-
       if (data) {
         setMessage(data);
-        // setSelectValue(data[0].userName);
         currentlyGet(data);
       }
 
@@ -88,7 +82,6 @@ export const Table = () => {
   }, [getAccessTokenSilently, user]);
 
   const handleSendInventory = () => {
-    // console.log("message", message);
     if (category) {
       if (filteredMessage !== null) {
         axios.post(
@@ -113,31 +106,21 @@ export const Table = () => {
   };
   const handleChange = (event) => {
     setSelectValue(event.target.value);
-    // console.log(selectValue);
   };
   const handleGetOtherItems = () => {
     getMessage();
-    // console.log(message);
   };
 
   const handleRemoveItem = (index) => {
-    // console.log(index);
     const idRemoveItem = message[index]._id;
-    // console.log(idRemoveItem);
     axios.delete("http://localhost:6060/api/messages/delete/" + idRemoveItem);
     window.location.reload();
   };
-  // const handleUpdateItem = (index) => {
-  //   const idUpdateItem = message[index]._id;
-  //   axios.post("http://localhost:6060/api/messages/delete/" + idUpdateItem);
-  //   window.location.reload();
-  // };
 
   const handleCategory = (string) => {
     const afterFilter = message.filter(
       (element) => element.category === string
     );
-    // console.log(afterFilter);
     setFilteredMessage(afterFilter);
     setCategory(string);
   };
@@ -163,7 +146,6 @@ export const Table = () => {
       </tr>
     );
   };
-  // console.log(message);
   const handleshowAddModal = () => setShowAddModal(true);
   const handleShowUpdateModal = (index) => {
     if (filteredMessage) {
@@ -171,14 +153,12 @@ export const Table = () => {
       const itemToUpdate = filteredMessage[index];
       setidUpdateItem(idRemoveItem);
       setitemToUpdate(itemToUpdate);
-      // console.log(idUpdateItem);
       setShowUpdateModal(true);
     } else {
       const idRemoveItem = message[index]._id;
       const itemToUpdate = message[index];
       setidUpdateItem(idRemoveItem);
       setitemToUpdate(itemToUpdate);
-      // console.log(idUpdateItem);
       setShowUpdateModal(true);
     }
   };

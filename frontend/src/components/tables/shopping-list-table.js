@@ -43,8 +43,6 @@ export const ShoppingListTable = () => {
       if (data) {
         const filter = data.findLast((element) => element.category === string);
         setMessage(filter.products);
-        // console.log(filter);
-        // setSelectValue(data[0].userName);
         currentlyGet(data);
         setFilteredMessage(null);
       }
@@ -56,7 +54,6 @@ export const ShoppingListTable = () => {
       if (data) {
         const length = data.length - 1;
         setMessage(data[length].products);
-        // setSelectValue(data[0].userName);
         currentlyGet(data);
         setFilteredMessage(null);
       }
@@ -79,12 +76,9 @@ export const ShoppingListTable = () => {
       }
       if (data) {
         const length = data.length - 1;
-        // console.log(data.length);
         setMessage(data[length].products);
         setSelectValue(data[0].userName);
-        //??
         currentlyGet(data);
-        // console.log("data", user.email);
       }
       if (error) {
         setMessage(error);
@@ -102,7 +96,6 @@ export const ShoppingListTable = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getAccessTokenSilently, user]);
   const handleRemoveItem = (index) => {
-    // console.log("1", index);
     const idRemoveItem = message[index]._id;
     setMessage((message) =>
       message.filter((element) => element._id !== idRemoveItem)
@@ -110,7 +103,6 @@ export const ShoppingListTable = () => {
   };
   const handleChange = (event) => {
     setSelectValue(event.target.value);
-    // console.log(selectValue);
   };
   const handleGetOtherShoppingList = () => {
     setCategory(null);
@@ -121,7 +113,6 @@ export const ShoppingListTable = () => {
     const afterFilter = message.filter(
       (element) => element.category === string
     );
-    // console.log(afterFilter);
     setFilteredMessage(afterFilter);
     setCategory(string);
   };
@@ -147,14 +138,12 @@ export const ShoppingListTable = () => {
       </tr>
     );
   };
-  //   console.log(listNow);
   const handleshowAddModal = () => setShowAddModal(true);
   const handleShowUpdateModal = (index) => {
     const idRemoveItem = message[index]._id;
     const itemToUpdate = message[index];
     setidUpdateItem(idRemoveItem);
     setitemToUpdate(itemToUpdate);
-    // console.log(idUpdateItem);
     setShowUpdateModal(true);
   };
 
