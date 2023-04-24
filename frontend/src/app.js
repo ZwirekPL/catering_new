@@ -71,10 +71,6 @@ export const App = () => {
 
 // Edytowanie statusu tylko przez kierowców i kamilę.
 // Dodać obsługę kierowców.
-//zrobic główna listę zakupową.
-// Kierowcy dostęp tylko do list zakupowych głównej.
-// dodaje wszystkie elementy do listy itemów shooping ale jeśli sie powtarza id wysakuje błąd
-// sprawić tak aby wyszukiwało rekord i dodawało liczbę aby sie nie powtarzały.
-// dodaje wszystkie ale jak wyjdzie błąd wysypuje sie i nie zapisuje.
-// Przeszukiwanie tych list po malych literach aby dodać do siebie ilosci.
+
 //pozmieniac w driverlist aby edytowało i usuwało bezposrednio w DB. - if do handle click
+// update modal list zmienia ilosci po dodaniu na stringa i dodaje num to string

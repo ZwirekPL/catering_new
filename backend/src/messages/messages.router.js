@@ -81,7 +81,6 @@ messagesRouter
   .post(async (req, res) => {
     const userName = req.params.userName;
     const products = req.body.data;
-    const productsLength = products.length - 1;
     const editBy = req.body.editUser;
     const category = req.body.category;
     const newInventory = new ShoppingList({
@@ -92,6 +91,7 @@ messagesRouter
     });
     const updateDriverList = async (products) => {
       const currentList = await ShoppingItem.find({});
+      // console.log(products);
       const result = Object.values(
         [...currentList, ...products].reduce(
           (
@@ -113,7 +113,8 @@ messagesRouter
               capacity,
               bulkQuantity,
               quantityNow:
-                (acc[item] ? acc[item].quantityNow : 0) + quantityNow,
+                (acc[item] ? parseInt(acc[item].quantityNow) : 0) +
+                parseInt(quantityNow),
               unit,
               editBy,
               category,
@@ -123,6 +124,7 @@ messagesRouter
           {}
         )
       );
+      // console.log(result);
       const updateDriverItem = async (props) => {
         const userName = props.userName;
         const item = props.item;

@@ -77,12 +77,12 @@ export const ShoppingListTable = () => {
       }
       if (data) {
         const length = data.length - 1;
-        console.log(data.length);
+        // console.log(data.length);
         setMessage(data[length].products);
         setSelectValue(data[0].userName);
         //??
         currentlyGet(data);
-        console.log("data", user.email);
+        // console.log("data", user.email);
       }
       if (error) {
         setMessage(error);
