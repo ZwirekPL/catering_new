@@ -10,7 +10,7 @@
   z-index: 1;
 }
 .productModal {
-  width: clamp(300px, 60%, 840px);
+  width: clamp(350px, 60%, 840px);
   background-color: #555;
   border-radius: 0.8rem;
   display: flex;

@@ -224,7 +224,7 @@ export const Table = () => {
           <table>
             <thead>
               <tr>
-                <th>
+                <th colSpan={3}>
                   <button
                     onClick={() => handleCategory("groceries")}
                     className={`button button--primary width-190px ${
@@ -234,7 +234,7 @@ export const Table = () => {
                     Art.spożywcze
                   </button>
                 </th>
-                <th>
+                <th colSpan={2}>
                   <button
                     onClick={() => handleCategory("chemical")}
                     className={`button button--third width-190px ${
@@ -244,9 +244,6 @@ export const Table = () => {
                     Art.Chemiczne
                   </button>
                 </th>
-                <th></th>
-                <th></th>
-                <th></th>
                 <th>
                   <button
                     className="button button--primary width-190px"
