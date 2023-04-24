@@ -74,6 +74,7 @@ export const UpdateProductModal = ({
       quantityNow: input.quantityNow,
       unit: input.unit,
       editBy: user.name,
+      category: input.category,
     };
     if (!nameUser) {
       return null;

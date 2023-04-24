@@ -41,7 +41,7 @@ export const ShoppingListTable = () => {
       if (data) {
         const filter = data.findLast((element) => element.category === string);
         setMessage(filter.products);
-        console.log(filter);
+        // console.log(filter);
         // setSelectValue(data[0].userName);
         currentlyGet(data);
         setFilteredMessage(null);
@@ -269,6 +269,15 @@ export const ShoppingListTable = () => {
                 <th></th>
               </tr>
             </thead>
+            {message.length === 0 && (
+              <tbody>
+                <tr>
+                  <td colspan="6">
+                    <p className="handle-error">Nie znaleziono artykułów.</p>
+                  </td>
+                </tr>
+              </tbody>
+            )}
             {filteredMessage === null && (
               <tbody>{message.map(renderInventory)}</tbody>
             )}

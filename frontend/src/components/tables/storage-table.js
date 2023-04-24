@@ -160,12 +160,21 @@ export const Table = () => {
   // console.log(message);
   const handleshowAddModal = () => setShowAddModal(true);
   const handleShowUpdateModal = (index) => {
-    const idRemoveItem = message[index]._id;
-    const itemToUpdate = message[index];
-    setidUpdateItem(idRemoveItem);
-    setitemToUpdate(itemToUpdate);
-    // console.log(idUpdateItem);
-    setShowUpdateModal(true);
+    if (filteredMessage) {
+      const idRemoveItem = filteredMessage[index]._id;
+      const itemToUpdate = filteredMessage[index];
+      setidUpdateItem(idRemoveItem);
+      setitemToUpdate(itemToUpdate);
+      // console.log(idUpdateItem);
+      setShowUpdateModal(true);
+    } else {
+      const idRemoveItem = message[index]._id;
+      const itemToUpdate = message[index];
+      setidUpdateItem(idRemoveItem);
+      setitemToUpdate(itemToUpdate);
+      // console.log(idUpdateItem);
+      setShowUpdateModal(true);
+    }
   };
   return (
     <>
@@ -269,6 +278,15 @@ export const Table = () => {
                 <th></th>
               </tr>
             </thead>
+            {message.length === 0 && (
+              <tbody>
+                <tr>
+                  <td colspan="6">
+                    <p className="handle-error">Nie znaleziono artykułów.</p>
+                  </td>
+                </tr>
+              </tbody>
+            )}
             {filteredMessage === null && (
               <tbody>{message.map(renderInventory)}</tbody>
             )}

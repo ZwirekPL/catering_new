@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export const UpdateListProductModal = ({
@@ -65,7 +66,15 @@ export const UpdateListProductModal = ({
   const handleCloseUpdateModal = () => setShowUpdateModal(false);
   const handleClick = (event) => {
     event.preventDefault();
-    console.log(user.name);
+    const updateItem = {
+      userName: nameUser,
+      item: input.item,
+      capacity: input.capacity,
+      bulkQuantity: input.bulkQuantity,
+      quantityNow: input.quantityNow,
+      unit: input.unit,
+      editBy: user.name,
+    };
     if (!nameUser) {
       return null;
     }
@@ -87,11 +96,24 @@ export const UpdateListProductModal = ({
     if (!input.category) {
       return categoryNull();
     }
-    setMessage((message) =>
-      message.filter((element) => element._id !== idUpdateItem)
-    );
-    setMessage((oldArray) => [...oldArray, input]);
-    setShowUpdateModal(false);
+    if (
+      nameUser === "kierowca1@test.pl" ||
+      nameUser === "kierowca2@test.pl" ||
+      nameUser === "kierowca3@test.pl"
+    ) {
+      axios.post(
+        "http://localhost:6060/api/messages/shopping/update/" + idUpdateItem,
+        updateItem
+      );
+      setShowUpdateModal(false);
+      window.location.reload();
+    } else {
+      setMessage((message) =>
+        message.filter((element) => element._id !== idUpdateItem)
+      );
+      setMessage((oldArray) => [...oldArray, input]);
+      setShowUpdateModal(false);
+    }
   };
 
   return (

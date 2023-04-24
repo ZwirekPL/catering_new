@@ -122,6 +122,15 @@ export const HistoryStoragePage = () => {
               </button>
             </>
           )}
+          {historyInventory.length === 0 && (
+            <tbody>
+              <tr>
+                <td className="container-handle-error" colspan="6">
+                  <p className="handle-error ">Nie znaleziono artykułów.</p>
+                </td>
+              </tr>
+            </tbody>
+          )}
           <Swiper
             navigation={true}
             slidesPerView={1}

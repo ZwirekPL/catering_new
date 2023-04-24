@@ -3,10 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { AddListModal } from "../modals/add-list-modal";
 import { UpdateListProductModal } from "../modals/update-list-product-modal";
-import {
-  getUserItems,
-  getShoppingListHistory,
-} from "../../services/message.service";
+import { getShoppingListHistory } from "../../services/message.service";
 
 export const ShoppingListTableDrivers = () => {
   const { getAccessTokenSilently, user } = useAuth0();
@@ -46,7 +43,7 @@ export const ShoppingListTableDrivers = () => {
       } else {
         if (data) {
           setMessage(data);
-          console.log(data);
+          console.log(message);
           // setSelectValue(data[0].userName);
           setFilteredMessage(null);
         }
@@ -62,7 +59,7 @@ export const ShoppingListTableDrivers = () => {
             (element) => element.category === string
           );
           setMessage(filter.products);
-          console.log(filter);
+          // console.log(filter);
           // setSelectValue(data[0].userName);
           setFilteredMessage(null);
         }
@@ -92,12 +89,22 @@ export const ShoppingListTableDrivers = () => {
   }, [getAccessTokenSilently, user]);
 
   const handleRemoveItem = (index) => {
-    // console.log("1", index);
-    const idRemoveItem = message[index]._id;
-    setMessage((message) =>
-      message.filter((element) => element._id !== idRemoveItem)
-    );
-    // console.log("12", message);
+    if (
+      selectValue === "kierowca1@test.pl" ||
+      selectValue === "kierowca2@test.pl" ||
+      selectValue === "kierowca3@test.pl"
+    ) {
+      const idRemoveItem = message[index]._id;
+      axios.delete(
+        "http://localhost:6060/api/messages/shopping/delete/" + idRemoveItem
+      );
+      window.location.reload();
+    } else {
+      const idRemoveItem = message[index]._id;
+      setMessage((message) =>
+        message.filter((element) => element._id !== idRemoveItem)
+      );
+    }
   };
   const handleChange = (event) => {
     setSelectValue(event.target.value);
@@ -105,6 +112,7 @@ export const ShoppingListTableDrivers = () => {
   };
   const handleGetOtherShoppingList = () => {
     setCategory(null);
+    setMessage([]);
     getMessage();
   };
   const handleCategory = (string) => {
@@ -258,6 +266,15 @@ export const ShoppingListTableDrivers = () => {
                 <th></th>
               </tr>
             </thead>
+            {message.length === 0 && (
+              <tbody>
+                <tr>
+                  <td colspan="6">
+                    <p className="handle-error">Nie znaleziono artykułów.</p>
+                  </td>
+                </tr>
+              </tbody>
+            )}
             {filteredMessage === null && (
               <tbody>{message.map(renderInventory)}</tbody>
             )}
@@ -272,12 +289,14 @@ export const ShoppingListTableDrivers = () => {
                 <th></th>
                 <th></th>
                 <th>
-                  <button
-                    className="button button--secondary"
-                    onClick={handleSendShoppingList}
-                  >
-                    Potwierdź listę zakupową
-                  </button>
+                  {user.email === selectValue && (
+                    <button
+                      className="button button--secondary"
+                      onClick={handleSendShoppingList}
+                    >
+                      Potwierdź listę zakupową
+                    </button>
+                  )}
                 </th>
               </tr>
             </tfoot>

@@ -56,21 +56,16 @@ export const App = () => {
     </Routes>
   );
 };
-// Sprawdzenie czy sprawdza autoryzację podczas dodawnaia do bazy danych.
-// Zacząć czyścić.
-// Media Queries??
 
-// status zamowienia na liscie zakupowej.
-// dodać obsługę historii zamówień i list zakupowych historię.
-// obsługa braku wyników ?? wyrzuca bledy w konsoli
-// srpawdzić czy wszystko działa.
 // ostylować kierowców bo cos sie rozjechało
-
-// obsługa jak nie masz jeszcze nic w bazach danych.!!
+// validowac czy wybrana jest kategoria podczas wysyłania
+// Media Queries??
 // obsługa odebrania lub wysłania danych na serwer.
+// Zacząć czyścić.
 
-// Edytowanie statusu tylko przez kierowców i kamilę.
-// Dodać obsługę kierowców.
+// Sprawdzenie czy sprawdza autoryzację podczas dodawnaia do bazy danych.
 
-//pozmieniac w driverlist aby edytowało i usuwało bezposrednio w DB. - if do handle click
-// update modal list zmienia ilosci po dodaniu na stringa i dodaje num to string
+// pierwsze dodanie i kazde nastepne moze zmienic wszystko procz nazwy.
+// dodatkowe konto kierowcow dla kamili + dodatkwoe konto dla stardomsiej
+
+//jesli admin doda cos do listy zakupowej i ja potwierdzi to widać do na ostatniej liscie zakupowej ale nie ma tego w ostatniej liscie zakupowej wysyłanej przez danego użytkownika.

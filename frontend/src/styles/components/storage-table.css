@@ -129,6 +129,16 @@ input[type="radio"] {
   border-radius: 20px;
   box-shadow: inset 0px 0px 1em 0 rgb(213, 23, 238);
 }
+.handle-error {
+  margin: 1%;
+  text-align: center;
+  font-size: 2em;
+  font-family: var(--font-mono);
+}
+.container-handle-error {
+  width: 90vw;
+  padding: 5rem;
+}
 @media only screen and (max-width: 480px) {
   .width-190px {
     /* responsive */

@@ -124,7 +124,6 @@ export const AddProductModal = ({ setShowAddModal, nameUser }) => {
                   name="category"
                   id="groceries"
                   value="groceries"
-                  defaultChecked
                   onChange={handleOnChange}
                 />
                 <label htmlFor="groceries" class="option option-1">

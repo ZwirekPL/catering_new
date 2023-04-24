@@ -195,6 +195,39 @@ messagesRouter
   });
 
 messagesRouter
+  .route("/shopping/update/:idUpdateItem", validateAccessToken)
+  .post(async (req, res) => {
+    const idUpdateItem = req.params.idUpdateItem;
+    const newUserName = req.body.userName;
+    const newItem = req.body.item;
+    const newCapacity = req.body.capacity;
+    const newBulkQuantity = req.body.bulkQuantity;
+    const newQuantityNow = req.body.quantityNow;
+    const newUnit = req.body.unit;
+    const newEditBy = req.body.editBy;
+    const newCategory = req.body.category;
+    const updateItem = await ShoppingItem.findById(idUpdateItem).exec();
+    updateItem.userName = newUserName;
+    updateItem.item = newItem;
+    updateItem.capacity = newCapacity;
+    updateItem.bulkQuantity = newBulkQuantity;
+    updateItem.quantityNow = newQuantityNow;
+    updateItem.unit = newUnit;
+    updateItem.editBy = newEditBy;
+    updateItem.category = newCategory;
+    const updatedItem = await updateItem.save();
+    res.status(200);
+  });
+messagesRouter
+  .route("/shopping/delete/:idRemoveItem", validateAccessToken)
+  .delete((req, res) => {
+    const idRemoveItem = req.params.idRemoveItem;
+    ShoppingItem.findById(idRemoveItem).then((doc) => {
+      doc.deleteOne();
+    });
+  });
+
+messagesRouter
   .route("/delete/:idRemoveItem", validateAccessToken)
   .delete((req, res) => {
     const idRemoveItem = req.params.idRemoveItem;
