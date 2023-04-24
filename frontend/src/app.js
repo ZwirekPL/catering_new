@@ -13,7 +13,7 @@ import { HistoryStoragePage } from "./pages/history-storage-page.js";
 import { FAQ } from "./pages/faq.js";
 
 export const App = () => {
-  const { isLoading, logout } = useAuth0();
+  const { isLoading } = useAuth0();
 
   if (isLoading) {
     return (
@@ -57,8 +57,6 @@ export const App = () => {
   );
 };
 
-// ostylować kierowców bo cos sie rozjechało
-// validowac czy wybrana jest kategoria podczas wysyłania
 // Media Queries??
 // obsługa odebrania lub wysłania danych na serwer.
 // Zacząć czyścić.

@@ -139,6 +139,19 @@ input[type="radio"] {
   width: 90vw;
   padding: 5rem;
 }
+.category-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  background-color: rgba(255, 50, 50, 0.6);
+  border-radius: 0.6em;
+  margin: 2% 0;
+}
+.error-paragraph {
+  font-family: var(--font-secondary);
+  margin: 1rem;
+}
 @media only screen and (max-width: 480px) {
   .width-190px {
     /* responsive */

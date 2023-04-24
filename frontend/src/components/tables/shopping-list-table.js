@@ -1,6 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { ErrorCategory } from "../layout/error-category";
 import { AddListModal } from "../modals/add-list-modal";
 import { UpdateListProductModal } from "../modals/update-list-product-modal";
 import { getShoppingListHistory } from "../../services/message.service";
@@ -15,6 +16,7 @@ export const ShoppingListTable = () => {
   const [category, setCategory] = useState();
   const [filteredMessage, setFilteredMessage] = useState(null);
   const [message, setMessage] = useState([]);
+  const [categoryErr, setCategoryErr] = useState(false);
 
   const [selectValue, setSelectValue] = useState(currently || `${user.name}`);
   const [admin, setAdmin] = useState(false);
@@ -157,13 +159,17 @@ export const ShoppingListTable = () => {
   };
 
   const handleSendShoppingList = () => {
-    axios.post(
-      "http://localhost:6060/api/messages/shopping/send/" + selectValue,
-      { data: message, editUser: user.name, category: category }
-    );
-    if (user.email === "kamila@test.pl") return null;
-    else {
-      window.location.reload();
+    if (category) {
+      axios.post(
+        "http://localhost:6060/api/messages/shopping/send/" + selectValue,
+        { data: message, editUser: user.name, category: category }
+      );
+      if (user.email === "kamila@test.pl") return null;
+      else {
+        window.location.reload();
+      }
+    } else {
+      setCategoryErr(!categoryErr);
     }
   };
   return (
@@ -224,6 +230,7 @@ export const ShoppingListTable = () => {
             </button>
           </div>
         )}
+        {categoryErr && <ErrorCategory props={"listy zakupowej"} />}
         <div className="table-responsive">
           <table>
             <thead>
