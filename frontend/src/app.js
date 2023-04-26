@@ -57,3 +57,4 @@ export const App = () => {
 // dodatkowe konto kierowcow dla kamili + dodatkwoe konto dla stardomsiej
 
 //jesli admin doda cos do listy zakupowej i ja potwierdzi to widać do na ostatniej liscie zakupowej ale nie ma tego w ostatniej liscie zakupowej wysyłanej przez danego użytkownika.
+// jak nie ma listy zakupowej w DB z danej kategorii to wrzuca z innej kategorii i przy przesłaniu dodaje się ona nad tym co widzimy.

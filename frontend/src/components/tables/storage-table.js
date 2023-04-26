@@ -266,7 +266,7 @@ export const Table = () => {
             {message.length === 0 && (
               <tbody>
                 <tr>
-                  <td colspan="6">
+                  <td colSpan="6">
                     <p className="handle-error">Nie znaleziono artykułów.</p>
                   </td>
                 </tr>

@@ -155,7 +155,7 @@ messagesRouter
         updateDriverItem(props);
       });
     };
-    updateDriverList(products);
+    await updateDriverList(products);
     await newInventory.save();
     res.status(200);
   });

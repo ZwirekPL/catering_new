@@ -43,7 +43,7 @@ export const ShoppingListTable = () => {
     );
     if (string) {
       if (data) {
-        console.log(data);
+        // console.log(data);
         const filter = data.findLast((element) => element.category === string);
         setMessage(filter.products);
         currentlyGet(data);
@@ -117,6 +117,8 @@ export const ShoppingListTable = () => {
       (element) => element.category === string
     );
     setFilteredMessage(afterFilter);
+
+    // console.log(afterFilter);
     setCategory(string);
   };
 
@@ -272,7 +274,7 @@ export const ShoppingListTable = () => {
             {message.length === 0 && (
               <tbody>
                 <tr>
-                  <td colspan="6">
+                  <td colSpan="6">
                     <p className="handle-error">Nie znaleziono artykułów.</p>
                   </td>
                 </tr>
