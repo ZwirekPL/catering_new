@@ -54,7 +54,7 @@ app.use(nocache());
 
 app.use(
   cors({
-    origin: [CLIENT_ORIGIN_URL, "https://catering-manager.vercel.app/"],
+    origin: CLIENT_ORIGIN_URL,
     methods: ["GET", "POST", "DELETE", "HEAD"],
     allowedHeaders: ["Authorization", "Content-Type"],
     maxAge: 86400,
