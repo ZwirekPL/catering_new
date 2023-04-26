@@ -3,6 +3,7 @@ import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export const AddProductModal = ({ setShowAddModal, nameUser }) => {
+  const apiServerUrl = process.env.REACT_APP_API_SERVER_URL;
   const { user } = useAuth0();
   const [errorIsVisible, setErrorIsVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -94,7 +95,7 @@ export const AddProductModal = ({ setShowAddModal, nameUser }) => {
     if (!input.category) {
       return categoryNull();
     }
-    axios.post("http://localhost:6060/api/messages/create", newItem);
+    axios.post(`${apiServerUrl}/api/messages/create`, newItem);
     setShowAddModal(false);
     window.location.reload();
   };

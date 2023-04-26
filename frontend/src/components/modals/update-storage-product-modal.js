@@ -8,6 +8,7 @@ export const UpdateProductModal = ({
   idUpdateItem,
   itemToUpdate,
 }) => {
+  const apiServerUrl = process.env.REACT_APP_API_SERVER_URL;
   const { user } = useAuth0();
 
   const [errorIsVisible, setErrorIsVisible] = useState(false);
@@ -98,7 +99,7 @@ export const UpdateProductModal = ({
       return categoryNull();
     }
     axios.post(
-      "http://localhost:6060/api/messages/update/" + idUpdateItem,
+      `${apiServerUrl}/api/messages/update/` + idUpdateItem,
       updateItem
     );
     setShowUpdateModal(false);

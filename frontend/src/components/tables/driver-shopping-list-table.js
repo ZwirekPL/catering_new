@@ -7,6 +7,7 @@ import { UpdateListProductModal } from "../modals/update-list-product-modal";
 import { getShoppingListHistory } from "../../services/message.service";
 
 export const ShoppingListTableDrivers = () => {
+  const apiServerUrl = process.env.REACT_APP_API_SERVER_URL;
   const { getAccessTokenSilently, user } = useAuth0();
   const [showAddModal, setShowAddModal] = useState(false);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
@@ -88,7 +89,7 @@ export const ShoppingListTableDrivers = () => {
     ) {
       const idRemoveItem = message[index]._id;
       axios.delete(
-        "http://localhost:6060/api/messages/shopping/delete/" + idRemoveItem
+        `${apiServerUrl}/api/messages/shopping/delete/` + idRemoveItem
       );
       window.location.reload();
     } else {
@@ -147,10 +148,11 @@ export const ShoppingListTableDrivers = () => {
 
   const handleSendShoppingList = () => {
     if (category) {
-      axios.post(
-        "http://localhost:6060/api/messages/shopping/send/" + selectValue,
-        { data: message, editUser: user.name, category: category }
-      );
+      axios.post(`${apiServerUrl}/api/messages/shopping/send/` + selectValue, {
+        data: message,
+        editUser: user.name,
+        category: category,
+      });
 
       window.location.reload();
     } else {

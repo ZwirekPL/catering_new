@@ -10,6 +10,7 @@ import {
 } from "../../services/message.service";
 
 export const Table = () => {
+  const apiServerUrl = process.env.REACT_APP_API_SERVER_URL;
   const { getAccessTokenSilently, user } = useAuth0();
   let currently = sessionStorage.getItem("currently");
 
@@ -85,13 +86,13 @@ export const Table = () => {
     if (category) {
       if (filteredMessage !== null) {
         axios.post(
-          "http://localhost:6060/api/messages/inventory/send/" + selectValue,
+          `${apiServerUrl}/api/messages/inventory/send/` + selectValue,
           { data: filteredMessage, editUser: user.name, category: category }
         );
       }
       if (filteredMessage === null) {
         axios.post(
-          "http://localhost:6060/api/messages/inventory/send/" + selectValue,
+          `${apiServerUrl}/api/messages/inventory/send/` + selectValue,
           { data: message, editUser: user.name }
         );
       }
@@ -113,7 +114,7 @@ export const Table = () => {
 
   const handleRemoveItem = (index) => {
     const idRemoveItem = message[index]._id;
-    axios.delete("http://localhost:6060/api/messages/delete/" + idRemoveItem);
+    axios.delete(`${apiServerUrl}/api/messages/delete/` + idRemoveItem);
     window.location.reload();
   };
 
@@ -277,7 +278,6 @@ export const Table = () => {
             {filteredMessage && (
               <tbody>{filteredMessage.map(renderInventory)}</tbody>
             )}
-            {/* <tbody>{message.map(renderInventory)}</tbody> */}
             <tfoot>
               <tr>
                 <th></th>

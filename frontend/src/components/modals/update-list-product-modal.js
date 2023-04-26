@@ -9,6 +9,7 @@ export const UpdateListProductModal = ({
   itemToUpdate,
   setMessage,
 }) => {
+  const apiServerUrl = process.env.REACT_APP_API_SERVER_URL;
   const { user } = useAuth0();
 
   const [errorIsVisible, setErrorIsVisible] = useState(false);
@@ -102,7 +103,7 @@ export const UpdateListProductModal = ({
       nameUser === "kierowca3@test.pl"
     ) {
       axios.post(
-        "http://localhost:6060/api/messages/shopping/update/" + idUpdateItem,
+        `${apiServerUrl}/api/messages/shopping/update/` + idUpdateItem,
         updateItem
       );
       setShowUpdateModal(false);

@@ -62,7 +62,7 @@ export const HistoryStoragePage = () => {
     getHistoryOther();
   };
 
-  console.log(historyInventory);
+  // console.log(historyInventory);
   return (
     <PageLayout>
       <div className="content-layout">

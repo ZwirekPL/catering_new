@@ -7,6 +7,8 @@ import { UpdateListProductModal } from "../modals/update-list-product-modal";
 import { getShoppingListHistory } from "../../services/message.service";
 
 export const ShoppingListTable = () => {
+  const apiServerUrl = process.env.REACT_APP_API_SERVER_URL;
+
   const { getAccessTokenSilently, user } = useAuth0();
   let currently = sessionStorage.getItem("currently");
   const [showAddModal, setShowAddModal] = useState(false);
@@ -41,6 +43,7 @@ export const ShoppingListTable = () => {
     );
     if (string) {
       if (data) {
+        console.log(data);
         const filter = data.findLast((element) => element.category === string);
         setMessage(filter.products);
         currentlyGet(data);
@@ -149,10 +152,11 @@ export const ShoppingListTable = () => {
 
   const handleSendShoppingList = () => {
     if (category) {
-      axios.post(
-        "http://localhost:6060/api/messages/shopping/send/" + selectValue,
-        { data: message, editUser: user.name, category: category }
-      );
+      axios.post(`${apiServerUrl}/api/messages/shopping/send/` + selectValue, {
+        data: message,
+        editUser: user.name,
+        category: category,
+      });
       if (user.email === "kamila@test.pl") return null;
       else {
         window.location.reload();
