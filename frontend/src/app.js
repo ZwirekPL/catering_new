@@ -50,8 +50,12 @@ export const App = () => {
 
 // Media Queries??
 // Zacząć czyścić.
-
+// sprawdzić czy da sie przewijać faq
 // Sprawdzenie czy sprawdza autoryzację podczas dodawnaia do bazy danych.
+//zmienić wszystkie px na rem
+// zmienić nazwy klas na bem
+// przejrzeć kod.
+// sprawdzić css pod kontem nieużywanego kodu.
 
 // pierwsze dodanie i kazde nastepne moze zmienic wszystko procz nazwy.
 // dodatkowe konto kierowcow dla kamili + dodatkwoe konto dla stardomsiej

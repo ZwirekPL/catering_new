@@ -147,7 +147,13 @@ export const Table = () => {
       </tr>
     );
   };
-  const handleshowAddModal = () => setShowAddModal(true);
+  const handleshowAddModal = () => {
+    if (category) {
+      setShowAddModal(true);
+    } else {
+      setCategoryErr(!categoryErr);
+    }
+  };
   const handleShowUpdateModal = (index) => {
     if (filteredMessage) {
       const idRemoveItem = filteredMessage[index]._id;

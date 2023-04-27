@@ -273,6 +273,15 @@ select {
   .table-select-label {
     font-size: 0.8rem;
   }
+  .history {
+    padding: 0 1rem;
+  }
+  .category-error {
+    width: 95%;
+  }
+  .error-paragraph {
+    font-size: 1rem;
+  }
 }
 @media only screen and (min-width: 300px) and (max-width: 355px) {
   table {
@@ -300,6 +309,15 @@ select {
   }
   .table-select-label {
     font-size: 0.9rem;
+  }
+  .history {
+    padding: 0 1rem;
+  }
+  .category-error {
+    width: 95%;
+  }
+  .error-paragraph {
+    font-size: 1.2rem;
   }
 }
 @media only screen and (min-width: 355px) and (max-width: 420px) {
@@ -330,6 +348,15 @@ select {
   .table-select-label {
     font-size: 1rem;
   }
+  .history {
+    padding: 0 1rem;
+  }
+  .category-error {
+    width: 95%;
+  }
+  .error-paragraph {
+    font-size: 1.5rem;
+  }
 }
 @media only screen and (min-width: 420px) and (max-width: 480px) {
   .table-header {
@@ -349,10 +376,23 @@ select {
   .table-select-label {
     font-size: 1rem;
   }
+  .history {
+    padding: 0 1rem;
+  }
+  .category-error {
+    width: 95%;
+  }
+  .error-paragraph {
+    font-size: 2rem;
+  }
 }
 @media only screen and (min-width: 481px) and (max-width: 640px) {
   .table-header {
     font-size: 1.2rem;
+  }
+  td,
+  th {
+    padding: 3px;
   }
   .option {
     padding: 0;
@@ -364,14 +404,30 @@ select {
   .table-select-label {
     font-size: 1.2rem;
   }
+  .history {
+    padding: 0 1rem;
+  }
+  .category-error {
+    width: 95%;
+  }
+  .error-paragraph {
+    font-size: 2rem;
+  }
 }
 @media only screen and (min-width: 641px) and (max-width: 749px) {
+  td,
+  th {
+    padding: 3px;
+  }
   .option {
     padding: 0;
     margin: 0.625rem;
   }
   .option span {
     font-size: 0.9rem;
+  }
+  .history {
+    padding: 0 1rem;
   }
 }
 @media only screen and (min-width: 750px) {

@@ -143,7 +143,13 @@ export const ShoppingListTable = () => {
       </tr>
     );
   };
-  const handleshowAddModal = () => setShowAddModal(true);
+  const handleshowAddModal = () => {
+    if (category) {
+      setShowAddModal(true);
+    } else {
+      setCategoryErr(!categoryErr);
+    }
+  };
   const handleShowUpdateModal = (index) => {
     const idRemoveItem = message[index]._id;
     const itemToUpdate = message[index];
@@ -229,7 +235,7 @@ export const ShoppingListTable = () => {
         <div>
           <button
             onClick={() => handleCategory("groceries")}
-            className={`button button--primary width-190px ${
+            className={`button button--primary ${
               category === "groceries" && category
             }`}
           >
@@ -237,14 +243,14 @@ export const ShoppingListTable = () => {
           </button>
           <button
             onClick={() => handleCategory("chemical")}
-            className={`button button--third width-190px ${
+            className={`button button--third ${
               category === "chemical" && category
             }`}
           >
             Art.Chemiczne
           </button>
           <button
-            className="button button--primary width-190px"
+            className="button button--primary"
             onClick={handleshowAddModal}
           >
             Dodaj nowy produkt

@@ -137,7 +137,13 @@ export const ShoppingListTableDrivers = () => {
       </tr>
     );
   };
-  const handleshowAddModal = () => setShowAddModal(true);
+  const handleshowAddModal = () => {
+    if (category) {
+      setShowAddModal(true);
+    } else {
+      setCategoryErr(!categoryErr);
+    }
+  };
   const handleShowUpdateModal = (index) => {
     const idRemoveItem = message[index]._id;
     const itemToUpdate = message[index];
@@ -217,47 +223,38 @@ export const ShoppingListTableDrivers = () => {
           </button>
         </div>
         {categoryErr && <ErrorCategory props={"listy zakupowej"} />}
+        <div>
+          <button
+            onClick={() => handleCategory("groceries")}
+            className={`button button--primary ${
+              category === "groceries" && category
+            }`}
+          >
+            Art.spożywcze
+          </button>
+          <button
+            onClick={() => handleCategory("chemical")}
+            className={`button button--third ${
+              category === "chemical" && category
+            }`}
+          >
+            Art.Chemiczne
+          </button>
+          <button
+            className="button button--primary"
+            onClick={handleshowAddModal}
+          >
+            Dodaj nowy produkt
+          </button>
+        </div>
         <div className="table-responsive">
           <table>
             <thead>
               <tr>
-                <th>
-                  <button
-                    onClick={() => handleCategory("groceries")}
-                    className={`button button--primary width-190px ${
-                      category === "groceries" && category
-                    }`}
-                  >
-                    Art.spożywcze
-                  </button>
-                </th>
-                <th>
-                  <button
-                    onClick={() => handleCategory("chemical")}
-                    className={`button button--third width-190px ${
-                      category === "chemical" && category
-                    }`}
-                  >
-                    Art.Chemiczne
-                  </button>
-                </th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th>
-                  <button
-                    className="button button--primary width-190px"
-                    onClick={handleshowAddModal}
-                  >
-                    Dodaj nowy produkt
-                  </button>
-                </th>
-              </tr>
-              <tr>
                 <th>Nazwa</th>
                 <th>Pojemność</th>
                 <th>Opakowanie zbiorcze</th>
-                <th>Ilość na stanie</th>
+                <th>Ilość do kupienia</th>
                 <th>Jednostka</th>
                 <th></th>
               </tr>
@@ -265,7 +262,7 @@ export const ShoppingListTableDrivers = () => {
             {message.length === 0 && (
               <tbody>
                 <tr>
-                  <td colspan="6">
+                  <td colSpan="6">
                     <p className="handle-error">Nie znaleziono artykułów.</p>
                   </td>
                 </tr>
