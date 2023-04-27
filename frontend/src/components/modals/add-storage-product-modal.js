@@ -116,7 +116,7 @@ export const AddProductModal = ({ setShowAddModal, nameUser }) => {
             </div>
           ) : null}
           <form id="add-storage-form"></form>
-          <table>
+          <table className="table-modal">
             {" "}
             <tr>
               <th>

@@ -100,7 +100,7 @@ export const AddListModal = ({ setShowAddModal, setMessage }) => {
             </div>
           ) : null}
           <form id="add-list-form"></form>
-          <table>
+          <table className="table-modal">
             <tbody>
               <tr>
                 <th>

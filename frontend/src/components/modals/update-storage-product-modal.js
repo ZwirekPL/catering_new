@@ -124,96 +124,98 @@ export const UpdateProductModal = ({
             </div>
           ) : null}
           <form id="update-storage-form"></form>
-          <table>
-            <tr>
-              <th>
-                <input
-                  type="radio"
-                  name="category"
-                  id="groceries"
-                  value="groceries"
-                  onChange={handleOnChange}
-                />
-                <label htmlFor="groceries" class="option option-1">
-                  <div class="dot"></div>
-                  <span>Art.spożywcze</span>
-                </label>
-              </th>
-              <th>
-                <input
-                  type="radio"
-                  name="category"
-                  id="chemical"
-                  value="chemical"
-                  onChange={handleOnChange}
-                />
-                <label htmlFor="chemical" class="option option-2">
-                  <div class="dot"></div>
-                  <span>Art.chemiczne</span>
-                </label>
-              </th>
-            </tr>
-            <tr>
-              <th>Nazwa</th>
-              <th>
-                <input
-                  onChange={handleOnChange}
-                  name="item"
-                  value={input.item}
-                  type="text"
-                  form="update-storage-form"
-                />
-              </th>
-            </tr>
-            <tr>
-              <th>Pojemność</th>
-              <th>
-                <input
-                  onChange={handleOnChange}
-                  name="capacity"
-                  value={input.capacity}
-                  type="text"
-                  form="update-storage-form"
-                />
-              </th>
-            </tr>
-            <tr>
-              <th>Opakowanie zbiorcze</th>
-              <th>
-                <input
-                  onChange={handleOnChange}
-                  name="bulkQuantity"
-                  value={input.bulkQuantity}
-                  type="number"
-                  form="update-storage-form"
-                />
-              </th>
-            </tr>
-            <tr>
-              <th>Nowa ilość na stanie</th>
-              <th>
-                <input
-                  onChange={handleOnChange}
-                  name="quantityNow"
-                  value={input.quantityNow}
-                  type="number"
-                  form="update-storage-form"
-                />
-              </th>
-            </tr>
-            <tr>
-              <th>Jednostka</th>
-              <th>
-                <input
-                  onChange={handleOnChange}
-                  name="unit"
-                  value={input.unit}
-                  type="text"
-                  form="update-storage-form"
-                />
-              </th>
-            </tr>
-          </table>
+          <div className="table-responsive">
+            <table className="table-modal">
+              <tr>
+                <th>
+                  <input
+                    type="radio"
+                    name="category"
+                    id="groceries"
+                    value="groceries"
+                    onChange={handleOnChange}
+                  />
+                  <label htmlFor="groceries" class="option option-1">
+                    <div class="dot"></div>
+                    <span>Art.spożywcze</span>
+                  </label>
+                </th>
+                <th>
+                  <input
+                    type="radio"
+                    name="category"
+                    id="chemical"
+                    value="chemical"
+                    onChange={handleOnChange}
+                  />
+                  <label htmlFor="chemical" class="option option-2">
+                    <div class="dot"></div>
+                    <span>Art.chemiczne</span>
+                  </label>
+                </th>
+              </tr>
+              <tr>
+                <th>Nazwa</th>
+                <th>
+                  <input
+                    onChange={handleOnChange}
+                    name="item"
+                    value={input.item}
+                    type="text"
+                    form="update-storage-form"
+                  />
+                </th>
+              </tr>
+              <tr>
+                <th>Pojemność</th>
+                <th>
+                  <input
+                    onChange={handleOnChange}
+                    name="capacity"
+                    value={input.capacity}
+                    type="text"
+                    form="update-storage-form"
+                  />
+                </th>
+              </tr>
+              <tr>
+                <th>Opakowanie zbiorcze</th>
+                <th>
+                  <input
+                    onChange={handleOnChange}
+                    name="bulkQuantity"
+                    value={input.bulkQuantity}
+                    type="number"
+                    form="update-storage-form"
+                  />
+                </th>
+              </tr>
+              <tr>
+                <th>Nowa ilość na stanie</th>
+                <th>
+                  <input
+                    onChange={handleOnChange}
+                    name="quantityNow"
+                    value={input.quantityNow}
+                    type="number"
+                    form="update-storage-form"
+                  />
+                </th>
+              </tr>
+              <tr>
+                <th>Jednostka</th>
+                <th>
+                  <input
+                    onChange={handleOnChange}
+                    name="unit"
+                    value={input.unit}
+                    type="text"
+                    form="update-storage-form"
+                  />
+                </th>
+              </tr>
+            </table>
+          </div>
           <button
             className="button button--primary width-100"
             onClick={handleClick}

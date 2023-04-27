@@ -139,7 +139,7 @@ export const UpdateListProductModal = ({
             </div>
           ) : null}
           <form id="update-list-form"></form>
-          <table>
+          <table className="table-modal">
             <tr>
               <th>
                 <input

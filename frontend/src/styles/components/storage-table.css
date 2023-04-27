@@ -14,45 +14,39 @@
   padding: 0 1rem;
 }
 .table-admin-wrapper {
-  margin: 2% 1%;
+  margin: 0.7rem 0.4rem;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .table-responsive {
-  margin-top: 2%;
+  overflow-x: auto;
+  margin-top: 0.7rem;
+  width: 100%;
 }
 .history {
   padding: 0 10rem;
 }
 .table-select-label {
-  /* margin-top: 1em; */
-  width: clamp(20rem, 20%, 50%);
+  width: clamp(10rem, 20%, 40%);
 }
 .table-select {
-  width: clamp(20rem, 20%, 50%);
-  /* margin-bottom: 0.5em; */
+  width: clamp(10rem, 20%, 50%);
 }
 .table-select-222 {
   width: 20%;
   margin: 0 2rem 0.5em 2rem;
   background-color: #333;
 }
-.table-select-button {
-  width: clamp(20rem, 20%, 50%);
-  margin-left: 5%;
-}
 .table-select-button-none {
   width: none;
-}
-.table-responsive {
-  overflow-x: auto;
 }
 table {
   font-family: arial, sans-serif;
   font-size: 0.8em;
   border-collapse: collapse;
+  width: 100%;
 }
 .option {
   background: #fff;
@@ -61,16 +55,16 @@ table {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  margin: 0 10px;
+  margin: 0 0.625rem;
   border-radius: 0.6em;
   cursor: pointer;
-  padding: 0 10px;
+  padding: 0 0.625rem;
   border: 2px solid lightgrey;
   transition: all 0.3s ease;
 }
 .option .dot {
-  height: 20px;
-  width: 20px;
+  height: 1.25rem;
+  width: 1.25rem;
   background: #d9d9d9;
   border-radius: 50%;
   position: relative;
@@ -78,10 +72,10 @@ table {
 .option .dot::before {
   position: absolute;
   content: "";
-  top: 4px;
-  left: 4px;
-  width: 12px;
-  height: 12px;
+  top: 0.25rem;
+  left: 0.25rem;
+  width: 0.75rem;
+  height: 0.75rem;
   background: var(--indigo);
   border-radius: 50%;
   opacity: 0;
@@ -122,17 +116,17 @@ input[type="radio"] {
 .groceries-flash {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
-  box-shadow: inset 0px 0px 1em 0 rgb(24, 141, 236);
+  box-shadow: inset 0px 0px 1rem 0 rgb(24, 141, 236);
 }
 .chemical-flash {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
-  box-shadow: inset 0px 0px 1em 0 rgb(213, 23, 238);
+  box-shadow: inset 0px 0px 1rem 0 rgb(213, 23, 238);
 }
 .handle-error {
-  margin: 1%;
+  margin: 0.8rem;
   text-align: center;
-  font-size: 2em;
+  font-size: 2rem;
   font-family: var(--font-mono);
 }
 .container-handle-error {
@@ -152,18 +146,8 @@ input[type="radio"] {
   font-family: var(--font-secondary);
   margin: 1rem;
 }
-@media only screen and (max-width: 480px) {
-  .width-190px {
-    /* responsive */
-    width: 100px;
-  }
-  .history {
-    padding: 0 1rem;
-  }
-}
 td,
 th {
-  text-align: left;
   padding: 6px;
   text-transform: capitalize;
   text-align: center;
@@ -264,4 +248,138 @@ select {
   text-transform: capitalize;
   color: #fff;
   font-family: var(--font-primary);
+}
+@media only screen and (max-width: 300px) {
+  table {
+    font-size: 0.8rem;
+  }
+  .edit {
+    font-size: 1.5rem;
+  }
+  .trash {
+    font-size: 1rem;
+  }
+  td,
+  th {
+    padding: 2px;
+  }
+  .option {
+    padding: 0;
+    margin: 0.625rem;
+  }
+  .option span {
+    font-size: 0.9rem;
+  }
+  .table-select-label {
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (min-width: 300px) and (max-width: 355px) {
+  table {
+    font-size: 0.8rem;
+  }
+  .edit {
+    font-size: 1.8rem;
+  }
+  .trash {
+    font-size: 1.5rem;
+  }
+  .table-header {
+    font-size: 0.7rem;
+  }
+  td,
+  th {
+    padding: 2px;
+  }
+  .option {
+    padding: 0;
+    margin: 0.625rem;
+  }
+  .option span {
+    font-size: 0.9rem;
+  }
+  .table-select-label {
+    font-size: 0.9rem;
+  }
+}
+@media only screen and (min-width: 355px) and (max-width: 420px) {
+  table {
+    font-size: 1rem;
+  }
+  .edit {
+    font-size: 2rem;
+  }
+  .trash {
+    font-size: 1.8rem;
+  }
+  .table-header {
+    font-size: 1rem;
+  }
+  td,
+  th {
+    padding: 2px;
+  }
+  .option {
+    padding: 0;
+    margin: 0.625rem;
+  }
+  .option span {
+    font-size: 0.9rem;
+  }
+
+  .table-select-label {
+    font-size: 1rem;
+  }
+}
+@media only screen and (min-width: 420px) and (max-width: 480px) {
+  .table-header {
+    font-size: 1.1rem;
+  }
+  td,
+  th {
+    padding: 3px;
+  }
+  .option {
+    padding: 0;
+    margin: 0.625rem;
+  }
+  .option span {
+    font-size: 0.9rem;
+  }
+  .table-select-label {
+    font-size: 1rem;
+  }
+}
+@media only screen and (min-width: 481px) and (max-width: 640px) {
+  .table-header {
+    font-size: 1.2rem;
+  }
+  .option {
+    padding: 0;
+    margin: 0.625rem;
+  }
+  .option span {
+    font-size: 0.9rem;
+  }
+  .table-select-label {
+    font-size: 1.2rem;
+  }
+}
+@media only screen and (min-width: 641px) and (max-width: 749px) {
+  .option {
+    padding: 0;
+    margin: 0.625rem;
+  }
+  .option span {
+    font-size: 0.9rem;
+  }
+}
+@media only screen and (min-width: 750px) {
+  .option {
+    padding: 0;
+    margin: 0.625rem;
+  }
+  .option span {
+    font-size: 0.9rem;
+  }
 }

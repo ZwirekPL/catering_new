@@ -221,46 +221,41 @@ export const Table = () => {
           </div>
         )}
         {categoryErr && <ErrorCategory props={"inwentaryzacji"} />}
+        <div>
+          {" "}
+          <button
+            onClick={() => handleCategory("groceries")}
+            className={`button button--primary ${
+              category === "groceries" && category
+            }`}
+          >
+            Art.spożywcze
+          </button>
+          <button
+            onClick={() => handleCategory("chemical")}
+            className={`button button--third ${
+              category === "chemical" && category
+            }`}
+          >
+            Art.Chemiczne
+          </button>
+          <button
+            className="button button--primary"
+            onClick={handleshowAddModal}
+          >
+            Dodaj nowy produkt
+          </button>
+        </div>
         <div className="table-responsive">
           <table>
             <thead>
               <tr>
-                <th colSpan={3}>
-                  <button
-                    onClick={() => handleCategory("groceries")}
-                    className={`button button--primary width-190px ${
-                      category === "groceries" && category
-                    }`}
-                  >
-                    Art.spożywcze
-                  </button>
-                </th>
-                <th colSpan={2}>
-                  <button
-                    onClick={() => handleCategory("chemical")}
-                    className={`button button--third width-190px ${
-                      category === "chemical" && category
-                    }`}
-                  >
-                    Art.Chemiczne
-                  </button>
-                </th>
-                <th>
-                  <button
-                    className="button button--primary width-190px"
-                    onClick={handleshowAddModal}
-                  >
-                    Dodaj nowy produkt
-                  </button>
-                </th>
-              </tr>
-              <tr>
-                <th>Nazwa</th>
-                <th>Pojemność</th>
-                <th>Zbiorcze</th>
-                <th>Ilość</th>
-                <th>Jednostka</th>
-                <th></th>
+                <th className="table-header">Nazwa</th>
+                <th className="table-header">Pojemność</th>
+                <th className="table-header">Zbiorcze</th>
+                <th className="table-header">Ilość</th>
+                <th className="table-header">Jednostka</th>
+                <th className="table-header"></th>
               </tr>
             </thead>
             {message.length === 0 && (

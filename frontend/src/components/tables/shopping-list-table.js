@@ -226,42 +226,33 @@ export const ShoppingListTable = () => {
           </div>
         )}
         {categoryErr && <ErrorCategory props={"listy zakupowej"} />}
+        <div>
+          <button
+            onClick={() => handleCategory("groceries")}
+            className={`button button--primary width-190px ${
+              category === "groceries" && category
+            }`}
+          >
+            Art.spożywcze
+          </button>
+          <button
+            onClick={() => handleCategory("chemical")}
+            className={`button button--third width-190px ${
+              category === "chemical" && category
+            }`}
+          >
+            Art.Chemiczne
+          </button>
+          <button
+            className="button button--primary width-190px"
+            onClick={handleshowAddModal}
+          >
+            Dodaj nowy produkt
+          </button>
+        </div>
         <div className="table-responsive">
           <table>
             <thead>
-              <tr>
-                <th>
-                  <button
-                    onClick={() => handleCategory("groceries")}
-                    className={`button button--primary width-190px ${
-                      category === "groceries" && category
-                    }`}
-                  >
-                    Art.spożywcze
-                  </button>
-                </th>
-                <th>
-                  <button
-                    onClick={() => handleCategory("chemical")}
-                    className={`button button--third width-190px ${
-                      category === "chemical" && category
-                    }`}
-                  >
-                    Art.Chemiczne
-                  </button>
-                </th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th>
-                  <button
-                    className="button button--primary width-190px"
-                    onClick={handleshowAddModal}
-                  >
-                    Dodaj nowy produkt
-                  </button>
-                </th>
-              </tr>
               <tr>
                 <th>Nazwa</th>
                 <th>Pojemność</th>
