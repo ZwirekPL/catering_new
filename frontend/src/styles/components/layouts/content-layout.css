@@ -1,26 +1,21 @@
 .content-layout {
-  flex: 1;
   display: flex;
+  flex: 1;
   flex-direction: column;
   flex-shrink: 0;
-
-  width: 100%;
   min-height: 640px;
-
   /* responsive */
-
   padding: 48px;
+  width: 100%;
 }
 
 .content__title {
-  margin-top: 0;
-
   color: var(--white);
+  margin-top: 0;
 }
 
 .content__body {
   /* responsive */
-
   font-size: 1.6rem;
   line-height: 2.4rem;
 }

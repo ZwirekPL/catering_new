@@ -43,13 +43,11 @@ export const ShoppingListTable = () => {
     );
     if (string) {
       if (data) {
-        // console.log(data);
         const filter = data.findLast((element) => element.category === string);
         setMessage(filter.products);
         currentlyGet(data);
         setFilteredMessage(null);
       }
-
       if (error) {
         setMessage(error);
       }

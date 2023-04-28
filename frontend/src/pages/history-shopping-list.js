@@ -10,7 +10,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/keyboard";
 import "swiper/css/navigation";
-import "../styles/components/history-storage-page.css";
 
 export const HistoryShoppingList = () => {
   const [historyShoppingList, setHistoryShoppingList] = useState([]);
@@ -118,13 +117,15 @@ export const HistoryShoppingList = () => {
             </>
           )}
           {historyShoppingList.length === 0 && (
-            <tbody>
-              <tr>
-                <td className="container-handle-error" colspan="6">
-                  <p className="handle-error ">Nie znaleziono artykułów.</p>
-                </td>
-              </tr>
-            </tbody>
+            <table>
+              <tbody>
+                <tr>
+                  <td className="container-handle-error" colSpan="6">
+                    <p className="handle-error ">Nie znaleziono artykułów.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           )}
           <Swiper
             navigation={true}

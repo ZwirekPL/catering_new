@@ -63,3 +63,5 @@ export const App = () => {
 //jesli admin doda cos do listy zakupowej i ja potwierdzi to widać do na ostatniej liscie zakupowej ale nie ma tego w ostatniej liscie zakupowej wysyłanej przez danego użytkownika.
 // jak nie ma listy zakupowej w DB z danej kategorii to wrzuca z innej kategorii i przy przesłaniu dodaje się ona nad tym co widzimy.
 // zrobic mq dla reszty co sie nie zgadza.
+
+//props each child in faq error

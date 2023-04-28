@@ -3,26 +3,26 @@
 } */
 
 .table-body {
+  align-items: center;
+  background-color: #444;
+  border-radius: 0.8rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 100%;
-  border-radius: 0.8rem;
   margin-top: 3.2rem;
   overflow: hidden;
-  background-color: #444;
   padding: 0 1rem;
+  width: 100%;
 }
 .table-admin-wrapper {
-  margin: 0.7rem 0.4rem;
-  width: 100%;
+  align-items: center;
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin: 0.7rem 0.4rem;
+  width: 100%;
 }
 .table-responsive {
-  overflow-x: auto;
   margin-top: 0.7rem;
+  overflow-x: auto;
   width: 100%;
 }
 .history {
@@ -35,63 +35,63 @@
   width: clamp(10rem, 20%, 50%);
 }
 .table-select-222 {
-  width: 20%;
-  margin: 0 2rem 0.5em 2rem;
   background-color: #333;
+  margin: 0 2rem 0.5em 2rem;
+  width: 20%;
 }
 .table-select-button-none {
   width: none;
 }
 table {
+  border-collapse: collapse;
   font-family: arial, sans-serif;
   font-size: 0.8em;
-  border-collapse: collapse;
   width: 100%;
 }
 .option {
-  background: #fff;
-  height: 100%;
-  width: 80%;
-  display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  margin: 0 0.625rem;
+  background: #fff;
+  border: 2px solid lightgrey;
   border-radius: 0.6em;
   cursor: pointer;
+  display: flex;
+  height: 100%;
+  justify-content: space-evenly;
+  margin: 0 0.625rem;
   padding: 0 0.625rem;
-  border: 2px solid lightgrey;
   transition: all 0.3s ease;
+  width: 80%;
 }
 .option .dot {
-  height: 1.25rem;
-  width: 1.25rem;
   background: #d9d9d9;
   border-radius: 50%;
+  height: 1.25rem;
   position: relative;
+  width: 1.25rem;
 }
 .option .dot::before {
-  position: absolute;
-  content: "";
-  top: 0.25rem;
-  left: 0.25rem;
-  width: 0.75rem;
-  height: 0.75rem;
   background: var(--indigo);
   border-radius: 50%;
+  content: "";
+  height: 0.75rem;
+  left: 0.25rem;
   opacity: 0;
+  position: absolute;
+  top: 0.25rem;
   transform: scale(1.5);
   transition: all 0.3s ease;
+  width: 0.75rem;
 }
 input[type="radio"] {
   display: none;
 }
 #groceries:checked:checked ~ .option-1 {
-  border-color: var(--indigo);
   background: var(--indigo);
+  border-color: var(--indigo);
 }
 #chemical:checked:checked ~ .option-2 {
-  border-color: var(--violet);
   background: var(--violet);
+  border-color: var(--violet);
 }
 #groceries:checked:checked ~ .option-1 .dot,
 #chemical:checked:checked ~ .option-2 .dot {
@@ -106,8 +106,8 @@ input[type="radio"] {
   transform: scale(1);
 }
 .option span {
-  font-size: 1.2rem;
   color: #808080;
+  font-size: 1.2rem;
 }
 #groceries:checked:checked ~ .option-1 span,
 #chemical:checked:checked ~ .option-2 span {
@@ -124,23 +124,23 @@ input[type="radio"] {
   box-shadow: inset 0px 0px 1rem 0 rgb(213, 23, 238);
 }
 .handle-error {
+  font-family: var(--font-mono);
+  font-size: 2rem;
   margin: 0.8rem;
   text-align: center;
-  font-size: 2rem;
-  font-family: var(--font-mono);
 }
 .container-handle-error {
-  width: 90vw;
   padding: 5rem;
+  width: 90vw;
 }
 .category-error {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  width: 60%;
   background-color: rgba(255, 50, 50, 0.6);
   border-radius: 0.6em;
+  display: flex;
+  justify-content: center;
   margin: 2% 0;
+  width: 60%;
 }
 .error-paragraph {
   font-family: var(--font-secondary);
@@ -149,8 +149,8 @@ input[type="radio"] {
 td,
 th {
   padding: 6px;
-  text-transform: capitalize;
   text-align: center;
+  text-transform: capitalize;
 }
 tr {
   height: 10px;
@@ -175,8 +175,8 @@ input::placeholder {
   text-align: center;
 }
 input:focus {
-  outline: 2px solid var(--mandarine);
   border: none;
+  outline: 2px solid var(--mandarine);
 }
 .parent-edit-trash {
   display: flex;
@@ -184,27 +184,27 @@ input:focus {
   justify-content: space-around;
 }
 .edit {
+  cursor: pointer;
+  display: inline-block;
   font-size: 3rem;
   font-weight: bold;
-  cursor: pointer;
   position: relative;
-  display: inline-block;
 }
 .edit .edit-tooltiptext {
-  visibility: hidden;
-  width: 50px;
   background-color: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  text-align: center;
-  padding: 5px 0;
   border-radius: 6px;
+  color: #fff;
   font-size: 1rem;
+  padding: 5px 0;
 
   /* Position the tooltip text - see examples below! */
   position: absolute;
-  z-index: 1;
-  top: -5px;
   right: 105%;
+  text-align: center;
+  top: -5px;
+  visibility: hidden;
+  width: 50px;
+  z-index: 1;
 }
 .edit:hover .edit-tooltiptext {
   visibility: visible;
@@ -214,26 +214,26 @@ input:focus {
 }
 
 .trash {
+  cursor: pointer;
+  display: inline-block;
   font-size: 2rem;
   font-weight: bold;
-  cursor: pointer;
   position: relative;
-  display: inline-block;
 }
 .trash .trash-tooltiptext {
-  visibility: hidden;
-  width: 40px;
   background-color: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  text-align: center;
-  padding: 5px 0;
   border-radius: 6px;
-  top: -5px;
-  right: 105%;
+  color: #fff;
   font-size: 1rem;
+  padding: 5px 0;
 
   /* Position the tooltip text - see examples below! */
   position: absolute;
+  right: 105%;
+  text-align: center;
+  top: -5px;
+  visibility: hidden;
+  width: 40px;
   z-index: 1;
 }
 .trash:hover .trash-tooltiptext {
@@ -243,11 +243,11 @@ input:focus {
   color: var(--mandarine);
 }
 select {
-  border-radius: 0.6rem;
   background-color: #222;
-  text-transform: capitalize;
+  border-radius: 0.6rem;
   color: #fff;
   font-family: var(--font-primary);
+  text-transform: capitalize;
 }
 @media only screen and (max-width: 300px) {
   table {
@@ -264,8 +264,8 @@ select {
     padding: 2px;
   }
   .option {
-    padding: 0;
     margin: 0.625rem;
+    padding: 0;
   }
   .option span {
     font-size: 0.9rem;
@@ -301,8 +301,8 @@ select {
     padding: 2px;
   }
   .option {
-    padding: 0;
     margin: 0.625rem;
+    padding: 0;
   }
   .option span {
     font-size: 0.9rem;
@@ -338,8 +338,8 @@ select {
     padding: 2px;
   }
   .option {
-    padding: 0;
     margin: 0.625rem;
+    padding: 0;
   }
   .option span {
     font-size: 0.9rem;
@@ -367,8 +367,8 @@ select {
     padding: 3px;
   }
   .option {
-    padding: 0;
     margin: 0.625rem;
+    padding: 0;
   }
   .option span {
     font-size: 0.9rem;
@@ -395,8 +395,8 @@ select {
     padding: 3px;
   }
   .option {
-    padding: 0;
     margin: 0.625rem;
+    padding: 0;
   }
   .option span {
     font-size: 0.9rem;
@@ -420,8 +420,8 @@ select {
     padding: 3px;
   }
   .option {
-    padding: 0;
     margin: 0.625rem;
+    padding: 0;
   }
   .option span {
     font-size: 0.9rem;
@@ -432,8 +432,8 @@ select {
 }
 @media only screen and (min-width: 750px) {
   .option {
-    padding: 0;
     margin: 0.625rem;
+    padding: 0;
   }
   .option span {
     font-size: 0.9rem;

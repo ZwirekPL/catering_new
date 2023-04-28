@@ -1,49 +1,36 @@
 .auth0-features {
   /* responsive */
-
   padding: 3.2rem 6.4rem;
 }
 
 .auth0-features__title {
   color: var(--white);
-  font-weight: 600;
-  text-align: center;
-
-  /* responsive */
-
-  margin-top: 0;
-  margin-bottom: 4.8rem;
-
   font-size: 3.2rem;
+  font-weight: 600;
   line-height: 3.2rem;
+  margin-bottom: 4.8rem;
+  /* responsive */
+  margin-top: 0;
+  text-align: center;
 }
 
 .auth0-features__grid {
-  display: grid;
-
-  /* responsive */
-
-  grid-template-columns: 1fr 1fr;
   column-gap: 6.4rem;
+  display: grid;
+  /* responsive */
+  grid-template-columns: 1fr 1fr;
   row-gap: 6.4rem;
 }
 
 .auth0-feature {
-  display: block;
-
   background-color: var(--white);
-
-  color: var(--black);
-
-  cursor: pointer;
-
-  transition: all 0.3s ease-in-out 0s;
-
-  /* responsive */
-
-  padding: 4.8rem;
-
   border-radius: 1.6rem;
+  color: var(--black);
+  cursor: pointer;
+  display: block;
+  /* responsive */
+  padding: 4.8rem;
+  transition: all 0.3s ease-in-out 0s;
 }
 
 .auth0-feature:hover {
@@ -51,46 +38,36 @@
 }
 
 .auth0-feature__headline {
-  display: flex;
   align-items: center;
-
-  margin-top: 0;
-
   color: var(--black);
+  display: flex;
+  /* responsive */
+  font-size: 2.4rem;
   font-weight: 600;
   letter-spacing: -0.05rem;
-
-  /* responsive */
-
-  font-size: 2.4rem;
   line-height: 3.2rem;
+  margin-top: 0;
 }
 
 .auth0-feature__icon {
   /* responsive */
-
   margin-right: 1.6rem;
 }
 
 .auth0-feature:hover .auth0-feature__headline {
   text-decoration: underline solid 2px var(--black);
   text-underline-offset: 2px;
-
   transition: all 0.3s ease-in-out 0s;
 }
 
 .auth0-feature__description {
-  margin: 0;
-
   color: rgb(36, 36, 36);
-  font-weight: 500;
-
-  opacity: 0.7;
-
   /* responsive */
-
   font-size: 1.6rem;
+  font-weight: 500;
   line-height: 2.4rem;
+  margin: 0;
+  opacity: 0.7;
 }
 
 @media only screen and (max-width: 900px) {
@@ -100,8 +77,8 @@
   }
 
   .auth0-feature {
-    padding: 3.2rem;
     border-radius: 0.8rem;
+    padding: 3.2rem;
   }
 
   .auth0-feature__headline {
@@ -111,7 +88,6 @@
 
   .auth0-feature__icon {
     height: 3.6rem;
-
     margin-right: 1.6rem;
   }
 
@@ -138,8 +114,8 @@
   }
 
   .auth0-feature {
-    padding: 3.2rem;
     border-radius: 0.8rem;
+    padding: 3.2rem;
   }
 
   .auth0-feature__headline {
@@ -149,7 +125,6 @@
 
   .auth0-feature__icon {
     height: 3.6rem;
-
     margin-right: 1.6rem;
   }
 
