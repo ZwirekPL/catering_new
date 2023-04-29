@@ -35,8 +35,8 @@ export const FAQ = () => {
             <span>Tutaj zanjedziesz najczęściej zadawane pytania.</span>
           </p>
         </div>
-        {posts.map(({ answer, question }) => (
-          <FaqElement answer={answer} question={question} />
+        {posts.map(({ answer, question }, index) => (
+          <FaqElement key={index} answer={answer} question={question} />
         ))}
       </div>
     </PageLayout>

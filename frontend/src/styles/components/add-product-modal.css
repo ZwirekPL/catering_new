@@ -21,7 +21,7 @@
   width: clamp(250px, 60%, 840px);
 }
 
-.productModal-top {
+.productModal__top {
   border-bottom: 1px solid #333;
   display: flex;
   flex-direction: row;
@@ -30,23 +30,23 @@
   padding: 1rem;
   width: 90%;
 }
-.productModal-title {
+.productModal__title {
   font-family: var(--font-secondary);
   font-size: 2rem;
   margin: 0;
 }
-.productModal-xbtn {
+.productModal__xbtn {
   cursor: pointer;
   font-family: var(--font-secondary);
   font-size: 3rem;
 }
-.productModal-xbtn:hover {
+.productModal__xbtn:hover {
   color: var(--mandarine);
 }
-.table-modal tr th {
+.table__modal tr th {
   padding: 6px;
 }
-.productModal-form {
+.productModal__form {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -60,7 +60,7 @@
     background-color: 0.8;
   }
 }
-.error-div {
+.error__div {
   align-items: center;
   animation-duration: 0.5s;
   animation-name: error;
@@ -84,46 +84,46 @@ input[type="text"] {
   text-transform: capitalize;
 }
 @media only screen and (max-width: 300px) {
-  .table-modal tr th {
+  .table__modal tr th {
     padding: 1px;
   }
-  .productModal-title {
+  .productModal__title {
     font-size: 1.5rem;
   }
-  .productModal-xbtn {
+  .productModal__xbtn {
     font-size: 2.5rem;
   }
-  .error-div {
+  .error__div {
     font-size: 1rem;
   }
-  .error-div p {
+  .error__div p {
     line-height: 1rem;
     margin: 0 0.5rem;
   }
 }
 @media only screen and (min-width: 300px) and (max-width: 480px) {
-  .table-modal tr th {
+  .table__modal tr th {
     padding: 1px;
   }
-  .productModal-title {
+  .productModal__title {
     font-size: 1.5rem;
   }
-  .productModal-xbtn {
+  .productModal__xbtn {
     font-size: 2.5rem;
   }
-  .error-div {
+  .error__div {
     font-size: 1rem;
   }
-  .error-div p {
+  .error__div p {
     line-height: 1rem;
     margin: 0 0.5rem;
   }
 }
 @media only screen and (min-width: 481px) and (max-width: 840px) {
-  .error-div {
+  .error__div {
     font-size: 1.2rem;
   }
-  .error-div p {
+  .error__div p {
     line-height: 1.2rem;
     margin: 0 0.5rem;
   }

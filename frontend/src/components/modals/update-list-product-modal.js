@@ -79,6 +79,9 @@ export const UpdateListProductModal = ({
     if (!nameUser) {
       return null;
     }
+    if (!input.category) {
+      return categoryNull();
+    }
     if (!input.item) {
       return itemNull();
     }
@@ -93,9 +96,6 @@ export const UpdateListProductModal = ({
     }
     if (!input.unit) {
       return unitNull();
-    }
-    if (!input.category) {
-      return categoryNull();
     }
     if (
       nameUser === "kierowca1@test.pl" ||
@@ -148,6 +148,7 @@ export const UpdateListProductModal = ({
                   id="groceries"
                   value="groceries"
                   onChange={handleOnChange}
+                  defaultChecked={input.category === "groceries"}
                 />
                 <label htmlFor="groceries" class="option option-1">
                   <div class="dot"></div>
@@ -161,6 +162,7 @@ export const UpdateListProductModal = ({
                   id="chemical"
                   value="chemical"
                   onChange={handleOnChange}
+                  defaultChecked={input.category === "chemical"}
                 />
                 <label htmlFor="chemical" class="option option-2">
                   <div class="dot"></div>

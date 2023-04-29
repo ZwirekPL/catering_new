@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
-export const AddListModal = ({ setShowAddModal, setMessage }) => {
+export const AddListModal = ({ setShowAddModal, setMessage, category }) => {
   const { user } = useAuth0();
   const [errorIsVisible, setErrorIsVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -12,7 +12,7 @@ export const AddListModal = ({ setShowAddModal, setMessage }) => {
     bulkQuantity: 0,
     quantityNow: 0,
     unit: "",
-    category: "",
+    category: category,
   });
 
   const handleOnChange = (event) => {
@@ -87,20 +87,20 @@ export const AddListModal = ({ setShowAddModal, setMessage }) => {
   return (
     <div className="wrapper">
       <div className="productModal">
-        <div className="productModal-top">
-          <p className="productModal-title">Dodaj nowy produkt</p>
-          <div className="productModal-xbtn" onClick={handleCloseLoginModal}>
+        <div className="productModal__top">
+          <p className="productModal__title">Dodaj nowy produkt</p>
+          <div className="productModal__xbtn" onClick={handleCloseLoginModal}>
             &#10006;
           </div>
         </div>
-        <div className="productModal-form">
+        <div className="productModal__form">
           {errorIsVisible ? (
-            <div className="error-div">
+            <div className="error__div">
               <p>{errorMessage}</p>
             </div>
           ) : null}
-          <form id="add-list-form"></form>
-          <table className="table-modal">
+          <form id="add__list-form"></form>
+          <table className="table__modal">
             <tbody>
               <tr>
                 <th>
@@ -110,6 +110,7 @@ export const AddListModal = ({ setShowAddModal, setMessage }) => {
                     id="groceries"
                     value="groceries"
                     onChange={handleOnChange}
+                    defaultChecked={input.category === "groceries"}
                   />
                   <label htmlFor="groceries" className="option option-1">
                     <div className="dot"></div>
@@ -123,6 +124,7 @@ export const AddListModal = ({ setShowAddModal, setMessage }) => {
                     id="chemical"
                     value="chemical"
                     onChange={handleOnChange}
+                    defaultChecked={input.category === "chemical"}
                   />
                   <label htmlFor="chemical" className="option option-2">
                     <div className="dot"></div>
@@ -139,7 +141,7 @@ export const AddListModal = ({ setShowAddModal, setMessage }) => {
                     name="item"
                     value={input.item}
                     type="text"
-                    form="add-list-form"
+                    form="add__list-form"
                   />
                 </th>
               </tr>
@@ -151,7 +153,7 @@ export const AddListModal = ({ setShowAddModal, setMessage }) => {
                     name="capacity"
                     value={input.capacity}
                     type="text"
-                    form="add-list-form"
+                    form="add__list-form"
                   />
                 </th>
               </tr>
@@ -163,7 +165,7 @@ export const AddListModal = ({ setShowAddModal, setMessage }) => {
                     name="bulkQuantity"
                     value={input.bulkQuantity}
                     type="number"
-                    form="add-list-form"
+                    form="add__list-form"
                   />
                 </th>
               </tr>
@@ -196,7 +198,7 @@ export const AddListModal = ({ setShowAddModal, setMessage }) => {
           <button
             className="button button--primary width-100"
             onClick={handleClick}
-            form="add-list-form"
+            form="add__list-form"
           >
             Dodaj
           </button>

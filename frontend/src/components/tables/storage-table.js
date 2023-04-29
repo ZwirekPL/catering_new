@@ -16,7 +16,6 @@ export const Table = () => {
 
   const [selectValue, setSelectValue] = useState(currently || `${user.name}`);
   const [admin, setAdmin] = useState(false);
-
   const [showAddModal, setShowAddModal] = useState(false);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [idUpdateItem, setidUpdateItem] = useState();
@@ -25,19 +24,18 @@ export const Table = () => {
   const [filteredMessage, setFilteredMessage] = useState(null);
   const [message, setMessage] = useState([]);
   const [categoryErr, setCategoryErr] = useState(false);
+
   const currentlyGet = (data) => {
     if (data) {
       if (currently == null) {
-        // Initialize page views count
         currently = data[0].userName;
       } else {
-        // Increment count
         currently = selectValue;
       }
-      // Update session storage
       sessionStorage.setItem("currently", currently);
     }
   };
+
   const getMessage = async () => {
     const accessToken = await getAccessTokenSilently();
     const { data, error } = await getOtherUserItems(accessToken, selectValue);
@@ -53,7 +51,6 @@ export const Table = () => {
 
   useEffect(() => {
     let isMounted = true;
-
     const getUserInv = async () => {
       const accessToken = await getAccessTokenSilently();
       const { data, error } = await getUserItems(accessToken, user);
@@ -64,17 +61,14 @@ export const Table = () => {
         setMessage(data);
         currentlyGet(data);
       }
-
       if (error) {
         setMessage(error);
       }
-
       if (user.email === "kamila@test.pl") {
         setAdmin(true);
         getMessage();
       }
     };
-
     getUserInv();
     return () => {
       isMounted = false;
@@ -96,7 +90,6 @@ export const Table = () => {
           { data: message, editUser: user.name }
         );
       }
-
       if (user.email === "kamila@test.pl") return null;
       else {
         window.location.reload();
@@ -105,9 +98,11 @@ export const Table = () => {
       setCategoryErr(!categoryErr);
     }
   };
+
   const handleChange = (event) => {
     setSelectValue(event.target.value);
   };
+
   const handleGetOtherItems = () => {
     getMessage();
   };
@@ -135,18 +130,25 @@ export const Table = () => {
         <td>{message.quantityNow}</td>
         <td>{message.unit}</td>
         <td>
-          <div className="parent-edit-trash">
-            <div className="edit" onClick={() => handleShowUpdateModal(index)}>
-              &#9998;<span className="edit-tooltiptext">Edytuj</span>
+          <div className="container__controls">
+            <div
+              className="controls__edit"
+              onClick={() => handleShowUpdateModal(index)}
+            >
+              &#9998;<span className="controls__edit-tooltiptext">Edytuj</span>
             </div>
-            <div onClick={() => handleRemoveItem(index)} className="trash">
-              &#10006;<span className="trash-tooltiptext">Usuń</span>
+            <div
+              onClick={() => handleRemoveItem(index)}
+              className="controls__trash"
+            >
+              &#10006;<span className="controls__trash-tooltiptext">Usuń</span>
             </div>
           </div>
         </td>
       </tr>
     );
   };
+
   const handleshowAddModal = () => {
     if (category) {
       setShowAddModal(true);
@@ -154,6 +156,7 @@ export const Table = () => {
       setCategoryErr(!categoryErr);
     }
   };
+
   const handleShowUpdateModal = (index) => {
     if (filteredMessage) {
       const idRemoveItem = filteredMessage[index]._id;
@@ -169,12 +172,14 @@ export const Table = () => {
       setShowUpdateModal(true);
     }
   };
+
   return (
     <>
       {showAddModal && (
         <AddProductModal
           nameUser={selectValue}
           setShowAddModal={setShowAddModal}
+          category={category}
         />
       )}
       {showUpdateModal && (
@@ -185,19 +190,18 @@ export const Table = () => {
           itemToUpdate={itemToUpdate}
         />
       )}
-      <div className="table-body">
+      <div className="table__body">
         {admin && (
-          <div className="table-admin-wrapper">
-            <label className="table-select-label" htmlFor="departament">
+          <div className="table__admin-wrapper">
+            <label className="admin__select-label" htmlFor="departament">
               Wybierz placówkę:
             </label>
-
             <select
               name="departament"
               id="departament"
               value={selectValue}
               onChange={handleChange}
-              className="button table-select"
+              className="button admin__select"
             >
               <option value="izbicka">izbicka</option>
               <option value="kamila@test.pl">stradomska</option>
@@ -219,7 +223,7 @@ export const Table = () => {
               <option value="rekrucka2">rekrucka Przedszkole</option>
             </select>
             <button
-              className="button button--primary table-select-button"
+              className="button button--primary"
               onClick={handleGetOtherItems}
             >
               Pobierz
@@ -268,7 +272,7 @@ export const Table = () => {
               <tbody>
                 <tr>
                   <td colSpan="6">
-                    <p className="handle-error">Nie znaleziono artykułów.</p>
+                    <p className="storage__error">Nie znaleziono artykułów.</p>
                   </td>
                 </tr>
               </tbody>

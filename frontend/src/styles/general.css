@@ -89,14 +89,6 @@ small {
   font-size: 1.2rem;
 }
 
-blockquote {
-  border-left: 8px solid #eee;
-  font-size: 1.6rem;
-  font-style: italic;
-  margin: 0 0 3.2rem;
-  padding: 1.6rem 3.2rem;
-}
-
 body,
 button,
 input,
@@ -125,18 +117,6 @@ figure {
 img {
   vertical-align: middle;
 }
-
-code,
-pre {
-  font-family: "Fira Code", source-code-pro, Menlo, Monaco, Consolas,
-    "Courier New", monospace;
-  width: 100%;
-}
-
-code {
-  color: var(--emerald);
-}
-
 #root {
   height: 100%;
   width: 100%;

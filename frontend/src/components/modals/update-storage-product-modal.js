@@ -80,6 +80,9 @@ export const UpdateProductModal = ({
     if (!nameUser) {
       return null;
     }
+    if (!input.category) {
+      return categoryNull();
+    }
     if (!input.item) {
       return itemNull();
     }
@@ -95,9 +98,6 @@ export const UpdateProductModal = ({
     if (!input.unit) {
       return unitNull();
     }
-    if (!input.category) {
-      return categoryNull();
-    }
     axios.post(
       `${apiServerUrl}/api/messages/update/` + idUpdateItem,
       updateItem
@@ -109,23 +109,23 @@ export const UpdateProductModal = ({
   return (
     <div className="wrapper">
       <div className="productModal">
-        <div className="productModal-top">
-          <p className="productModal-title">
+        <div className="productModal__top">
+          <p className="productModal__title">
             Edytujesz: <strong>{itemToUpdate.item}</strong>
           </p>
-          <div className="productModal-xbtn" onClick={handleCloseUpdateModal}>
+          <div className="productModal__xbtn" onClick={handleCloseUpdateModal}>
             &#10006;
           </div>
         </div>
-        <div className="productModal-form">
+        <div className="productModal__form">
           {errorIsVisible ? (
-            <div className="error-div">
+            <div className="error__div">
               <p>{errorMessage}</p>
             </div>
           ) : null}
-          <form id="update-storage-form"></form>
+          <form id="update__storage-form"></form>
           <div className="table-responsive">
-            <table className="table-modal">
+            <table className="table__modal">
               <tr>
                 <th>
                   <input
@@ -134,6 +134,7 @@ export const UpdateProductModal = ({
                     id="groceries"
                     value="groceries"
                     onChange={handleOnChange}
+                    defaultChecked={input.category === "groceries"}
                   />
                   <label htmlFor="groceries" class="option option-1">
                     <div class="dot"></div>
@@ -147,6 +148,7 @@ export const UpdateProductModal = ({
                     id="chemical"
                     value="chemical"
                     onChange={handleOnChange}
+                    defaultChecked={input.category === "chemical"}
                   />
                   <label htmlFor="chemical" class="option option-2">
                     <div class="dot"></div>
@@ -162,7 +164,7 @@ export const UpdateProductModal = ({
                     name="item"
                     value={input.item}
                     type="text"
-                    form="update-storage-form"
+                    form="update__storage-form"
                   />
                 </th>
               </tr>
@@ -174,7 +176,7 @@ export const UpdateProductModal = ({
                     name="capacity"
                     value={input.capacity}
                     type="text"
-                    form="update-storage-form"
+                    form="update__storage-form"
                   />
                 </th>
               </tr>
@@ -186,7 +188,7 @@ export const UpdateProductModal = ({
                     name="bulkQuantity"
                     value={input.bulkQuantity}
                     type="number"
-                    form="update-storage-form"
+                    form="update__storage-form"
                   />
                 </th>
               </tr>
@@ -198,7 +200,7 @@ export const UpdateProductModal = ({
                     name="quantityNow"
                     value={input.quantityNow}
                     type="number"
-                    form="update-storage-form"
+                    form="update__storage-form"
                   />
                 </th>
               </tr>
@@ -210,7 +212,7 @@ export const UpdateProductModal = ({
                     name="unit"
                     value={input.unit}
                     type="text"
-                    form="update-storage-form"
+                    form="update__storage-form"
                   />
                 </th>
               </tr>
@@ -219,7 +221,7 @@ export const UpdateProductModal = ({
           <button
             className="button button--primary width-100"
             onClick={handleClick}
-            form="update-storage-form"
+            form="update__storage-form"
           >
             Zmień
           </button>

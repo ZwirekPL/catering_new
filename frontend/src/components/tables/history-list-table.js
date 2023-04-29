@@ -21,7 +21,7 @@ export const HistoryList = ({ inventory }) => {
   };
   return (
     <>
-      <div className="table-body history">
+      <div className="table__body history">
         <div className="table-responsive">
           <table>
             <thead>

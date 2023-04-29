@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-const FaqElement = ({ answer, question }) => {
+const FaqElement = ({ index, answer, question }) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="faq__element">
+    <div key={index} className="faq__element">
       <button
         className={open ? "element__header-open" : "element__header"}
         onClick={() => setOpen(!open)}

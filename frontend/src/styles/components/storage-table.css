@@ -1,8 +1,4 @@
-/* .content-body{
-  line-height: wiekosc tabeli;
-} */
-
-.table-body {
+.table__body {
   align-items: center;
   background-color: #444;
   border-radius: 0.8rem;
@@ -13,7 +9,7 @@
   padding: 0 1rem;
   width: 100%;
 }
-.table-admin-wrapper {
+.table__admin-wrapper {
   align-items: center;
   display: flex;
   justify-content: center;
@@ -25,22 +21,14 @@
   overflow-x: auto;
   width: 100%;
 }
-.history {
-  padding: 0 10rem;
-}
-.table-select-label {
+.admin__select-label {
   width: clamp(10rem, 20%, 40%);
 }
-.table-select {
+.admin__select {
   width: clamp(10rem, 20%, 50%);
 }
-.table-select-222 {
-  background-color: #333;
-  margin: 0 2rem 0.5em 2rem;
-  width: 20%;
-}
-.table-select-button-none {
-  width: none;
+.history {
+  padding: 0 10rem;
 }
 table {
   border-collapse: collapse;
@@ -123,17 +111,13 @@ input[type="radio"] {
   border-radius: 20px;
   box-shadow: inset 0px 0px 1rem 0 rgb(213, 23, 238);
 }
-.handle-error {
+.storage__error {
   font-family: var(--font-mono);
   font-size: 2rem;
   margin: 0.8rem;
   text-align: center;
 }
-.container-handle-error {
-  padding: 5rem;
-  width: 90vw;
-}
-.category-error {
+.category__error {
   align-items: center;
   background-color: rgba(255, 50, 50, 0.6);
   border-radius: 0.6em;
@@ -142,7 +126,7 @@ input[type="radio"] {
   margin: 2% 0;
   width: 60%;
 }
-.error-paragraph {
+.error__paragraph {
   font-family: var(--font-secondary);
   margin: 1rem;
 }
@@ -178,26 +162,24 @@ input:focus {
   border: none;
   outline: 2px solid var(--mandarine);
 }
-.parent-edit-trash {
+.container__controls {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
-.edit {
+.controls__edit {
   cursor: pointer;
   display: inline-block;
   font-size: 3rem;
   font-weight: bold;
   position: relative;
 }
-.edit .edit-tooltiptext {
+.controls__edit .controls__edit-tooltiptext {
   background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 6px;
+  border-radius: 0.6em;
   color: #fff;
   font-size: 1rem;
-  padding: 5px 0;
-
-  /* Position the tooltip text - see examples below! */
+  padding: 0.4rem 0;
   position: absolute;
   right: 105%;
   text-align: center;
@@ -206,28 +188,26 @@ input:focus {
   width: 50px;
   z-index: 1;
 }
-.edit:hover .edit-tooltiptext {
+.controls__edit:hover .controls__edit-tooltiptext {
   visibility: visible;
 }
-.edit:hover {
+.controls__edit:hover {
   color: var(--yellow);
 }
 
-.trash {
+.controls__trash {
   cursor: pointer;
   display: inline-block;
   font-size: 2rem;
   font-weight: bold;
   position: relative;
 }
-.trash .trash-tooltiptext {
+.controls__trash .controls__trash-tooltiptext {
   background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 6px;
+  border-radius: 0.6em;
   color: #fff;
   font-size: 1rem;
-  padding: 5px 0;
-
-  /* Position the tooltip text - see examples below! */
+  padding: 0.4rem 0;
   position: absolute;
   right: 105%;
   text-align: center;
@@ -236,10 +216,10 @@ input:focus {
   width: 40px;
   z-index: 1;
 }
-.trash:hover .trash-tooltiptext {
+.controls__trash:hover .controls__trash-tooltiptext {
   visibility: visible;
 }
-.trash:hover {
+.controls__trash:hover {
   color: var(--mandarine);
 }
 select {

@@ -48,20 +48,11 @@ export const App = () => {
   );
 };
 
-// Media Queries??
-// Zacząć czyścić.
-// sprawdzić czy da sie przewijać faq
-// Sprawdzenie czy sprawdza autoryzację podczas dodawnaia do bazy danych.
-//zmienić wszystkie px na rem
-// zmienić nazwy klas na bem
+//zmniejszyc obrazki ....!
+// sprawdzić czy da sie przewijać faq- nie da sie na telefonie
 // przejrzeć kod.
-// sprawdzić css pod kontem nieużywanego kodu.
-
-// pierwsze dodanie i kazde nastepne moze zmienic wszystko procz nazwy.
 // dodatkowe konto kierowcow dla kamili + dodatkwoe konto dla stardomsiej
 
+// pierwsze dodanie i kazde nastepne moze zmienic wszystko procz nazwy.
 //jesli admin doda cos do listy zakupowej i ja potwierdzi to widać do na ostatniej liscie zakupowej ale nie ma tego w ostatniej liscie zakupowej wysyłanej przez danego użytkownika.
 // jak nie ma listy zakupowej w DB z danej kategorii to wrzuca z innej kategorii i przy przesłaniu dodaje się ona nad tym co widzimy.
-// zrobic mq dla reszty co sie nie zgadza.
-
-//props each child in faq error

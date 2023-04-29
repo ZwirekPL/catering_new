@@ -8,9 +8,9 @@ import { getShoppingListHistory } from "../../services/message.service";
 
 export const ShoppingListTable = () => {
   const apiServerUrl = process.env.REACT_APP_API_SERVER_URL;
-
   const { getAccessTokenSilently, user } = useAuth0();
   let currently = sessionStorage.getItem("currently");
+
   const [showAddModal, setShowAddModal] = useState(false);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [idUpdateItem, setidUpdateItem] = useState();
@@ -19,22 +19,20 @@ export const ShoppingListTable = () => {
   const [filteredMessage, setFilteredMessage] = useState(null);
   const [message, setMessage] = useState([]);
   const [categoryErr, setCategoryErr] = useState(false);
-
   const [selectValue, setSelectValue] = useState(currently || `${user.name}`);
   const [admin, setAdmin] = useState(false);
+
   const currentlyGet = (data) => {
     if (data) {
       if (currently == null) {
-        // Initialize page views count
         currently = data[0].userName;
       } else {
-        // Increment count
         currently = selectValue;
       }
-      // Update session storage
       sessionStorage.setItem("currently", currently);
     }
   };
+
   const getMessage = async (string) => {
     const accessToken = await getAccessTokenSilently();
     const { data, error } = await getShoppingListHistory(
@@ -58,12 +56,12 @@ export const ShoppingListTable = () => {
         currentlyGet(data);
         setFilteredMessage(null);
       }
-
       if (error) {
         setMessage(error);
       }
     }
   };
+
   useEffect(() => {
     let isMounted = true;
     const getUserItem = async () => {
@@ -90,33 +88,34 @@ export const ShoppingListTable = () => {
       }
     };
     getUserItem();
-
     return () => {
       isMounted = false;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getAccessTokenSilently, user]);
+
   const handleRemoveItem = (index) => {
     const idRemoveItem = message[index]._id;
     setMessage((message) =>
       message.filter((element) => element._id !== idRemoveItem)
     );
   };
+
   const handleChange = (event) => {
     setSelectValue(event.target.value);
   };
+
   const handleGetOtherShoppingList = () => {
     setCategory(null);
     getMessage();
   };
+
   const handleCategory = (string) => {
     getMessage(string);
     const afterFilter = message.filter(
       (element) => element.category === string
     );
     setFilteredMessage(afterFilter);
-
-    // console.log(afterFilter);
     setCategory(string);
   };
 
@@ -129,12 +128,18 @@ export const ShoppingListTable = () => {
         <td>{message.quantityNow}</td>
         <td>{message.unit}</td>
         <td>
-          <div className="parent-edit-trash">
-            <div className="edit" onClick={() => handleShowUpdateModal(index)}>
-              &#9998;<span className="edit-tooltiptext">Edytuj</span>
+          <div className="container__controls">
+            <div
+              className="controls__edit"
+              onClick={() => handleShowUpdateModal(index)}
+            >
+              &#9998;<span className="controls__edit-tooltiptext">Edytuj</span>
             </div>
-            <div onClick={() => handleRemoveItem(index)} className="trash">
-              &#10006;<span className="trash-tooltiptext">Usuń</span>
+            <div
+              onClick={() => handleRemoveItem(index)}
+              className="controls__trash"
+            >
+              &#10006;<span className="controls__trash-tooltiptext">Usuń</span>
             </div>
           </div>
         </td>
@@ -189,10 +194,10 @@ export const ShoppingListTable = () => {
           setMessage={setMessage}
         />
       )}
-      <div className="table-body">
+      <div className="table__body">
         {admin && (
-          <div className="table-admin-wrapper">
-            <label className="table-select-label" htmlFor="departament">
+          <div className="table__admin-wrapper">
+            <label className="admin__select-label" htmlFor="departament">
               Wybierz placówkę:
             </label>
             <select
@@ -200,7 +205,7 @@ export const ShoppingListTable = () => {
               id="departament"
               value={selectValue}
               onChange={handleChange}
-              className="button table-select"
+              className="button admin__select"
             >
               <option value="izbicka">izbicka</option>
               <option value="kamila@test.pl">stradomska</option>
@@ -222,7 +227,7 @@ export const ShoppingListTable = () => {
               <option value="rekrucka2">rekrucka Przedszkole</option>
             </select>
             <button
-              className="button button--primary table-select-button"
+              className="button button--primary"
               onClick={handleGetOtherShoppingList}
             >
               Pobierz
@@ -270,7 +275,7 @@ export const ShoppingListTable = () => {
               <tbody>
                 <tr>
                   <td colSpan="6">
-                    <p className="handle-error">Nie znaleziono artykułów.</p>
+                    <p className="storage__error">Nie znaleziono artykułów.</p>
                   </td>
                 </tr>
               </tbody>

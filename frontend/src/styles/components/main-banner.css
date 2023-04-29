@@ -1,5 +1,6 @@
-.main-banner {
+.mainBanner {
   align-items: center;
+  background: var(--yellow-mandarine-gradient);
   color: var(--black);
   display: flex;
   flex-direction: column;
@@ -9,29 +10,9 @@
   padding: 3.2rem 6.4rem;
   width: 100%;
 }
-
-.main-banner--yellow-mandarine {
-  background: var(--yellow-mandarine-gradient);
-}
-.main-banner--pink-yellow {
-  background: var(--pink-yellow-gradient);
-}
-
-.main-banner--blue-aqua {
-  background: var(--blue-aqua-gradient);
-}
-
-.main-banner--aqua-emerald {
-  background: var(--aqua-emerald-gradient);
-}
-
-.main-banner--emerald-yellow {
-  background: var(--emerald-yellow-gradient);
-}
-
-.main-banner__logo {
+.mainBanner__logo {
   align-items: center;
-  background-color: var(--yellow-mandarine-gradient);
+  background-color: var(__yellow-mandarine-gradient);
   border-radius: 50%;
   box-shadow: 0 2px 4px rgb(0 0 0 / 30%);
   display: flex;
@@ -40,25 +21,18 @@
   /* responsive */
   width: 12.8rem;
 }
-
-.main-banner__image {
+.mainBanner__image {
   height: 10.8rem;
   width: 10.8rem;
 }
-
-.main-banner__image--small {
-  height: 7.6rem;
-  width: 7.6rem;
-}
-
-.main-banner__headline {
+.mainBanner__h1 {
   font-size: 4.8rem;
   letter-spacing: -1.5px;
   /* responsive */
   margin: 2.4rem 0 8px 0;
 }
 
-.main-banner__description {
+.mainBanner__description {
   font-size: 20px;
   line-height: 3.2rem;
   /* responsive */
@@ -67,30 +41,24 @@
   text-align: center;
 }
 @media only screen and (max-width: 540px) {
-  .main-banner {
+  .mainBanner {
     padding: 3.2rem 1.6rem;
   }
 
-  .main-banner__logo {
+  .mainBanner__logo {
     height: 15rem;
     width: 15rem;
   }
 
-  .main-banner__image {
+  .mainBanner__image {
     height: 10rem;
     width: 10rem;
   }
-
-  .main-banner__image--small {
-    height: 6rem;
-    width: 6rem;
-  }
-
-  .main-banner__headline {
+  .mainBanner__h1 {
     font-size: 3.2rem;
   }
 
-  .main-banner__description {
+  .mainBanner__description {
     font-size: 1.6rem;
     line-height: 2.4rem;
   }
