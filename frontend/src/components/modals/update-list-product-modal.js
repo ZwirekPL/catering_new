@@ -120,121 +120,123 @@ export const UpdateListProductModal = ({
   return (
     <div className="wrapper">
       <div className="productModal">
-        <div className="productModal-top">
-          <p className="productModal-title">
+        <div className="productModal__top">
+          <p className="productModal__title">
             Edytujesz:{" "}
             <strong>
               {itemToUpdate.item.charAt(0).toUpperCase() +
                 itemToUpdate.item.slice(1)}
             </strong>
           </p>
-          <div className="productModal-xbtn" onClick={handleCloseUpdateModal}>
+          <div className="productModal__xbtn" onClick={handleCloseUpdateModal}>
             &#10006;
           </div>
         </div>
-        <div className="productModal-form">
+        <div className="productModal__form">
           {errorIsVisible ? (
-            <div className="error-div">
+            <div className="error__div">
               <p>{errorMessage}</p>
             </div>
           ) : null}
-          <form id="update-list-form"></form>
-          <table className="table-modal">
-            <tr>
-              <th>
-                <input
-                  type="radio"
-                  name="category"
-                  id="groceries"
-                  value="groceries"
-                  onChange={handleOnChange}
-                  defaultChecked={input.category === "groceries"}
-                />
-                <label htmlFor="groceries" class="option option-1">
-                  <div class="dot"></div>
-                  <span>Art.spożywcze</span>
-                </label>
-              </th>
-              <th>
-                <input
-                  type="radio"
-                  name="category"
-                  id="chemical"
-                  value="chemical"
-                  onChange={handleOnChange}
-                  defaultChecked={input.category === "chemical"}
-                />
-                <label htmlFor="chemical" class="option option-2">
-                  <div class="dot"></div>
-                  <span>Art.chemiczne</span>
-                </label>
-              </th>
-            </tr>
-            <tr>
-              <th>Nazwa</th>
-              <th>
-                <input
-                  onChange={handleOnChange}
-                  name="item"
-                  value={input.item}
-                  type="text"
-                  form="update-list-form"
-                />
-              </th>
-            </tr>
-            <tr>
-              <th>Pojemność</th>
-              <th>
-                <input
-                  onChange={handleOnChange}
-                  name="capacity"
-                  value={input.capacity}
-                  type="text"
-                  form="update-list-form"
-                />
-              </th>
-            </tr>
-            <tr>
-              <th>Opakowanie zbiorcze</th>
-              <th>
-                <input
-                  onChange={handleOnChange}
-                  name="bulkQuantity"
-                  value={input.bulkQuantity}
-                  type="number"
-                  form="update-list-form"
-                />
-              </th>
-            </tr>
-            <tr>
-              <th>Nowa ilość na stanie</th>
-              <th>
-                <input
-                  onChange={handleOnChange}
-                  name="quantityNow"
-                  value={input.quantityNow}
-                  type="number"
-                  form="update-list-form"
-                />
-              </th>
-            </tr>
-            <tr>
-              <th>Jednostka</th>
-              <th>
-                <input
-                  onChange={handleOnChange}
-                  name="unit"
-                  value={input.unit}
-                  type="text"
-                  form="update-list-form"
-                />
-              </th>
-            </tr>
+          <form id="update__list-form"></form>
+          <table className="table__modal">
+            <tbody>
+              <tr>
+                <th>
+                  <input
+                    type="radio"
+                    name="category"
+                    id="groceries"
+                    value="groceries"
+                    onChange={handleOnChange}
+                    defaultChecked={input.category === "groceries"}
+                  />
+                  <label htmlFor="groceries" className="option option-1">
+                    <div className="dot"></div>
+                    <span>Art.spożywcze</span>
+                  </label>
+                </th>
+                <th>
+                  <input
+                    type="radio"
+                    name="category"
+                    id="chemical"
+                    value="chemical"
+                    onChange={handleOnChange}
+                    defaultChecked={input.category === "chemical"}
+                  />
+                  <label htmlFor="chemical" className="option option-2">
+                    <div className="dot"></div>
+                    <span>Art.chemiczne</span>
+                  </label>
+                </th>
+              </tr>
+              <tr>
+                <th>Nazwa</th>
+                <th>
+                  <input
+                    onChange={handleOnChange}
+                    name="item"
+                    value={input.item}
+                    type="text"
+                    form="update__list-form"
+                  />
+                </th>
+              </tr>
+              <tr>
+                <th>Pojemność</th>
+                <th>
+                  <input
+                    onChange={handleOnChange}
+                    name="capacity"
+                    value={input.capacity}
+                    type="text"
+                    form="update__list-form"
+                  />
+                </th>
+              </tr>
+              <tr>
+                <th>Opakowanie zbiorcze</th>
+                <th>
+                  <input
+                    onChange={handleOnChange}
+                    name="bulkQuantity"
+                    value={input.bulkQuantity}
+                    type="number"
+                    form="update__list-form"
+                  />
+                </th>
+              </tr>
+              <tr>
+                <th>Nowa ilość na stanie</th>
+                <th>
+                  <input
+                    onChange={handleOnChange}
+                    name="quantityNow"
+                    value={input.quantityNow}
+                    type="number"
+                    form="update__list-form"
+                  />
+                </th>
+              </tr>
+              <tr>
+                <th>Jednostka</th>
+                <th>
+                  <input
+                    onChange={handleOnChange}
+                    name="unit"
+                    value={input.unit}
+                    type="text"
+                    form="update__list-form"
+                  />
+                </th>
+              </tr>
+            </tbody>
           </table>
           <button
             className="button button--primary width-100"
             onClick={handleClick}
-            form="update-list-form"
+            form="update__list-form"
           >
             Zmień
           </button>
