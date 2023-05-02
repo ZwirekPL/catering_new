@@ -49,6 +49,10 @@ export const App = () => {
 };
 
 //zmniejszyc obrazki ....!
+// w magazynie po wybraniu kategorii edytowanie  nastepuje na elemencie z listy całej.
+// nie działą usuwanie i edytowanie w magazynie
+// dalej dodaje listę zakupową bez podziału na kategorię(wymusza dodanie wszystkich elementów z poprzedniej listy)
+
 // sprawdzić czy da sie przewijać faq- nie da sie na telefonie
 // przejrzeć kod.
 // dodatkowe konto kierowcow dla kamili + dodatkwoe konto dla stardomsiej

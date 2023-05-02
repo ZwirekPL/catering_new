@@ -207,21 +207,21 @@ export const ShoppingListTable = () => {
               onChange={handleChange}
               className="button admin__select"
             >
-              <option value="user1@test.pl">Użytkownik1</option>
-              <option value="user2@test.pl">Użytkownik2</option>
-              <option value="user3@test.pl">Użytkownik3</option>
-              <option value="user4@test.pl">Użytkownik4</option>
-              <option value="user5@test.pl">Użytkownik5</option>
-              <option value="user6@test.pl">Użytkownik6</option>
-              <option value="user7@test.pl">Użytkownik7</option>
-              <option value="user8@test.pl">Użytkownik8</option>
-              <option value="user9@test.pl">Użytkownik9</option>
-              <option value="user10@test.pl">Użytkownik10</option>
-              <option value="user11@test.pl">Użytkownik11</option>
-              <option value="user12@test.pl">Użytkownik12</option>
-              <option value="user13@test.pl">Użytkownik13</option>
-              <option value="user14@test.pl">Użytkownik14</option>
-              <option value="user15@test.pl">Użytkownik15</option>
+              <option value="user1@test.com">Użytkownik1</option>
+              <option value="user2@test.com">Użytkownik2</option>
+              <option value="user3@test.com">Użytkownik3</option>
+              <option value="user4@test.com">Użytkownik4</option>
+              <option value="user5@test.com">Użytkownik5</option>
+              <option value="user6@test.com">Użytkownik6</option>
+              <option value="user7@test.com">Użytkownik7</option>
+              <option value="user8@test.com">Użytkownik8</option>
+              <option value="user9@test.com">Użytkownik9</option>
+              <option value="user10@test.com">Użytkownik10</option>
+              <option value="user11@test.com">Użytkownik11</option>
+              <option value="user12@test.com">Użytkownik12</option>
+              <option value="user13@test.com">Użytkownik13</option>
+              <option value="user14@test.com">Użytkownik14</option>
+              <option value="user15@test.com">Użytkownik15</option>
             </select>
             <button
               className="button button--primary"
