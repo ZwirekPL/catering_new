@@ -7,7 +7,7 @@ export const SignupButton = () => {
   const handleSignUp = async () => {
     await loginWithRedirect({
       appState: {
-        returnTo: "/profile",
+        returnTo: "/shopping-list",
       },
       authorizationParams: {
         prompt: "login",

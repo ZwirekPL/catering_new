@@ -64,7 +64,7 @@ export const Table = () => {
       if (error) {
         setMessage(error);
       }
-      if (user.email === "kamila@test.pl") {
+      if (user.email === "admin@test.pl") {
         setAdmin(true);
         getMessage();
       }
@@ -90,7 +90,7 @@ export const Table = () => {
           { data: message, editUser: user.name }
         );
       }
-      if (user.email === "kamila@test.pl") return null;
+      if (user.email === "admin@test.pl") return null;
       else {
         window.location.reload();
       }
@@ -203,24 +203,21 @@ export const Table = () => {
               onChange={handleChange}
               className="button admin__select"
             >
-              <option value="izbicka">izbicka</option>
-              <option value="kamila@test.pl">stradomska</option>
-              {/* <option value="stradomska">stradomska</option> */}
-              <option value="dietyojca@gmail.com">białowieska</option>
-              {/* <option value="białowieska">białowieska</option> */}
-              <option value="glanzgarage@gmail.com">korytnicka</option>
-              {/* <option value="korytnicka">korytnicka</option> */}
-              <option value="terespolska">terespolska</option>
-              <option value="tamka">tamka</option>
-              <option value="broniewskiego">broniewskiego</option>
-              <option value="szeligowska">szeligowska</option>
-              <option value="chłapowskiego">chłapowskiego</option>
-              <option value="aleja ken">aleja KEN</option>
-              <option value="samochodowa1">Samochodowa U1</option>
-              <option value="samochodowa2">Samochodowa U3</option>
-              <option value="bobrowiecka">bobrowiecka</option>
-              <option value="rekrucka1">rekrucka Żłobek</option>
-              <option value="rekrucka2">rekrucka Przedszkole</option>
+              <option value="user1@test.pl">Użytkownik1</option>
+              <option value="user2@test.pl">Użytkownik2</option>
+              <option value="user3@test.pl">Użytkownik3</option>
+              <option value="user4@test.pl">Użytkownik4</option>
+              <option value="user5@test.pl">Użytkownik5</option>
+              <option value="user6@test.pl">Użytkownik6</option>
+              <option value="user7@test.pl">Użytkownik7</option>
+              <option value="user8@test.pl">Użytkownik8</option>
+              <option value="user9@test.pl">Użytkownik9</option>
+              <option value="user10@test.pl">Użytkownik10</option>
+              <option value="user11@test.pl">Użytkownik11</option>
+              <option value="user12@test.pl">Użytkownik12</option>
+              <option value="user13@test.pl">Użytkownik13</option>
+              <option value="user14@test.pl">Użytkownik14</option>
+              <option value="user15@test.pl">Użytkownik15</option>
             </select>
             <button
               className="button button--primary"

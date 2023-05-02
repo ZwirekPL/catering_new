@@ -9,9 +9,9 @@ export const ShoppingList = () => {
   const { user } = useAuth0();
   return (
     <PageLayout>
-      {user.email !== "kierowca1@test.pl" &&
-        user.email !== "kierowca2@test.pl" &&
-        user.email !== "kierowca3@test.pl" && (
+      {user.email !== "driver@test.pl" &&
+        user.email !== "driver2@test.pl" &&
+        user.email !== "driver3@test.pl" && (
           <div className="content-layout">
             <h1 id="page-title" className="content__title">
               Listy Zakupowe
@@ -33,9 +33,9 @@ export const ShoppingList = () => {
             </div>
           </div>
         )}
-      {(user.email === "kierowca1@test.pl" ||
-        user.email === "kierowca2@test.pl" ||
-        user.email === "kierowca3@test.pl") && (
+      {(user.email === "driver@test.pl" ||
+        user.email === "driver2@test.pl" ||
+        user.email === "driver3@test.pl") && (
         <div className="content-layout">
           <h1 id="page-title" className="content__title">
             Listy Zakupowe

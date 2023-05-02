@@ -14,7 +14,7 @@ export const MobileNavBarButtons = () => {
           <LoginButton />
         </>
       )}
-      {isAuthenticated && user.email === "kamila@test.pl" && (
+      {isAuthenticated && user.email === "admin@test.pl" && (
         <>
           <SignupButton />
         </>

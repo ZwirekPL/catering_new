@@ -10,18 +10,18 @@ export const NavBarTabs = () => {
       <NavBarTab path="/faq" label="FAQ?" />
 
       {isAuthenticated &&
-        user.email !== "kierowca1@test.pl" &&
-        user.email !== "kierowca2@test.pl" &&
-        user.email !== "kierowca3@test.pl" && (
+        user.email !== "driver1@test.pl" &&
+        user.email !== "driver2@test.pl" &&
+        user.email !== "driver3@test.pl" && (
           <>
             <NavBarTab path="/storage" label="Magazyn" />
             <NavBarTab path="/shopping-list" label="Listy Zakupowe" />
           </>
         )}
       {isAuthenticated &&
-        (user.email === "kierowca1@test.pl" ||
-          user.email === "kierowca2@test.pl" ||
-          user.email === "kierowca3@test.pl") && (
+        (user.email === "driver1@test.pl" ||
+          user.email === "driver2@test.pl" ||
+          user.email === "driver3@test.pl") && (
           <>
             <NavBarTab path="/shopping-list" label="Listy Zakupowe" />
           </>
