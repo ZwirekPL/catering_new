@@ -1,11 +1,25 @@
-# React/JavaScript: Basic User Authentication Code Sample
+users:
+user1@test.pl
+user2@test.pl
+user3@test.pl
+user4@test.pl
+user5@test.pl
+user6@test.pl
+user7@test.pl
+user8@test.pl
+user9@test.pl
+user10@test.pl
+user11@test.pl
+user12@test.pl
+user13@test.pl
+user14@test.pl
+user15@test.pl
+User123!
 
-This JavaScript code sample demonstrates **how to implement user authentication** in React applications using Auth0. This React code sample builds the Single-Page Application (SPA) using the React Router 6 library.
+driver@test.pl
+driver2@test.pl
+driver3@test.pl
+Driver123!
 
-This code sample is part of the ["Auth0 Developer Resources"](https://developer.auth0.com/resources), a place where you can explore the authentication and authorization features of the Auth0 Identity Platform.
-
-Visit the ["React/JavaScript + React Router 6 Code Sample: User Authentication For Basic Apps"](https://developer.auth0.com/resources/code-samples/spa/react/basic-authentication) page for instructions on how to configure and run this code sample and how to integrate it with an API server of your choice to [create a full-stack code sample](https://developer.auth0.com/resources/code-samples/full-stack/hello-world/basic-access-control/spa).
-
-## Why Use Auth0?
-
-Auth0 is a flexible drop-in solution to add authentication and authorization services to your applications. Your team and organization can avoid the cost, time, and risk that come with building your own solution to authenticate and authorize users. We offer tons of guidance and SDKs for you to get started and [integrate Auth0 into your stack easily](https://developer.auth0.com/resources/code-samples/full-stack).
+admin@test.pl
+Admin123!
