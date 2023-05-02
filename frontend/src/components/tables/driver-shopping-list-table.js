@@ -27,9 +27,9 @@ export const ShoppingListTableDrivers = () => {
       selectValue
     );
     if (
-      selectValue === "driver1@test.pl" ||
-      selectValue === "driver2@test.pl" ||
-      selectValue === "driver3@test.pl"
+      selectValue === "driver1@test.com" ||
+      selectValue === "driver2@test.com" ||
+      selectValue === "driver3@test.com"
     ) {
       if (string) {
         if (data) {
@@ -83,9 +83,9 @@ export const ShoppingListTableDrivers = () => {
 
   const handleRemoveItem = (index) => {
     if (
-      selectValue === "driver1@test.pl" ||
-      selectValue === "driver2@test.pl" ||
-      selectValue === "driver3@test.pl"
+      selectValue === "driver1@test.com" ||
+      selectValue === "driver2@test.com" ||
+      selectValue === "driver3@test.com"
     ) {
       const idRemoveItem = message[index]._id;
       axios.delete(

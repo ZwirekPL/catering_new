@@ -27,7 +27,7 @@ export const HistoryShoppingList = () => {
       if (!isMounted) {
         return;
       }
-      if (user.email === "admin@test.pl") {
+      if (user.email === "admin@test.com") {
         setAdmin(true);
       }
       if (data) {

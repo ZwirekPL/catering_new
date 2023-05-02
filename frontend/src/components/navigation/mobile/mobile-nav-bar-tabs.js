@@ -9,18 +9,18 @@ export const MobileNavBarTabs = ({ handleClick }) => {
     <div className="mobile-nav-bar__tabs">
       <MobileNavBarTab path="/faq" label="FAQ?" />
       {isAuthenticated &&
-        user.email !== "driver1@test.pl" &&
-        user.email !== "driver2@test.pl" &&
-        user.email !== "driver3@test.pl" && (
+        user.email !== "driver1@test.com" &&
+        user.email !== "driver2@test.com" &&
+        user.email !== "driver3@test.com" && (
           <>
             <MobileNavBarTab path="/storage" label="Magazyn" />
             <MobileNavBarTab path="/shopping-list" label="Listy Zakupowe" />
           </>
         )}
       {isAuthenticated &&
-        (user.email === "driver1@test.pl" ||
-          user.email === "driver2@test.pl" ||
-          user.email === "driver3@test.pl") && (
+        (user.email === "driver1@test.com" ||
+          user.email === "driver2@test.com" ||
+          user.email === "driver3@test.com") && (
           <>
             <MobileNavBarTab path="/shopping-list" label="Listy Zakupowe" />
           </>

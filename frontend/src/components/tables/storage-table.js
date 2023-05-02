@@ -64,7 +64,7 @@ export const Table = () => {
       if (error) {
         setMessage(error);
       }
-      if (user.email === "admin@test.pl") {
+      if (user.email === "admin@test.com") {
         setAdmin(true);
         getMessage();
       }
@@ -90,7 +90,7 @@ export const Table = () => {
           { data: message, editUser: user.name }
         );
       }
-      if (user.email === "admin@test.pl") return null;
+      if (user.email === "admin@test.com") return null;
       else {
         window.location.reload();
       }

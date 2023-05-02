@@ -82,7 +82,7 @@ export const ShoppingListTable = () => {
       if (error) {
         setMessage(error);
       }
-      if (user.email === "admin@test.pl") {
+      if (user.email === "admin@test.com") {
         setAdmin(true);
         getMessage();
       }
@@ -168,7 +168,7 @@ export const ShoppingListTable = () => {
         editUser: user.name,
         category: category,
       });
-      if (user.email === "admin@test.pl") return null;
+      if (user.email === "admin@test.com") return null;
       else {
         window.location.reload();
       }

@@ -98,9 +98,9 @@ export const UpdateListProductModal = ({
       return unitNull();
     }
     if (
-      nameUser === "kierowca1@test.pl" ||
-      nameUser === "kierowca2@test.pl" ||
-      nameUser === "kierowca3@test.pl"
+      nameUser === "driver1@test.com" ||
+      nameUser === "driver2@test.com" ||
+      nameUser === "driver3@test.com"
     ) {
       axios.post(
         `${apiServerUrl}/api/messages/shopping/update/` + idUpdateItem,
