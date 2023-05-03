@@ -1,3 +1,4 @@
+const cors = require("cors");
 const dotenv = require("dotenv");
 const express = require("express");
 const mongoose = require("mongoose");
@@ -50,6 +51,15 @@ app.use((req, res, next) => {
   next();
 });
 app.use(nocache());
+
+app.use(
+  cors({
+    origin: CLIENT_ORIGIN_URL,
+    methods: ["GET", "POST", "DELETE", "HEAD"],
+    allowedHeaders: ["Authorization", "Content-Type"],
+    maxAge: 86400,
+  })
+);
 
 app.use("/api", apiRouter);
 apiRouter.use("/messages", messagesRouter);
