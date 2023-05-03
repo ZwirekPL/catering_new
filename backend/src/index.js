@@ -55,8 +55,19 @@ app.use(nocache());
 app.use(
   cors({
     origin: CLIENT_ORIGIN_URL,
-    methods: ["GET", "POST", "DELETE", "HEAD"],
-    allowedHeaders: ["Authorization", "Content-Type"],
+    methods: ["GET", "OPTIONS", "PATCH", "DELETE", "POST", "PUT", "HEAD"],
+    allowedHeaders: [
+      "Authorization",
+      "Content-Type",
+      "X-CSRF-Token",
+      "X-Requested-With",
+      "Accept",
+      "Accept-Version",
+      "Content-Length",
+      "Content-MD5",
+      "Date",
+      "X-Api-Version",
+    ],
     maxAge: 86400,
   })
 );
