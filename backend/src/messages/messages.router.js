@@ -219,9 +219,9 @@ messagesRouter
   .get((req, res) => {
     const userName = req.params.userName;
     if (
-      userName === "driver1@test.pl" ||
-      userName === "driver2@test.pl" ||
-      userName === "driver3@test.pl"
+      userName === "driver1@test.com" ||
+      userName === "driver2@test.com" ||
+      userName === "driver3@test.com"
     ) {
       const message = getShoppingListDrivers(userName).then((data) => {
         res.status(200).json(data);
