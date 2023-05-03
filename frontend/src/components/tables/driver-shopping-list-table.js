@@ -227,7 +227,9 @@ export const ShoppingListTableDrivers = () => {
             Pobierz
           </button>
         </div>
-        {categoryErr && <ErrorCategory props={"listy zakupowej"} />}
+        {categoryErr && !category && (
+          <ErrorCategory props={"listy zakupowej"} />
+        )}
         <div>
           <button
             onClick={() => handleCategory("groceries")}

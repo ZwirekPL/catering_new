@@ -227,7 +227,7 @@ export const Table = () => {
             </button>
           </div>
         )}
-        {categoryErr && <ErrorCategory props={"inwentaryzacji"} />}
+        {categoryErr && !category && <ErrorCategory props={"inwentaryzacji"} />}
         <div>
           {" "}
           <button
