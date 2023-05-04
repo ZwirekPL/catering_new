@@ -16,10 +16,10 @@ user14@test.com
 user15@test.com
 User123!
 
-driver@test.pl
-driver2@test.pl
-driver3@test.pl
+driver@test.com
+driver2@test.com
+driver3@test.com
 Driver123!
 
-admin@test.pl
+admin@test.com
 Admin123!
