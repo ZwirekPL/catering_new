@@ -33,13 +33,7 @@ Drivers who only have access to shopping lists have a separate account. They als
 - When adding products to the shopping list, click on the selected category to see the added product.
 - When we have an empty warehouse or shopping list, it sometimes adds null instead of a product.
 
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
-
-
-
-
+## Accounts to Log in:
 users:
 user1@test.com,
 user2@test.com,
@@ -68,3 +62,7 @@ Driver123!
 admin@test.com
 password:
 Admin123!
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
