@@ -23,6 +23,16 @@ Drivers who only have access to shopping lists have a separate account. They als
 
 [Catering-Manager-Admin.webm](https://user-images.githubusercontent.com/99488939/236162741-44644fec-ec4f-4493-a0b9-c24b05d96418.webm)
 
+## Issues
+
+- Does not log out after leaving the site.
+- Sometimes cors doesn't work.
+- Sometimes it does not add the product to the warehouse and you have to add it a second time.
+- Sometimes it fails to edit or delete a product in stock.
+- Sometimes it does not send the shopping list or inventory to the server.
+- When adding products to the shopping list, click on the selected category to see the added product.
+- When we have an empty warehouse or shopping list, it sometimes adds null instead of a product.
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
